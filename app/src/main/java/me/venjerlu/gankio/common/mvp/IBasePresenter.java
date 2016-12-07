@@ -6,5 +6,8 @@ package me.venjerlu.gankio.common.mvp;
  * Description:
  */
 
-public class BasePresenter {
+public interface IBasePresenter<T extends IBaseView> {
+  void attachView(T view);
+
+  void detachView();
 }

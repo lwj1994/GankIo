@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.model;
+package me.venjerlu.gankio.common.mvp;
 
 /**
  * Author/Date: venjerLu / 2016/12/6 22:44
@@ -6,10 +6,10 @@ package me.venjerlu.gankio.model;
  * Description:
  */
 
-public class Data<T> {
+public class BaseModel<T> {
   private T data;
 
-  public Data(T data) {
+  public BaseModel(T data) {
     this.data = data;
   }
 

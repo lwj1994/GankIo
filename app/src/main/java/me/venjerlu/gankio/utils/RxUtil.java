@@ -9,7 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import java.util.concurrent.TimeUnit;
-import me.venjerlu.gankio.model.Data;
 
 /**
  * Author/Date: venjerLu / 8/10/2016 10:12
@@ -18,9 +17,9 @@ import me.venjerlu.gankio.model.Data;
  */
 public class RxUtil {
   /**
-   * 定时器
+   * timer
    *
-   * @param time 定时总时间
+   * @param time total time
    */
   public static Observable<Integer> countdown(int time) {
     if (time < 0) time = 0;

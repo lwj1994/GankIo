@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.di.modules;
+package me.venjerlu.gankio.common.di.module;
 
 import android.content.Context;
 import dagger.Module;
@@ -17,7 +17,7 @@ import javax.inject.Singleton;
     this.mContext = mContext;
   }
 
-  @Provides @Singleton public Context provideContext() {
+  @Provides @Singleton  Context provideContext() {
     return mContext;
   }
 }

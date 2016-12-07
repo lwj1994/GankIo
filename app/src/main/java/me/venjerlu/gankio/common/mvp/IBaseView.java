@@ -6,5 +6,8 @@ package me.venjerlu.gankio.common.mvp;
  * Description:
  */
 
-public class IBaseView {
+public interface IBaseView {
+  void showError(String msg);
+
+  void setRefreshing(boolean refresh);
 }
