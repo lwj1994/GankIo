@@ -1,35 +1,33 @@
-package me.venjerlu.gankio.modules.view;
+package me.venjerlu.gankio.modules.gank.type.view;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import butterknife.BindView;
 import java.util.List;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.common.di.scope.PreFragment;
 import me.venjerlu.gankio.common.fragment.BaseFragment;
 import me.venjerlu.gankio.common.http.GankApi;
-import me.venjerlu.gankio.common.mvp.GankModel;
-import me.venjerlu.gankio.modules.presenter.MainPresenter;
+import me.venjerlu.gankio.modules.gank.model.Gank;
+import me.venjerlu.gankio.modules.gank.type.presenter.TypePresenter;
 
 /**
  * Author/Date: venjerLu / 2016/12/9 10:47
  * Email:       alwjlola@gmail.com
  * Description:
  */
-
-public class MainFragment extends BaseFragment<MainPresenter> implements IMainView {
+@PreFragment
+public class TypeFragment extends BaseFragment<TypePresenter> implements ITypeView {
   private static final int sSize = 10;
-  @BindView(R.id.main_textView) TextView mMainTextView;
   private int mPage = 1;
 
-  public static MainFragment newInstance() {
+  public static TypeFragment newInstance() {
     Bundle args = new Bundle();
-    MainFragment fragment = new MainFragment();
+    TypeFragment fragment = new TypeFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
   @Override protected int getLayout() {
-    return R.layout.frgament_main;
+    return R.layout.frgament_gank;
   }
 
   @Override protected void initInject() {
@@ -48,13 +46,6 @@ public class MainFragment extends BaseFragment<MainPresenter> implements IMainVi
 
   }
 
-  @Override public void setText(String text) {
-    mMainTextView.setText(text);
-  }
-
-  @Override public void onGetData(List<GankModel> list) {
-    for (int i = 0; i < list.size(); i++) {
-      mMainTextView.append(list.get(i).getUrl() + "\n");
-    }
+  @Override public void onGetData(List<Gank> list) {
   }
 }

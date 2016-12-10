@@ -53,7 +53,7 @@ public abstract class BaseSimpleActivity extends SupportActivity {
   }
 
   protected AppComponent getAppComponent() {
-    return ((App) getApplication()).getAppComponent();
+    return App.getAppComponent();
   }
 
   public abstract int getLayout();

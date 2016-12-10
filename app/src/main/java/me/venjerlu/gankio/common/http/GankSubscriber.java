@@ -6,23 +6,25 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import io.reactivex.subscribers.ResourceSubscriber;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
-import me.venjerlu.gankio.common.mvp.BaseModel;
+import me.venjerlu.gankio.modules.gank.model.GankModel;
 import me.venjerlu.gankio.utils.ToastUtil;
 
 /**
- * Created by lwj on 8/14/2016.
+ * Author/Date: venjerLu / 8/14/2016 17:41
+ * Email:       alwjlola@gmail.com
+ * Description:
  */
-public abstract class HttpSubscriber<T> extends ResourceSubscriber<BaseModel<T>>
+public abstract class GankSubscriber<T> extends ResourceSubscriber<GankModel<T>>
     implements INetResult<T> {
   private static final String TAG = "HttpObserver";
 
   @Override protected void onStart() {
-    XLog.d(TAG, "onStart");
+    XLog.tag(TAG).d("onStart");
     super.onStart();
   }
 
-  @Override public void onNext(BaseModel<T> tBaseModel) {
-    XLog.d(TAG, "onNext");
+  @Override public void onNext(GankModel<T> tBaseModel) {
+    XLog.tag(TAG).d("onNext");
     if (tBaseModel.isError()) {
       onFail((String) tBaseModel.getResults());
     } else {
@@ -35,7 +37,7 @@ public abstract class HttpSubscriber<T> extends ResourceSubscriber<BaseModel<T>>
   }
 
   @Override public void onComplete() {
-    XLog.d(TAG, "onComplete");
+    XLog.tag(TAG).d("onComplete");
     onCompleted();
   }
 
@@ -44,33 +46,33 @@ public abstract class HttpSubscriber<T> extends ResourceSubscriber<BaseModel<T>>
   }
 
   @Override public void onError(Throwable e) {
-    XLog.d(TAG, "onError");
+    XLog.tag(TAG).d("onError");
     if (e instanceof SocketTimeoutException) {
       onDisconnect();
     } else if (e instanceof HttpException) {
       HttpException exception = (HttpException) e;
-      XLog.e(TAG, exception.code() + "");
-      XLog.e(TAG, exception.message() + "");
+      XLog.e(exception.code() + "");
+      XLog.e(exception.message() + "");
       if (exception.response() != null && exception.response().errorBody() != null) {
         try {
-          XLog.e(TAG, exception.response().message());
+          XLog.e(exception.response().message());
           String bodyStr = exception.response().errorBody().string();
-          XLog.e(TAG, bodyStr);
-          BaseModel errorModel = new Gson().fromJson(bodyStr, BaseModel.class);
+          XLog.e(bodyStr);
+          GankModel errorModel = new Gson().fromJson(bodyStr, GankModel.class);
           if (errorModel != null) onFail(exception.code(), errorModel.getResults());
         } catch (IOException e1) {
           e1.printStackTrace();
         }
       }
     } else {
-      XLog.e(TAG, e.toString());
+      XLog.e(e.toString());
       onDisconnect();
     }
     onComplete();
   }
 
   @Override public void onFail(int errorCode, Object msg) {
-    XLog.e(TAG, "code = " + errorCode + ", msg = " + msg);
+    XLog.tag(TAG).e("code = " + errorCode + ", msg = " + msg);
   }
 
   @Override public void onDisconnect() {

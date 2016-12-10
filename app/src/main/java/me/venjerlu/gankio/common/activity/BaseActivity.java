@@ -72,7 +72,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
   }
 
   protected AppComponent getAppComponent() {
-    return ((App) getApplication()).getAppComponent();
+    return App.getAppComponent();
   }
 
   public abstract int getLayout();

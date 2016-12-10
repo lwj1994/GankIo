@@ -1,4 +1,6 @@
-package me.venjerlu.gankio.common.mvp;
+package me.venjerlu.gankio.modules.gank.model;
+
+import java.util.List;
 
 /**
  * Author/Date: venjerLu / 2016/12/6 22:44
@@ -6,7 +8,17 @@ package me.venjerlu.gankio.common.mvp;
  * Description:
  */
 
-public class BaseModel<T> {
+public class GankModel<T> {
+  private List<String> category;
+
+  public List<String> getCategory() {
+    return category;
+  }
+
+  public void setCategory(List<String> category) {
+    this.category = category;
+  }
+
   private boolean error;
   private T results;
 

@@ -14,10 +14,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import butterknife.BindView;
 import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
-import me.venjerlu.gankio.modules.view.MainFragment;
+import me.venjerlu.gankio.common.fragment.BaseLazyFragment;
+import me.venjerlu.gankio.modules.gank.GankLazyFragment;
 
 public class MainActivity extends BaseSimpleActivity
-    implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener ,BaseLazyFragment.OnBackToFirstListener{
 
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.content_main) FrameLayout contentMain;
@@ -34,7 +35,7 @@ public class MainActivity extends BaseSimpleActivity
     setFab();
     setDrawerLayout();
     if (savedInstanceState == null) {
-      loadRootFragment(R.id.content_main, MainFragment.newInstance());
+      loadRootFragment(R.id.content_main, GankLazyFragment.newInstance());
     }
   }
 
@@ -112,5 +113,9 @@ public class MainActivity extends BaseSimpleActivity
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     drawer.closeDrawer(GravityCompat.START);
     return true;
+  }
+
+  @Override public void onBackToFirstFragment() {
+
   }
 }

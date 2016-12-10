@@ -7,14 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import javax.inject.Inject;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.common.di.component.AppComponent;
-import me.venjerlu.gankio.common.di.component.DaggerFragmentComponent;
-import me.venjerlu.gankio.common.di.component.FragmentComponent;
-import me.venjerlu.gankio.common.di.module.FragmentModule;
-import me.venjerlu.gankio.common.mvp.IBasePresenter;
-import me.venjerlu.gankio.common.mvp.IBaseView;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
@@ -23,10 +17,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Description:
  */
 
-public abstract class BaseFragment<T extends IBasePresenter> extends SupportFragment
-    implements IBaseView {
-  @Inject protected T mPresenter;
-  protected View mView;
+public abstract class BaseSimpleFragment extends SupportFragment {
   protected Unbinder mUnbinder;
   protected boolean isInited;
 
@@ -37,15 +28,12 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    mView = inflater.inflate(getLayout(), null);
-    initInject();
-    return mView;
+    return inflater.inflate(getLayout(), null);
   }
 
   @SuppressWarnings("unchecked") @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mPresenter.attachView(this);
     mUnbinder = ButterKnife.bind(this, view);
 
     if (savedInstanceState == null) {
@@ -68,7 +56,6 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
 
   @Override public void onDestroy() {
     super.onDestroy();
-    if (mPresenter != null) mPresenter.detachView();
   }
 
   @Override public void onHiddenChanged(boolean hidden) {
@@ -79,16 +66,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
     }
   }
 
-  protected FragmentComponent getFragmentComponent() {
-    return DaggerFragmentComponent.builder()
-        .appComponent(getAppComponent())
-        .fragmentModule(new FragmentModule(this))
-        .build();
-  }
-
   protected abstract int getLayout();
-
-  protected abstract void initInject();
 
   protected abstract void initData();
 
