@@ -1,5 +1,6 @@
 package me.venjerlu.gankio;
 
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -10,15 +11,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 import butterknife.BindView;
-import me.venjerlu.gankio.common.activity.BaseActivity;
+import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
+import me.venjerlu.gankio.modules.view.MainFragment;
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends BaseSimpleActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
   @BindView(R.id.toolbar) Toolbar toolbar;
-  @BindView(R.id.content_main) RelativeLayout contentMain;
+  @BindView(R.id.content_main) FrameLayout contentMain;
   @BindView(R.id.fab) FloatingActionButton fab;
   @BindView(R.id.nav_view) NavigationView navView;
   @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
@@ -27,12 +29,16 @@ public class MainActivity extends BaseActivity
     return R.layout.activity_main;
   }
 
-  @Override protected void initInject() {
-
+  @Override protected void initData(Bundle savedInstanceState) {
+    setToolbar(toolbar, " 干货集中营");
+    setFab();
+    setDrawerLayout();
+    if (savedInstanceState == null) {
+      loadRootFragment(R.id.content_main, MainFragment.newInstance());
+    }
   }
 
-  @Override protected void initData() {
-    setToolbar(toolbar, " 干货集中营");
+  private void setFab() {
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
@@ -41,7 +47,9 @@ public class MainActivity extends BaseActivity
             .show();
       }
     });
+  }
 
+  private void setDrawerLayout() {
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle =
         new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
@@ -104,13 +112,5 @@ public class MainActivity extends BaseActivity
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     drawer.closeDrawer(GravityCompat.START);
     return true;
-  }
-
-  @Override public void showError(String msg) {
-
-  }
-
-  @Override public void setRefreshing(boolean refresh) {
-
   }
 }

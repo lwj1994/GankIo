@@ -2,6 +2,7 @@ package me.venjerlu.gankio.common.di.component;
 
 import android.app.Activity;
 import dagger.Component;
+import me.venjerlu.gankio.MainActivity;
 import me.venjerlu.gankio.common.di.module.ActivityModule;
 import me.venjerlu.gankio.common.di.scope.PreActivity;
 
@@ -10,10 +11,9 @@ import me.venjerlu.gankio.common.di.scope.PreActivity;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-@PreActivity
-@Component(dependencies = AppComponent.class,modules = ActivityModule.class)
+@PreActivity @Component(dependencies = AppComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
   Activity getActivty();
 
-  void inject(Activity activity);
+  void inject(MainActivity mainActivity);
 }

@@ -1,9 +1,9 @@
 package me.venjerlu.gankio.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import java.io.File;
 import java.util.HashSet;
-import me.venjerlu.gankio.common.activity.BaseActivity;
 
 /**
  * Author/Date: venjerLu / 2016/12/7 13:56
@@ -13,17 +13,17 @@ import me.venjerlu.gankio.common.activity.BaseActivity;
 
 public class AndroidUtil {
 
-  private static HashSet<BaseActivity> mActivities;
+  private static HashSet<Activity> mActivities;
 
   static {
     mActivities = new HashSet<>();
   }
 
-  public static void addActivity(BaseActivity activity) {
+  public static void addActivity(Activity activity) {
     mActivities.add(activity);
   }
 
-  public static void removeActivity(BaseActivity activity) {
+  public static void removeActivity(Activity activity) {
     mActivities.remove(activity);
   }
 

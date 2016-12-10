@@ -33,11 +33,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
     this.mContext = mContext;
   }
 
-  @Provides @Singleton  OkHttpClient provideOkHttpClient() {
+  @Provides @Singleton OkHttpClient provideOkHttpClient() {
     OkHttpClient.Builder builder = new OkHttpClient.Builder();
     if (BuildConfig.DEBUG) {
       HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-      loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+      loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
       builder.addInterceptor(loggingInterceptor);
     }
 
@@ -69,7 +69,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
         return response;
       }
     };
-    return builder.cache(cache)
+    return builder
+        .cache(cache)
         .addNetworkInterceptor(cacheInterceptor)
         .addInterceptor(cacheInterceptor)
         .connectTimeout(10, TimeUnit.SECONDS)
@@ -79,7 +80,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
         .build();
   }
 
-  @Singleton @Provides  GankApi provideGankApi(OkHttpClient okHttpClient) {
+  @Singleton @Provides GankApi provideGankApi(OkHttpClient okHttpClient) {
     return new Retrofit.Builder().baseUrl(GankApi.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())

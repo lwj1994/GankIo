@@ -7,17 +7,22 @@ package me.venjerlu.gankio.common.mvp;
  */
 
 public class BaseModel<T> {
-  private T data;
+  private boolean error;
+  private T results;
 
-  public BaseModel(T data) {
-    this.data = data;
+  public T getResults() {
+    return results;
   }
 
-  public T getData() {
-    return data;
+  public void setResults(T results) {
+    this.results = results;
   }
 
-  public void setData(T data) {
-    this.data = data;
+  public boolean isError() {
+    return error;
+  }
+
+  public void setError(boolean error) {
+    this.error = error;
   }
 }

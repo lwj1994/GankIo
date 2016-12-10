@@ -1,6 +1,5 @@
 package me.venjerlu.gankio.common.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,14 +27,8 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
     implements IBaseView {
   @Inject protected T mPresenter;
   protected View mView;
-  protected Activity mActivity;
   protected Unbinder mUnbinder;
   protected boolean isInited;
-
-  @Override public void onAttach(Activity activity) {
-    mActivity = activity;
-    super.onAttach(activity);
-  }
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -100,7 +93,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
   protected abstract void initData();
 
   protected AppComponent getAppComponent() {
-    return ((App) mActivity.getApplication()).getAppComponent();
+    return ((App) _mActivity.getApplication()).getAppComponent();
   }
 }
 

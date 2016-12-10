@@ -2,6 +2,7 @@ package me.venjerlu.gankio;
 
 import android.app.Application;
 import com.blankj.utilcode.utils.CrashUtils;
+import com.blankj.utilcode.utils.ToastUtils;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;
 import com.github.moduth.blockcanary.BlockCanary;
@@ -19,9 +20,9 @@ import me.venjerlu.gankio.widget.AppBlockCanaryContext;
  */
 
 public class App extends Application {
-  private AppComponent mAppComponent;
+  private static AppComponent mAppComponent;
 
-  public AppComponent getAppComponent() {
+  public static AppComponent getAppComponent() {
     return mAppComponent;
   }
 
@@ -31,9 +32,11 @@ public class App extends Application {
         .appModule(new AppModule(this))
         .retrofitModule(new RetrofitModule(this))
         .build();
+    ToastUtils.init(false);
     LeakCanary.install(this);
     BlockCanary.install(this, new AppBlockCanaryContext()).start();
     CrashUtils.getInstance().init(this);
     XLog.init(BuildConfig.DEBUG ? LogLevel.ALL : LogLevel.NONE);
   }
+
 }

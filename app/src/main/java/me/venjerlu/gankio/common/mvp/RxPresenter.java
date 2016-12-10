@@ -2,6 +2,7 @@ package me.venjerlu.gankio.common.mvp;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import me.venjerlu.gankio.common.http.GankApi;
 
 /**
  * Author/Date: venjerLu / 2016/12/7 10:03
@@ -11,6 +12,7 @@ import io.reactivex.disposables.Disposable;
 
 public class RxPresenter<T extends IBaseView> implements IBasePresenter<T> {
   protected T mView;
+  protected GankApi mGankApi;
   private CompositeDisposable mCompositeDisposable;
 
   @Override public void attachView(T view) {

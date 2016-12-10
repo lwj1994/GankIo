@@ -1,14 +1,15 @@
 package me.venjerlu.gankio.utils;
 
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import java.util.concurrent.TimeUnit;
+import org.reactivestreams.Publisher;
 
 /**
  * Author/Date: venjerLu / 8/10/2016 10:12
@@ -34,9 +35,9 @@ public class RxUtil {
         .take(countTime + 1);
   }
 
-  public static <T> ObservableTransformer<T, T> applySchedulers() {
-    return new ObservableTransformer<T, T>() {
-      @Override public ObservableSource<T> apply(Observable<T> upstream) {
+  public static <T> FlowableTransformer<T, T> applySchedulers() {
+    return new FlowableTransformer<T, T>() {
+      @Override public Publisher<T> apply(Flowable<T> upstream) {
         return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
       }
     };

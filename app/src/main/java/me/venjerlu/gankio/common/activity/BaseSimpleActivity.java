@@ -7,14 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import javax.inject.Inject;
 import me.venjerlu.gankio.App;
-import me.venjerlu.gankio.common.di.component.ActivityComponent;
 import me.venjerlu.gankio.common.di.component.AppComponent;
-import me.venjerlu.gankio.common.di.component.DaggerActivityComponent;
-import me.venjerlu.gankio.common.di.module.ActivityModule;
-import me.venjerlu.gankio.common.mvp.IBasePresenter;
-import me.venjerlu.gankio.common.mvp.IBaseView;
 import me.venjerlu.gankio.utils.AndroidUtil;
 import me.yokeyword.fragmentation.SupportActivity;
 
@@ -24,10 +18,8 @@ import me.yokeyword.fragmentation.SupportActivity;
  * Description:
  */
 
-public abstract class BaseActivity<T extends IBasePresenter> extends SupportActivity
-    implements IBaseView {
+public abstract class BaseSimpleActivity extends SupportActivity {
   protected Activity mContext;
-  @Inject protected T mPresenter;
   private Unbinder mUnbinder;
 
   @SuppressWarnings("unchecked") @Override
@@ -36,10 +28,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
     setContentView(getLayout());
     mContext = this;
     mUnbinder = ButterKnife.bind(this);
-    initInject();
-    if (mPresenter != null) {
-      mPresenter.attachView(this);
-    }
+
     AndroidUtil.addActivity(this);
     initData(savedInstanceState);
   }
@@ -47,7 +36,6 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
   @Override protected void onDestroy() {
     super.onDestroy();
     mUnbinder.unbind();
-    if (mPresenter != null) mPresenter.detachView();
     AndroidUtil.removeActivity(this);
   }
 
@@ -64,20 +52,11 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
     });
   }
 
-  protected ActivityComponent getActivityComponent() {
-    return DaggerActivityComponent.builder()
-        .appComponent(getAppComponent())
-        .activityModule(new ActivityModule(this))
-        .build();
-  }
-
   protected AppComponent getAppComponent() {
     return ((App) getApplication()).getAppComponent();
   }
 
   public abstract int getLayout();
-
-  protected abstract void initInject();
 
   protected abstract void initData(Bundle savedInstanceState);
 }
