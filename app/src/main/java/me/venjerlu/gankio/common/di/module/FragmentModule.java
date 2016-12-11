@@ -4,7 +4,7 @@ import android.app.Activity;
 import dagger.Module;
 import dagger.Provides;
 import me.venjerlu.gankio.common.di.scope.PreFragment;
-import me.venjerlu.gankio.common.fragment.BaseFragment;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * Author/Date: venjerLu / 2016/12/7 14:26
@@ -12,13 +12,13 @@ import me.venjerlu.gankio.common.fragment.BaseFragment;
  * Description:
  */
 @Module public class FragmentModule {
-  private BaseFragment mFragment;
+  private SupportFragment mFragment;
 
-  public FragmentModule(BaseFragment fragment) {
+  public FragmentModule(SupportFragment fragment) {
     mFragment = fragment;
   }
 
-  @Provides @PreFragment  Activity provideActivity() {
+  @Provides @PreFragment Activity provideActivity() {
     return mFragment.getActivity();
   }
 }

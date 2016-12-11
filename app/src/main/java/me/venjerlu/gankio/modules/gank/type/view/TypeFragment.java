@@ -3,7 +3,6 @@ package me.venjerlu.gankio.modules.gank.type.view;
 import android.os.Bundle;
 import java.util.List;
 import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.common.di.scope.PreFragment;
 import me.venjerlu.gankio.common.fragment.BaseFragment;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.modules.gank.model.Gank;
@@ -14,7 +13,6 @@ import me.venjerlu.gankio.modules.gank.type.presenter.TypePresenter;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-@PreFragment
 public class TypeFragment extends BaseFragment<TypePresenter> implements ITypeView {
   private static final int sSize = 10;
   private int mPage = 1;

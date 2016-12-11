@@ -2,8 +2,10 @@ package me.venjerlu.gankio.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import com.blankj.utilcode.utils.SizeUtils;
 import java.io.File;
 import java.util.HashSet;
+import me.venjerlu.gankio.App;
 
 /**
  * Author/Date: venjerLu / 2016/12/7 13:56
@@ -36,5 +38,9 @@ public class AndroidUtil {
 
   public static String getNetCacheDir(Context context) {
     return getDataDirOfInternalStorage(context) + File.separator + "netCache";
+  }
+
+  public static int dp2px(float dp) {
+    return SizeUtils.dp2px(App.getAppComponent().getContext(), dp);
   }
 }

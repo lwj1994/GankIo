@@ -1,14 +1,11 @@
 package me.venjerlu.gankio.modules.gank.model;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
-import me.venjerlu.gankio.common.http.GankApi;
-
 /**
  * Author/Date: venjerLu / 2016/12/10 15:46
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class Gank implements MultiItemEntity{
+public class Gank{
   public static final int MEIZHI = 2;
   public static final int TECHNIQUE = 3;
   public static final int VEDIO = 4;
@@ -106,19 +103,4 @@ public class Gank implements MultiItemEntity{
     this.who = who;
   }
 
-  @Override public int getItemType() {
-    switch (getType()){
-      case GankApi.福利:
-        return MEIZHI;
-      case GankApi.ANDROID:
-      case GankApi.IOS:
-      case GankApi.前端:
-      case GankApi.拓展资源:
-        return TECHNIQUE;
-      case GankApi.休息视频:
-        return VEDIO;
-    }
-    return 0;
-
-  }
 }

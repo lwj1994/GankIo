@@ -1,15 +1,11 @@
 package me.venjerlu.gankio.modules.gank.today.view;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import butterknife.BindView;
 import java.util.List;
-import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.common.di.scope.PreFragment;
-import me.venjerlu.gankio.common.fragment.BaseFragment;
-import me.venjerlu.gankio.modules.gank.today.model.TodaySectionModel;
+import me.venjerlu.gankio.common.fragment.BaseListFragment;
+import me.venjerlu.gankio.modules.gank.model.DateModel;
+import me.venjerlu.gankio.modules.gank.model.Gank;
+import me.venjerlu.gankio.modules.gank.today.presenter.TodayAdapter;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
 
 /**
@@ -17,10 +13,9 @@ import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-@PreFragment
-public class TodayFragment extends BaseFragment<TodayPresenter> implements ITodayView {
-  @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-  @BindView(R.id.swipeRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
+public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter>
+    implements ITodayView {
+
   public static TodayFragment newInstance() {
     Bundle args = new Bundle();
     TodayFragment fragment = new TodayFragment();
@@ -28,18 +23,13 @@ public class TodayFragment extends BaseFragment<TodayPresenter> implements IToda
     return fragment;
   }
 
-  @Override protected int getLayout() {
-    return R.layout.frgament_gank_today;
-  }
-
   @Override protected void initInject() {
     getFragmentComponent().inject(this);
   }
 
   @Override protected void initData() {
-    mRecyclerView.setLayoutManager(new LinearLayoutManager(_mActivity));
-    mPresenter.setAdapter(mRecyclerView);
-    mPresenter.getDataByDate("2016","12","08");
+    super.initData();
+    mPullToRefreshLayout.enableLoadMore(false);
   }
 
   @Override public void showError(String msg) {
@@ -50,7 +40,24 @@ public class TodayFragment extends BaseFragment<TodayPresenter> implements IToda
 
   }
 
-  @Override public void onGetLatestData(List<TodaySectionModel> list) {
+  @Override public void onRefresh() {
+      mPresenter.getLatestData();
+  }
 
+  public void addToList(int i, String title, List<Gank> list) {
+    mAdapter.addSection(i, title);
+    mAdapter.addContent(list);
+  }
+
+  @Override public void onGetLatestData(DateModel results) {
+    List<Gank> android = results.getAndroid();
+    List<Gank> ios = results.getiOS();
+    List<Gank> front = results.getFront();
+    List<Gank> expande = results.getExpand();
+    addToList(0, "Android", android);
+    addToList(1, "iOS", ios);
+    addToList(2, "前端", front);
+    addToList(3, "拓展资源", expande);
+    mAdapter.notifyDataSetChanged();
   }
 }

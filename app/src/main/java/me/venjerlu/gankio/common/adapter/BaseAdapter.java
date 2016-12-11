@@ -1,7 +1,7 @@
 package me.venjerlu.gankio.common.adapter;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 /**
@@ -10,12 +10,8 @@ import java.util.List;
  * Description:
  */
 
-public abstract class BaseAdapter<T> extends BaseQuickAdapter<T,BaseViewHolder> {
-  public BaseAdapter(int layoutResId, List<T> data) {
-    super(layoutResId, data);
-  }
+public abstract class BaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-  public BaseAdapter(List<T> data) {
-    super(data);
-  }
+  protected List mList;
+  protected Context mContext;
 }

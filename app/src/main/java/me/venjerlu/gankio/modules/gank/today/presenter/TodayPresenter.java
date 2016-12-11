@@ -6,19 +6,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.ResourceSubscriber;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
-import me.venjerlu.gankio.common.di.scope.PreFragment;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
-import me.venjerlu.gankio.modules.gank.today.adapter.TodaySectionAdapter;
-import me.venjerlu.gankio.modules.gank.today.model.TodaySectionModel;
-import me.venjerlu.gankio.modules.gank.today.view.TodayFragment;
+import me.venjerlu.gankio.modules.gank.today.view.ITodayView;
 import me.venjerlu.gankio.utils.RxUtil;
 import org.reactivestreams.Publisher;
 
@@ -27,18 +23,14 @@ import org.reactivestreams.Publisher;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-@PreFragment public class TodayPresenter extends RxPresenter<TodayFragment> {
-  private List<TodaySectionModel> mList;
-  private TodaySectionAdapter mAdapter;
-
+public class TodayPresenter extends RxPresenter<ITodayView> {
   @Inject TodayPresenter(GankApi api) {
     mGankApi = api;
-    mList = new ArrayList<>();
-    mAdapter = new TodaySectionAdapter(mList);
+    //mList = new ArrayList<>();
+    //mAdapter = new TodaySectionAdapter(mList);
   }
 
   public void setAdapter(RecyclerView recyclerView) {
-    recyclerView.setAdapter(mAdapter);
   }
 
   /**
@@ -53,11 +45,6 @@ import org.reactivestreams.Publisher;
             List<Gank> ios = results.getiOS();
             List<Gank> front = results.getFront();
             List<Gank> expande = results.getExpand();
-            addToList("Android", android);
-            addToList("iOS", ios);
-            addToList("前端", front);
-            addToList("拓展资源", expande);
-            mAdapter.notifyDataSetChanged();
           }
         }));
   }
@@ -88,33 +75,16 @@ import org.reactivestreams.Publisher;
           @Override public void onNext(Object o) {
             GankModel<DateModel> model = (GankModel) o;
             DateModel results = model.getResults();
-            List<Gank> android = results.getAndroid();
-            List<Gank> ios = results.getiOS();
-            List<Gank> front = results.getFront();
-            List<Gank> expande = results.getExpand();
-            addToList("Android", android);
-            addToList("iOS", ios);
-            addToList("前端", front);
-            addToList("拓展资源", expande);
-            mView.onGetLatestData(mList);
+            mView.onGetLatestData(results);
           }
 
           @Override public void onError(Throwable t) {
-
+            mView.showError(t.getMessage());
           }
 
           @Override public void onComplete() {
-
+            mView.onRefreshCompleted();
           }
         });
-  }
-
-  private void addToList(String header, List<Gank> list) {
-    if (list != null) {
-      mList.add(new TodaySectionModel(true, header));
-      for (Gank gank : list) {
-        mList.add(new TodaySectionModel(gank));
-      }
-    }
   }
 }
