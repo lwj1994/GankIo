@@ -10,7 +10,7 @@ import me.venjerlu.gankio.common.http.GankApi;
  * Description:
  */
 
-public class RxPresenter<T extends IBaseView> implements IBasePresenter<T> {
+public class RxPresenter<T extends IBaseView> implements IBasePresenter<T>{
   protected T mView;
   protected GankApi mGankApi;
   private CompositeDisposable mCompositeDisposable;
