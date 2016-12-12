@@ -75,6 +75,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   @Override public void onDestroyView() {
     super.onDestroyView();
     if (mUnbinder != null) mUnbinder.unbind();
+    if (mPullToRefreshLayout!=null) mPullToRefreshLayout.onDestroy();
   }
 
   @Override public void onDestroy() {
@@ -108,7 +109,6 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
     mPullToRefreshLayout.setLayoutManager(getLayoutManager());
     mPullToRefreshLayout.addItemDecoration(getItemDecoration());
     mPullToRefreshLayout.setAdapter(mAdapter);
-
   }
 
   @Override protected void onEnterAnimationEnd(Bundle savedInstanceState) {
@@ -143,7 +143,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   }
 
   @Override public void onRefreshCompleted() {
-    mPullToRefreshLayout.onRefreshCompleted();
+    if (mPullToRefreshLayout != null) mPullToRefreshLayout.onRefreshCompleted();
   }
 
   protected AppComponent getAppComponent() {
