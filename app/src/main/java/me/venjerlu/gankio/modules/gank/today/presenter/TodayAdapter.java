@@ -17,6 +17,8 @@ import me.venjerlu.gankio.widget.pulltorefresh.section.SectionData;
  * Description:
  */
 public class TodayAdapter extends BaseSectionListAdapter<Gank> {
+  private static final String TAG = "TodayAdapter";
+
   @Inject TodayAdapter() {
   }
 
@@ -37,6 +39,8 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
   }
 
   @Override protected void bindData(BaseViewHolder holder, int position) {
+    //XLog.tag(TAG).d("mList.size() = " + mList.size());
+    //XLog.tag(TAG).d("position" + position);
     SectionData<Gank> item = mList.get(position);
     if (holder instanceof TitleViewHolder) {
       TitleViewHolder viewHolder = (TitleViewHolder) holder;
@@ -71,13 +75,13 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     }
   }
 
-  class HeaderViewHolder extends BaseViewHolder {
+  private class HeaderViewHolder extends BaseViewHolder {
     HeaderViewHolder(View view) {
       super(view);
     }
   }
 
-  class FooterViewHolder extends BaseViewHolder {
+  private class FooterViewHolder extends BaseViewHolder {
     FooterViewHolder(View view) {
       super(view);
     }

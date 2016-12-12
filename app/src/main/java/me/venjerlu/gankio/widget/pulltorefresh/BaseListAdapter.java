@@ -7,6 +7,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.elvishew.xlog.XLog;
 import java.util.ArrayList;
 import java.util.List;
 import me.venjerlu.gankio.R;
@@ -68,10 +69,30 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
         }
       }
     });
-    if (getDataCount() > 0) bindData(holder, mLayoutHeader == 0 ? position : position - 1);
-    else {
-      if (mLayoutEmpty!=0){
-        if (holder.itemView.getLayoutParams() instanceof GridLayoutManager.LayoutParams){
+    if (getDataCount() > 0) {
+      if (hasHeader()) {
+        if (hasFooter()) {
+          if (position > 0 && position < getItemCount() - 1) {
+            XLog.tag(TAG).d("position = " + position);
+            bindData(holder, position - 1);
+          }
+        } else {
+          if (position > 0) {
+            bindData(holder, position - 1);
+          }
+        }
+      } else {
+        if (hasFooter()) {
+          if (position < getItemCount() - 1) {
+            bindData(holder, position);
+          }
+        } else {
+          bindData(holder, position);
+        }
+      }
+    } else {
+      if (mLayoutEmpty != 0) {
+        if (holder.itemView.getLayoutParams() instanceof GridLayoutManager.LayoutParams) {
           StaggeredGridLayoutManager.LayoutParams params =
               (StaggeredGridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
           params.setFullSpan(true);
@@ -82,8 +103,8 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   @Override public int getItemCount() {
     return (mLayoutEmpty != 0 ? 1 : 0)
-        + (mLayoutHeader != 0 ? 1 : 0)
-        + (mLayoutFooter != 0 ? 1 : 0)
+        + (hasHeader() ? 1 : 0)
+        + (hasFooter() ? 1 : 0)
         + getDataCount()
         + (isLoadMoreFooterShown ? 1 : 0);
   }
@@ -174,16 +195,32 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
     return isLoadMoreFooterShown && position == getItemCount() - 1;
   }
 
-  public boolean isSectionHeader(int position) {
-    return false;
-  }
-
   public void clearData() {
     mList.clear();
   }
 
   protected View getInflate(ViewGroup parent, @LayoutRes int layoutRes) {
     return LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
+  }
+
+  protected boolean hasHeader() {
+    return mLayoutHeader != 0;
+  }
+
+  protected boolean hasFooter() {
+    return mLayoutFooter != 0;
+  }
+
+  protected int getDataPosition(int position) {
+    if (hasHeader()) {
+      return position - 1;
+    } else {
+      return position;
+    }
+  }
+
+  public boolean isSectionHeader(int position) {
+    return false;
   }
 
   public interface OnItemClickListener {

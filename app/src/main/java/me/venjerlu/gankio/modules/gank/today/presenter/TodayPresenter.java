@@ -59,7 +59,7 @@ public class TodayPresenter extends RxPresenter<ITodayView> {
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeWith(new GankSubscriber<DateModel>() {
           @Override public void onSuccess(DateModel dateModel) {
-            //mView.onGetLatestData(dateModel);
+            mView.onGetLatestData(dateModel);
           }
 
           @Override public void onCompleted() {

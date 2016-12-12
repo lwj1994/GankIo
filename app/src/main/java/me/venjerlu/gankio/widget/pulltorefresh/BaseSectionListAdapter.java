@@ -29,7 +29,7 @@ public abstract class BaseSectionListAdapter<SectionModel>
   }
 
   @Override public boolean isSectionHeader(int position) {
-    return mList.get(position).isHeader;
+    return mList.get(getDataPosition(position)).isHeader;
   }
 
   public void addSection(int i, String header) {

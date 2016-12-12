@@ -2,7 +2,6 @@ package me.venjerlu.gankio.modules.gank.today.view;
 
 import android.os.Bundle;
 import java.util.List;
-import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.Gank;
@@ -31,8 +30,8 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   @Override protected void initData() {
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
-    mAdapter.addHeader(R.layout.item_today_meizhi);
-    mAdapter.addFooter(R.layout.item_today_meizhi);
+    //mAdapter.addHeader(R.layout.item_today_meizhi);
+    //mAdapter.addFooter(R.layout.item_today_meizhi);
   }
 
   @Override public void showError(String msg) {
