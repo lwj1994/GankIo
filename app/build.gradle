@@ -41,6 +41,9 @@ dependencies {
 
   // ImageLoader
   compile 'com.facebook.fresco:fresco:0.14.1'
+  compile 'com.facebook.fresco:animated-gif:0.14.1'
+  compile 'com.facebook.fresco:animated-webp:0.14.1'
+  compile 'com.facebook.fresco:webpsupport:0.14.1'
   compile 'jp.wasabeef:fresco-processors:2.0.0'
   compile 'me.relex:photodraweeview:1.1.2'
   compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'

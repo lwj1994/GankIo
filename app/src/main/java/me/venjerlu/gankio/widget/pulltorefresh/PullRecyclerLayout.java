@@ -143,6 +143,7 @@ public class PullRecyclerLayout extends FrameLayout
   }
 
   public void onRefreshCompleted() {
+    if (adapter.getDataCount() == 0) adapter.addEmpty(R.layout.item_empty);
     switch (mCurrentState) {
       case ACTION_PULL_TO_REFRESH:
         postDelayed(new Runnable() {

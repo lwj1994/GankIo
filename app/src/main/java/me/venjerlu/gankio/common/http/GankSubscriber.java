@@ -3,7 +3,7 @@ package me.venjerlu.gankio.common.http;
 import com.elvishew.xlog.XLog;
 import com.google.gson.Gson;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
-import io.reactivex.subscribers.ResourceSubscriber;
+import io.reactivex.subscribers.DisposableSubscriber;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
@@ -14,9 +14,9 @@ import me.venjerlu.gankio.utils.ToastUtil;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public abstract class GankSubscriber<T> extends ResourceSubscriber<GankModel<T>>
+public abstract class GankSubscriber<T> extends DisposableSubscriber<GankModel<T>>
     implements INetResult<T> {
-  private static final String TAG = "HttpObserver";
+  private static final String TAG = "GankSubscriber";
 
   @Override protected void onStart() {
     XLog.tag(TAG).d("onStart");
@@ -68,7 +68,7 @@ public abstract class GankSubscriber<T> extends ResourceSubscriber<GankModel<T>>
       XLog.e(e.toString());
       onDisconnect();
     }
-    onComplete();
+    onCompleted();
   }
 
   @Override public void onFail(int errorCode, Object msg) {

@@ -9,5 +9,5 @@ import me.venjerlu.gankio.modules.gank.model.DateModel;
  * Description:
  */
 public interface ITodayView extends IBaseListView {
-  void onGetLatestData(DateModel list);
+  void onGetLatestData(DateModel model);
 }

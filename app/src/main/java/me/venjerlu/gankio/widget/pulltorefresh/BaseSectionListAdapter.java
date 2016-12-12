@@ -15,8 +15,9 @@ public abstract class BaseSectionListAdapter<SectionModel>
   @Override protected BaseViewHolder onCreateNormalViewHolder(ViewGroup parent, int viewType) {
     if (viewType == VIEW_TYPE_SECTION_HEADER) {
       return onCreateTitleViewHolder(parent);
+    } else {
+      return onCreateContentViewHolder(parent, viewType);
     }
-    return onCreateContentViewHolder(parent, viewType);
   }
 
   protected abstract BaseViewHolder onCreateTitleViewHolder(ViewGroup parent);

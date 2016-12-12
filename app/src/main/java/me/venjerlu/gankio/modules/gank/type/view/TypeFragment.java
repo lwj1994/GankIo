@@ -2,10 +2,10 @@ package me.venjerlu.gankio.modules.gank.type.view;
 
 import android.os.Bundle;
 import java.util.List;
-import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.common.fragment.BaseFragment;
+import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.modules.gank.model.Gank;
+import me.venjerlu.gankio.modules.gank.type.presenter.TypeGAdapter;
 import me.venjerlu.gankio.modules.gank.type.presenter.TypePresenter;
 
 /**
@@ -13,7 +13,7 @@ import me.venjerlu.gankio.modules.gank.type.presenter.TypePresenter;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class TypeFragment extends BaseFragment<TypePresenter> implements ITypeView {
+public class TypeFragment extends BaseListFragment<TypePresenter,TypeGAdapter> implements ITypeView {
   private static final int sSize = 10;
   private int mPage = 1;
 
@@ -24,16 +24,12 @@ public class TypeFragment extends BaseFragment<TypePresenter> implements ITypeVi
     return fragment;
   }
 
-  @Override protected int getLayout() {
-    return R.layout.frgament_gank;
-  }
-
   @Override protected void initInject() {
     getFragmentComponent().inject(this);
   }
 
   @Override protected void initData() {
-    mPresenter.getData(GankApi.ANDROID, sSize, mPage);
+    super.initData();
   }
 
   @Override public void showError(String msg) {
@@ -45,5 +41,11 @@ public class TypeFragment extends BaseFragment<TypePresenter> implements ITypeVi
   }
 
   @Override public void onGetData(List<Gank> list) {
+
+  }
+
+  @Override public void onRefresh() {
+    mPresenter.getData(GankApi.ANDROID, sSize, mPage);
+
   }
 }

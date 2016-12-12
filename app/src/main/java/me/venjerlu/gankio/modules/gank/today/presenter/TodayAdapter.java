@@ -9,6 +9,7 @@ import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.widget.pulltorefresh.BaseSectionListAdapter;
 import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
+import me.venjerlu.gankio.widget.pulltorefresh.section.SectionData;
 
 /**
  * Author/Date: venjerLu / 2016/12/11 14:48
@@ -16,7 +17,15 @@ import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
  * Description:
  */
 public class TodayAdapter extends BaseSectionListAdapter<Gank> {
-  @Inject public TodayAdapter() {
+  @Inject TodayAdapter() {
+  }
+
+  @Override protected BaseViewHolder onCreateNormalHeaderViewHolder(View view) {
+    return new HeaderViewHolder(view);
+  }
+
+  @Override protected BaseViewHolder onCreateNormalFooterViewHolder(View view) {
+    return new FooterViewHolder(view);
   }
 
   @Override protected BaseViewHolder onCreateTitleViewHolder(ViewGroup parent) {
@@ -28,12 +37,13 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
   }
 
   @Override protected void bindData(BaseViewHolder holder, int position) {
+    SectionData<Gank> item = mList.get(position);
     if (holder instanceof TitleViewHolder) {
       TitleViewHolder viewHolder = (TitleViewHolder) holder;
-      viewHolder.setTitle(mList.get(position).header);
+      viewHolder.setTitle(item.header);
     } else if (holder instanceof ContentViewHolder) {
       ContentViewHolder viewHolder = (ContentViewHolder) holder;
-      viewHolder.setContent(mList.get(position).t.getDesc());
+      viewHolder.setContent(item.t.getDesc());
     }
   }
 
@@ -58,6 +68,18 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
 
     public void setContent(String content) {
       mDes.setText(content);
+    }
+  }
+
+  class HeaderViewHolder extends BaseViewHolder {
+    HeaderViewHolder(View view) {
+      super(view);
+    }
+  }
+
+  class FooterViewHolder extends BaseViewHolder {
+    FooterViewHolder(View view) {
+      super(view);
     }
   }
 }

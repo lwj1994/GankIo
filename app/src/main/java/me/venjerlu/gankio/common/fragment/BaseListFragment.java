@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.elvishew.xlog.XLog;
 import javax.inject.Inject;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.R;
@@ -33,13 +34,12 @@ import me.yokeyword.fragmentation.SupportFragment;
 
 public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseListAdapter>
     extends SupportFragment implements IBaseListView, PullRecyclerLayout.OnRecyclerRefreshListener {
-
+  private static final String TAG = "BaseListFragment";
   @Inject protected T mPresenter;
   @Inject protected D mAdapter;
-  protected View mView;
-  protected Unbinder mUnbinder;
-  protected boolean isInited;
   @BindView(R.id.pullToRefreshLayout) protected PullRecyclerLayout mPullToRefreshLayout;
+  private Unbinder mUnbinder;
+  private boolean isInited;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -48,10 +48,11 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    mView = inflater.inflate(getLayout(), null);
+    XLog.tag(TAG).d("onCreateView");
+    View view = inflater.inflate(getLayout(), null);
+    mUnbinder = ButterKnife.bind(this, view);
     initInject();
-    mUnbinder = ButterKnife.bind(this, mView);
-    return mView;
+    return view;
   }
 
   @SuppressWarnings("unchecked") @Override
@@ -79,7 +80,6 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   @Override public void onDestroy() {
     super.onDestroy();
     if (mPresenter != null) mPresenter.detachView();
-    mPullToRefreshLayout.onDestroy();
   }
 
   @Override public void onHiddenChanged(boolean hidden) {
@@ -108,9 +108,11 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
     mPullToRefreshLayout.setLayoutManager(getLayoutManager());
     mPullToRefreshLayout.addItemDecoration(getItemDecoration());
     mPullToRefreshLayout.setAdapter(mAdapter);
+
   }
 
   @Override protected void onEnterAnimationEnd(Bundle savedInstanceState) {
+    super.onEnterAnimationEnd(savedInstanceState);
     mPullToRefreshLayout.setRefreshing();
   }
 

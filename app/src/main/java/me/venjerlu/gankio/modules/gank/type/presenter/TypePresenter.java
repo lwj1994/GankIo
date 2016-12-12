@@ -28,6 +28,10 @@ public class TypePresenter extends RxPresenter<TypeFragment> {
           @Override public void onSuccess(List<Gank> result) {
             mView.onGetData(result);
           }
+
+          @Override public void onCompleted() {
+            mView.onRefreshCompleted();
+          }
         }));
   }
 }

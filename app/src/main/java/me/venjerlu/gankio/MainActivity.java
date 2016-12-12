@@ -16,6 +16,8 @@ import butterknife.BindView;
 import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
 import me.venjerlu.gankio.common.fragment.BaseLazyFragment;
 import me.venjerlu.gankio.modules.gank.GankLazyFragment;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends BaseSimpleActivity
     implements NavigationView.OnNavigationItemSelectedListener ,BaseLazyFragment.OnBackToFirstListener{
@@ -117,5 +119,9 @@ public class MainActivity extends BaseSimpleActivity
 
   @Override public void onBackToFirstFragment() {
 
+  }
+
+  @Override protected FragmentAnimator onCreateFragmentAnimator() {
+    return new DefaultHorizontalAnimator();
   }
 }
