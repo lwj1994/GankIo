@@ -29,4 +29,50 @@
     <item name="android:fadingEdge">vertical</item>
     <item name="android:scrollbars">vertical</item>
   </style>
+
+  <style name="gankImg">
+    <item name="android:layout_width">68dp</item>
+    <item name="android:layout_height">@dimen/gank_item_content_height</item>
+    <item name="android:layout_marginRight">5dp</item>
+    <item name="android:layout_marginEnd">5dp</item>
+  </style>
+
+  <style name="gankItem">
+    <item name="android:paddingStart">19dp</item>
+    <item name="android:paddingLeft">19dp</item>
+    <item name="android:paddingEnd">16dp</item>
+    <item name="android:paddingRight">16dp</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:paddingBottom">8dp</item>
+  </style>
+
+  <style name="gankTitle">
+    <item name="android:textColor">#151515</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:ellipsize">end</item>
+  </style>
+
+  <style name="todayTitle">
+    <item name="android:textColor">#333333</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:layout_marginLeft">8dp</item>
+  </style>
+
+  <style name="todayTitleBar">
+    <item name="android:background">@color/colorPrimary</item>
+    <item name="android:layout_width">4dp</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+
+  <style name="text">
+    <item name="android:lineSpacingExtra">3dp</item>
+    <item name="android:lineSpacingMultiplier">0.8</item>
+  </style>
+
+  <style name="gankContent" parent="text">
+    <item name="android:textColor">#B7BFDA</item>
+    <item name="android:textSize">12sp</item>
+  </style>
 </resources>

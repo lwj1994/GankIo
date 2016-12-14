@@ -30,6 +30,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   @Override protected void initData() {
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
+    mRecyclerView.setVerticalScrollBarEnabled(false);
     //mAdapter.addHeader(R.layout.item_today_meizhi);
     //mAdapter.addFooter(R.layout.item_today_meizhi);
   }
@@ -43,12 +44,14 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   }
 
   @Override public void onRefresh() {
-      mPresenter.getLatestData();
+    mPresenter.getLatestData();
   }
 
   public void addToList(int i, String title, List<Gank> list) {
-    mAdapter.addSection(i, title);
-    mAdapter.addContent(list);
+    if (list != null && list.size() > 0) {
+      mAdapter.addSection(i, title);
+      mAdapter.addContent(list);
+    }
   }
 
   @Override public void onGetLatestData(DateModel results) {

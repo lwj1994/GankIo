@@ -1,30 +1,31 @@
 package me.venjerlu.gankio;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
 import me.venjerlu.gankio.common.fragment.BaseLazyFragment;
 import me.venjerlu.gankio.modules.gank.GankLazyFragment;
+import me.venjerlu.gankio.modules.gank.bus.TitleBus;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends BaseSimpleActivity
-    implements NavigationView.OnNavigationItemSelectedListener ,BaseLazyFragment.OnBackToFirstListener{
+    implements NavigationView.OnNavigationItemSelectedListener,
+    BaseLazyFragment.OnBackToFirstListener {
 
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.content_main) FrameLayout contentMain;
-  @BindView(R.id.fab) FloatingActionButton fab;
   @BindView(R.id.nav_view) NavigationView navView;
   @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
 
@@ -34,22 +35,18 @@ public class MainActivity extends BaseSimpleActivity
 
   @Override protected void initData(Bundle savedInstanceState) {
     setToolbar(toolbar, " 干货集中营");
-    setFab();
     setDrawerLayout();
     if (savedInstanceState == null) {
       loadRootFragment(R.id.content_main, GankLazyFragment.newInstance());
     }
-  }
-
-  private void setFab() {
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null)
-            .show();
-      }
-    });
+    addDisposable(RxBus.getDefault()
+        .toObservable(TitleBus.class)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<TitleBus>() {
+          @Override public void accept(TitleBus titleBus) throws Exception {
+            toolbar.setTitle(titleBus.getTitle());
+          }
+        }));
   }
 
   private void setDrawerLayout() {

@@ -5,6 +5,7 @@ import com.blankj.utilcode.utils.CrashUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.squareup.leakcanary.LeakCanary;
 import me.venjerlu.gankio.common.di.component.AppComponent;
@@ -37,6 +38,7 @@ public class App extends Application {
     BlockCanary.install(this, new AppBlockCanaryContext()).start();
     CrashUtils.getInstance().init(this);
     XLog.init(BuildConfig.DEBUG ? LogLevel.ALL : LogLevel.NONE);
+    Fresco.initialize(this);
   }
 
 }

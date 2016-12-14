@@ -20,8 +20,8 @@ import static android.support.design.widget.TabLayout.MODE_SCROLLABLE;
 
 public abstract class BaseTabFragment extends BaseSimpleFragment {
   protected List<String> mTitles = new ArrayList<>();
-  @BindView(R.id.tab) TabLayout tab;
-  @BindView(R.id.viewPager) ViewPager viewPager;
+  @BindView(R.id.tab) protected TabLayout tab;
+  @BindView(R.id.viewPager) protected ViewPager viewPager;
 
   @Override protected int getLayout() {
     return R.layout.frgament_tab_gank;

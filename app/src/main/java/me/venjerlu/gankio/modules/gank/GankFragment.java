@@ -35,4 +35,8 @@ public class GankFragment extends BaseTabFragment {
       return TypeFragment.newInstance();
     }
   }
+
+  @Override protected void initData() {
+    super.initData();
+  }
 }

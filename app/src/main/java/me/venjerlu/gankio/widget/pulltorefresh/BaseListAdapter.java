@@ -197,6 +197,7 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   public void clearData() {
     mList.clear();
+    //notifyItemRangeRemoved(0,mList.size());
   }
 
   protected View getInflate(ViewGroup parent, @LayoutRes int layoutRes) {

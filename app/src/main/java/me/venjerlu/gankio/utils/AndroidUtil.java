@@ -5,6 +5,7 @@ import android.content.Context;
 import com.blankj.utilcode.utils.SizeUtils;
 import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import me.venjerlu.gankio.App;
 
 /**
@@ -42,5 +43,9 @@ public class AndroidUtil {
 
   public static int dp2px(float dp) {
     return SizeUtils.dp2px(App.getAppComponent().getContext(), dp);
+  }
+
+  public static boolean isEmptyList(List list) {
+    return list == null || list.size() == 0;
   }
 }

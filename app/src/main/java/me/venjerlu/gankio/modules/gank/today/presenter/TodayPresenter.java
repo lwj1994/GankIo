@@ -5,9 +5,11 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 import javax.inject.Inject;
+import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
+import me.venjerlu.gankio.modules.gank.bus.TitleBus;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
 import me.venjerlu.gankio.modules.gank.today.view.ITodayView;
@@ -52,6 +54,7 @@ public class TodayPresenter extends RxPresenter<ITodayView> {
           @Override
           public Publisher<GankModel<DateModel>> apply(GankModel<List<String>> listGankModel)
               throws Exception {
+            RxBus.getDefault().post(new TitleBus(listGankModel.getResults().get(0)));
             String[] split = listGankModel.getResults().get(0).split("-");
             return mGankApi.getDataOnSomeday(split[0], split[1], split[2]);
           }

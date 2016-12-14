@@ -1,11 +1,13 @@
 package me.venjerlu.gankio.modules.gank.model;
 
+import java.util.List;
+
 /**
  * Author/Date: venjerLu / 2016/12/10 15:46
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class Gank{
+public class Gank {
   public static final int MEIZHI = 2;
   public static final int TECHNIQUE = 3;
   public static final int VEDIO = 4;
@@ -24,12 +26,21 @@ public class Gank{
   private String _id;
   private String createdAt;
   private String desc;
+  private List<String> images;
   private String publishedAt;
   private String source;
   private String type;
   private String url;
   private boolean used;
   private String who;
+
+  public List<String> getImages() {
+    return images;
+  }
+
+  public void setImages(List<String> images) {
+    this.images = images;
+  }
 
   public String get_id() {
     return _id;
@@ -102,5 +113,4 @@ public class Gank{
   public void setWho(String who) {
     this.who = who;
   }
-
 }

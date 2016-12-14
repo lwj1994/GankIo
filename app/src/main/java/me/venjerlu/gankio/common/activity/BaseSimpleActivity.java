@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.common.di.component.AppComponent;
 import me.venjerlu.gankio.utils.AndroidUtil;
@@ -21,6 +23,7 @@ import me.yokeyword.fragmentation.SupportActivity;
 public abstract class BaseSimpleActivity extends SupportActivity {
   protected Activity mContext;
   private Unbinder mUnbinder;
+  private CompositeDisposable mCompositeDisposable;
 
   @SuppressWarnings("unchecked") @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +53,19 @@ public abstract class BaseSimpleActivity extends SupportActivity {
         onBackPressedSupport();
       }
     });
+  }
+
+  private void clearDisposable() {
+    if (mCompositeDisposable != null) {
+      mCompositeDisposable.clear();
+    }
+  }
+
+  protected void addDisposable(Disposable disposable) {
+    if (mCompositeDisposable == null) {
+      mCompositeDisposable = new CompositeDisposable();
+    }
+    mCompositeDisposable.add(disposable);
   }
 
   protected AppComponent getAppComponent() {

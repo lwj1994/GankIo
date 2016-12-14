@@ -6,4 +6,12 @@
   <dimen name="activity_horizontal_margin">16dp</dimen>
   <dimen name="activity_vertical_margin">16dp</dimen>
   <dimen name="fab_margin">16dp</dimen>
+  <dimen name="dividor_padding_left">19dp</dimen>
+  <dimen name="dividor_padding_right">19dp</dimen>
+  <dimen name="gank_item_content_height">56dp</dimen>
+  <dimen name="today_title_paddingtop">10dp</dimen>
+  <dimen name="gank_tab_indicator_height">2dp</dimen>
+  <dimen name="gank_tab_height">40dp</dimen>
+  <dimen name="gank_tab_width">54dp</dimen>
+  <dimen name="today_title_paddingbottom">2dp</dimen>
 </resources>

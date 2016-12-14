@@ -38,6 +38,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   @Inject protected T mPresenter;
   @Inject protected D mAdapter;
   @BindView(R.id.pullToRefreshLayout) protected PullRecyclerLayout mPullToRefreshLayout;
+  protected RecyclerView mRecyclerView;
   private Unbinder mUnbinder;
   private boolean isInited;
 
@@ -51,6 +52,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
     XLog.tag(TAG).d("onCreateView");
     View view = inflater.inflate(getLayout(), null);
     mUnbinder = ButterKnife.bind(this, view);
+    mRecyclerView = mPullToRefreshLayout.getRecyclerView();
     initInject();
     return view;
   }
@@ -75,7 +77,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   @Override public void onDestroyView() {
     super.onDestroyView();
     if (mUnbinder != null) mUnbinder.unbind();
-    if (mPullToRefreshLayout!=null) mPullToRefreshLayout.onDestroy();
+    if (mPullToRefreshLayout != null) mPullToRefreshLayout.onDestroy();
   }
 
   @Override public void onDestroy() {

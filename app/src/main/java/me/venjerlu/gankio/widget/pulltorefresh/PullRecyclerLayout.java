@@ -32,6 +32,10 @@ public class PullRecyclerLayout extends FrameLayout
     setUpView();
   }
 
+  public RecyclerView getRecyclerView() {
+    return mRecyclerView;
+  }
+
   public PullRecyclerLayout(Context context, AttributeSet attrs) {
     super(context, attrs);
     setUpView();
