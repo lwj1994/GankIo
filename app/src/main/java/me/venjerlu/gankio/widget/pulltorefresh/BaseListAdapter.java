@@ -7,7 +7,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.elvishew.xlog.XLog;
 import java.util.ArrayList;
 import java.util.List;
 import me.venjerlu.gankio.R;
@@ -70,26 +69,27 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
       }
     });
     if (getDataCount() > 0) {
-      if (hasHeader()) {
-        if (hasFooter()) {
-          if (position > 0 && position < getItemCount() - 1) {
-            XLog.tag(TAG).d("position = " + position);
-            bindData(holder, position - 1);
-          }
-        } else {
-          if (position > 0) {
-            bindData(holder, position - 1);
-          }
-        }
-      } else {
-        if (hasFooter()) {
-          if (position < getItemCount() - 1) {
-            bindData(holder, position);
-          }
-        } else {
-          bindData(holder, position);
-        }
-      }
+      bindData(holder, position);
+      //if (hasHeader()) {
+      //  if (hasFooter()) {
+      //    if (position > 0 && position < getItemCount() - 1) {
+      //      XLog.tag(TAG).d("position = " + position);
+      //      bindData(holder, position - 1);
+      //    }
+      //  } else {
+      //    if (position > 0) {
+      //      bindData(holder, position - 1);
+      //    }
+      //  }
+      //} else {
+      //  if (hasFooter()) {
+      //    if (position < getItemCount() - 1) {
+      //      bindData(holder, position);
+      //    }
+      //  } else {
+      //    bindData(holder, position);
+      //  }
+      //}
     } else {
       if (mLayoutEmpty != 0) {
         if (holder.itemView.getLayoutParams() instanceof GridLayoutManager.LayoutParams) {
@@ -103,10 +103,9 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   @Override public int getItemCount() {
     return (mLayoutEmpty != 0 ? 1 : 0)
-        + (hasHeader() ? 1 : 0)
-        + (hasFooter() ? 1 : 0)
-        + getDataCount()
-        + (isLoadMoreFooterShown ? 1 : 0);
+        //+ (hasHeader() ? 1 : 0)
+        //+ (hasFooter() ? 1 : 0)
+        + getDataCount() + (isLoadMoreFooterShown ? 1 : 0);
   }
 
   @Override public int getItemViewType(int position) {
@@ -154,13 +153,15 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
     }
   }
 
-  public void addHeader(@LayoutRes int layoutRes) {
+  public void addHeader(@LayoutRes int layoutRes, S s) {
     this.mLayoutHeader = layoutRes;
+    mList.add(0, s);
     notifyItemInserted(0);
   }
 
-  public void addFooter(@LayoutRes int layoutRes) {
+  public void addFooter(@LayoutRes int layoutRes, S s) {
     this.mLayoutFooter = layoutRes;
+    mList.add(s);
     notifyItemInserted(getItemCount());
   }
 
@@ -213,11 +214,7 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   }
 
   protected int getDataPosition(int position) {
-    if (hasHeader()) {
-      return position - 1;
-    } else {
-      return position;
-    }
+    return position;
   }
 
   public boolean isSectionHeader(int position) {
@@ -232,11 +229,19 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
     LoadMoreFooterViewHolder(View view) {
       super(view);
     }
+
+    @Override protected void bind(Object o) {
+
+    }
   }
 
   private class EmptyViewHolder extends BaseViewHolder {
     EmptyViewHolder(View view) {
       super(view);
+    }
+
+    @Override protected void bind(Object o) {
+
     }
   }
 }

@@ -2,11 +2,13 @@ package me.venjerlu.gankio.modules.gank.today.view;
 
 import android.os.Bundle;
 import java.util.List;
+import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayAdapter;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
+import me.venjerlu.gankio.widget.pulltorefresh.section.SectionData;
 
 /**
  * Author/Date: venjerLu / 2016/12/10 19:59
@@ -31,7 +33,6 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
     mRecyclerView.setVerticalScrollBarEnabled(false);
-    //mAdapter.addHeader(R.layout.item_today_meizhi);
     //mAdapter.addFooter(R.layout.item_today_meizhi);
   }
 
@@ -55,6 +56,8 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   }
 
   @Override public void onGetLatestData(DateModel results) {
+    List<Gank> meizhi = results.getMeizhi();
+    List<Gank> vedio = results.getVedio();
     List<Gank> android = results.getAndroid();
     List<Gank> ios = results.getiOS();
     List<Gank> front = results.getFront();
@@ -64,5 +67,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     addToList(2, "前端", front);
     addToList(3, "拓展资源", expand);
     mAdapter.notifyDataSetChanged();
+    mAdapter.addHeader(R.layout.item_today_meizhi, new SectionData<>(meizhi.get(0)));
+    mAdapter.addFooter(R.layout.item_today_tech,new SectionData<>(vedio.get(0)));
   }
 }
