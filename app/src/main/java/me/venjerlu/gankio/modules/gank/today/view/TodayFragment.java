@@ -32,7 +32,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   @Override protected void initData() {
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
-    mRecyclerView.setVerticalScrollBarEnabled(false);
+    //mRecyclerView.setVerticalScrollBarEnabled(false);
     //mAdapter.addFooter(R.layout.item_today_meizhi);
   }
 
@@ -62,12 +62,17 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     List<Gank> ios = results.getiOS();
     List<Gank> front = results.getFront();
     List<Gank> expand = results.getExpand();
+    List<Gank> app = results.getApp();
+    List<Gank> recommend = results.getRecommend();
     addToList(0, "Android", android);
     addToList(1, "iOS", ios);
     addToList(2, "前端", front);
-    addToList(3, "拓展资源", expand);
+    addToList(3, "App", app);
+    addToList(4, "拓展资源", expand);
+    addToList(5, "瞎推荐", recommend);
     mAdapter.notifyDataSetChanged();
     mAdapter.addHeader(R.layout.item_today_meizhi, new SectionData<>(meizhi.get(0)));
-    mAdapter.addFooter(R.layout.item_today_tech,new SectionData<>(vedio.get(0)));
+    mAdapter.addSection(6, "休息视频");
+    mAdapter.addFooter(R.layout.item_today_tech, new SectionData<>(vedio.get(0)));
   }
 }

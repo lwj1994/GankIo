@@ -5,7 +5,7 @@
     style="@style/gankItem"
     android:orientation="vertical"
     >
-  <com.facebook.drawee.view.SimpleDraweeView
+  <ImageView
       android:id="@+id/today_meizhi"
       android:background="@color/gankImgBg"
       android:layout_width="match_parent"

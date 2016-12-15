@@ -13,5 +13,5 @@
   <dimen name="gank_tab_indicator_height">2dp</dimen>
   <dimen name="gank_tab_height">40dp</dimen>
   <dimen name="gank_tab_width">54dp</dimen>
-  <dimen name="today_title_paddingbottom">2dp</dimen>
+  <dimen name="today_title_paddingbottom">8dp</dimen>
 </resources>

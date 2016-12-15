@@ -160,6 +160,7 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   }
 
   public void addFooter(@LayoutRes int layoutRes, S s) {
+    if (s == null) return;
     this.mLayoutFooter = layoutRes;
     mList.add(s);
     notifyItemInserted(getItemCount());
@@ -198,7 +199,8 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   public void clearData() {
     mList.clear();
-    //notifyItemRangeRemoved(0,mList.size());
+    int count = (isEmpty() ? 1 : 0) + mList.size();
+    notifyItemRangeRemoved(0, count);
   }
 
   protected View getInflate(ViewGroup parent, @LayoutRes int layoutRes) {
@@ -211,6 +213,10 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   protected boolean hasFooter() {
     return mLayoutFooter != 0;
+  }
+
+  protected boolean isEmpty() {
+    return mLayoutEmpty != 0;
   }
 
   protected int getDataPosition(int position) {

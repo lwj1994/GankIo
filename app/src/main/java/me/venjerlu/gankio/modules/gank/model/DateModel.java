@@ -15,6 +15,8 @@ public class DateModel {
   @SerializedName("休息视频") private List<Gank> vedio;
   @SerializedName("拓展资源") private List<Gank> expand;
   @SerializedName("前端") private List<Gank> front;
+  @SerializedName("瞎推荐") private List<Gank> recommend;
+  @SerializedName("App") private List<Gank> app;
 
   public List<Gank> getAndroid() {
     return android;
@@ -26,6 +28,14 @@ public class DateModel {
 
   public List<Gank> getMeizhi() {
     return meizhi;
+  }
+
+  public List<Gank> getRecommend() {
+    return recommend;
+  }
+
+  public List<Gank> getApp() {
+    return app;
   }
 
   public List<Gank> getVedio() {

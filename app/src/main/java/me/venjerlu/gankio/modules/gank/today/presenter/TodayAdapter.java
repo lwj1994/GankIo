@@ -3,14 +3,14 @@ package me.venjerlu.gankio.modules.gank.today.presenter;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
-import com.facebook.drawee.view.SimpleDraweeView;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.utils.AndroidUtil;
-import me.venjerlu.gankio.utils.ImageLoader;
+import me.venjerlu.gankio.utils.glide.ImgLoader;
 import me.venjerlu.gankio.widget.pulltorefresh.BaseSectionListAdapter;
 import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
 import me.venjerlu.gankio.widget.pulltorefresh.section.SectionData;
@@ -31,7 +31,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
   }
 
   @Override protected BaseViewHolder onCreateNormalFooterViewHolder(View view) {
-    return new FooterViewHolder(view);
+    return new ContentViewHolder(view);
   }
 
   @Override protected BaseViewHolder onCreateTitleViewHolder(ViewGroup parent) {
@@ -50,7 +50,10 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     } else if (holder instanceof ContentViewHolder) {
       ContentViewHolder viewHolder = (ContentViewHolder) holder;
       viewHolder.bind(item.t);
-    }else if (holder instanceof HeaderViewHolder){
+    } else if (holder instanceof HeaderViewHolder) {
+      HeaderViewHolder viewHolder = (HeaderViewHolder) holder;
+      viewHolder.bind(item.t);
+    } else if (holder instanceof FooterViewHolder) {
       HeaderViewHolder viewHolder = (HeaderViewHolder) holder;
       viewHolder.bind(item.t);
     }
@@ -60,7 +63,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     @BindView(R.id.today_tech_title) TextView mTitle;
     @BindView(R.id.today_tech_content) TextView mContent;
     @BindView(R.id.today_tech_time) TextView mTime;
-    @BindView(R.id.today_tech_img) SimpleDraweeView mImg;
+    @BindView(R.id.today_tech_img) ImageView mImg;
 
     ContentViewHolder(View itemView) {
       super(itemView);
@@ -72,7 +75,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       if (!AndroidUtil.isEmptyList(gank.getImages())) {
         imgUrl = gank.getImages().get(0);
       }
-      ImageLoader.getInstance().load(mImg, imgUrl);
+      ImgLoader.getInstance().load(mContext, imgUrl, mImg);
       mTitle.setText(gank.getDesc());
       if (!TextUtils.isEmpty(gank.getWho())) {
         mContent.append(gank.getWho());
@@ -83,7 +86,6 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     }
 
     private void reset() {
-      mImg.setImageURI("res://me.venjerLu.gankio/" + R.drawable.ic_github);
       mTitle.setText("");
       mContent.setText("");
     }
@@ -102,14 +104,14 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
   }
 
   static class HeaderViewHolder extends BaseViewHolder<Gank> {
-    @BindView(R.id.today_meizhi) SimpleDraweeView mImg;
+    @BindView(R.id.today_meizhi) ImageView mImg;
 
     HeaderViewHolder(View view) {
       super(view);
     }
 
     @Override protected void bind(Gank gank) {
-      ImageLoader.getInstance().load(mImg, gank.getUrl());
+      ImgLoader.getInstance().load(mContext, gank.getUrl(), mImg);
     }
   }
 

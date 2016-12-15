@@ -38,5 +38,6 @@ public class GankFragment extends BaseTabFragment {
 
   @Override protected void initData() {
     super.initData();
+    viewPager.setOffscreenPageLimit(5);
   }
 }

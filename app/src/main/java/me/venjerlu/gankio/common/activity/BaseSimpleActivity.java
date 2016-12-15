@@ -12,6 +12,7 @@ import io.reactivex.disposables.Disposable;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.common.di.component.AppComponent;
 import me.venjerlu.gankio.utils.AndroidUtil;
+import me.venjerlu.gankio.utils.BugUtil;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -34,12 +35,14 @@ public abstract class BaseSimpleActivity extends SupportActivity {
 
     AndroidUtil.addActivity(this);
     initData(savedInstanceState);
+    BugUtil.fixFocusedViewLeak(getApplication());
   }
 
   @Override protected void onDestroy() {
     super.onDestroy();
     mUnbinder.unbind();
     AndroidUtil.removeActivity(this);
+    clearDisposable();
   }
 
   protected void setToolbar(Toolbar toolbar, String title) {

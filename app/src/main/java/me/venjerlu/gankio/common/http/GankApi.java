@@ -22,6 +22,8 @@ public interface GankApi {
   String 拓展资源 = "拓展资源";
   String 前端 = "前端";
   String ALL = "All";
+  String 瞎推荐 = "瞎推荐";
+  String SApp = "App";
 
   /**
    * 获取不同类型的干货
