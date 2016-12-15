@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import java.util.Arrays;
 import me.venjerlu.gankio.common.fragment.BaseTabFragment;
+import me.venjerlu.gankio.modules.gank.meizhi.view.MeizhiFragment;
 import me.venjerlu.gankio.modules.gank.today.view.TodayFragment;
-import me.venjerlu.gankio.modules.gank.type.view.TypeFragment;
 
 /**
  * Author/Date: venjerLu / 2016/12/10 19:57
@@ -32,7 +32,7 @@ public class GankFragment extends BaseTabFragment {
     if (position == 0) {
       return TodayFragment.newInstance();
     } else {
-      return TypeFragment.newInstance();
+      return MeizhiFragment.newInstance();
     }
   }
 

@@ -17,7 +17,7 @@ import me.venjerlu.gankio.common.di.scope.PreActivity;
     mActivity = activity;
   }
 
-  @Provides @PreActivity public Activity provideActivity() {
+  @Provides @PreActivity  Activity provideActivity() {
     return mActivity;
   }
 }

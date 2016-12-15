@@ -16,6 +16,7 @@ public class BaseStaggeredGridLayoutManager extends StaggeredGridLayoutManager
 
   public BaseStaggeredGridLayoutManager(int spanCount, int orientation) {
     super(spanCount, orientation);
+    //setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE); // 防止位置发生变化
   }
 
   @Override public RecyclerView.LayoutManager getLayoutManager() {

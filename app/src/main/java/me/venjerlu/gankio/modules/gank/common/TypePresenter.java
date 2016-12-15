@@ -1,13 +1,13 @@
-package me.venjerlu.gankio.modules.gank.type.presenter;
+package me.venjerlu.gankio.modules.gank.common;
 
 import java.util.List;
 import javax.inject.Inject;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
+import me.venjerlu.gankio.modules.gank.common.view.IGankTypeView;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
-import me.venjerlu.gankio.modules.gank.type.view.TypeFragment;
 import me.venjerlu.gankio.utils.RxUtil;
 
 /**
@@ -15,7 +15,7 @@ import me.venjerlu.gankio.utils.RxUtil;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class TypePresenter extends RxPresenter<TypeFragment> {
+public class TypePresenter<T extends IGankTypeView> extends RxPresenter<T> {
 
   @Inject TypePresenter(GankApi gankApi) {
     mGankApi = gankApi;

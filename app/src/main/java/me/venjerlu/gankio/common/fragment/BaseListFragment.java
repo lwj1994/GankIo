@@ -23,6 +23,7 @@ import me.venjerlu.gankio.widget.pulltorefresh.BaseListAdapter;
 import me.venjerlu.gankio.widget.pulltorefresh.DividerItemDecoration;
 import me.venjerlu.gankio.widget.pulltorefresh.PullRecyclerLayout;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.BaseLinearLayoutManager;
+import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.BaseStaggeredGridLayoutManager;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
 import me.yokeyword.fragmentation.SupportFragment;
 
@@ -41,6 +42,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
   protected RecyclerView mRecyclerView;
   private Unbinder mUnbinder;
   private boolean isInited;
+  private ILayoutManager mILayoutManager;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -108,9 +110,18 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
 
   protected void initData() {
     mPullToRefreshLayout.setOnRefreshListener(this);
-    mPullToRefreshLayout.setLayoutManager(getLayoutManager());
+    mILayoutManager = getLayoutManager();
+    mPullToRefreshLayout.setLayoutManager(mILayoutManager);
     mPullToRefreshLayout.addItemDecoration(getItemDecoration());
     mPullToRefreshLayout.setAdapter(mAdapter);
+    mPullToRefreshLayout.setOnScrolledListener(new PullRecyclerLayout.OnScrolledListener() {
+      @Override public void onScrolled(int newState) {
+        if (mILayoutManager instanceof BaseStaggeredGridLayoutManager) {
+          //防止第一行到顶部有空白区域
+          //((BaseStaggeredGridLayoutManager) mILayoutManager).invalidateSpanAssignments();
+        }
+      }
+    });
   }
 
   @Override protected void onEnterAnimationEnd(Bundle savedInstanceState) {

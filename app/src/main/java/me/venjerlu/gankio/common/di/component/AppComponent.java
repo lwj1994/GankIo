@@ -4,6 +4,7 @@ import android.content.Context;
 import dagger.Component;
 import javax.inject.Singleton;
 import me.venjerlu.gankio.common.di.module.AppModule;
+import me.venjerlu.gankio.common.di.scope.ForApplication;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.RetrofitModule;
 
@@ -14,6 +15,7 @@ import me.venjerlu.gankio.common.http.RetrofitModule;
  */
 @Singleton @Component(modules = { AppModule.class, RetrofitModule.class })
 public interface AppComponent {
+  @ForApplication
   Context getContext();
 
   GankApi getGankApi();

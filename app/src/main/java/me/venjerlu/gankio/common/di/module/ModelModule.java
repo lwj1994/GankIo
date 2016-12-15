@@ -12,7 +12,7 @@ import me.venjerlu.gankio.modules.gank.model.Gank;
  * Description:
  */
 
-@Module public class ModelModule {
+@Module  class ModelModule {
 
   @Provides List<Gank> provideGankList() {
     return new ArrayList<>();

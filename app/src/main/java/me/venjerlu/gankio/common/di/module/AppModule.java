@@ -4,6 +4,7 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
+import me.venjerlu.gankio.common.di.scope.ForApplication;
 
 /**
  * Author/Date: venjerLu / 2016/12/6 22:20
@@ -17,7 +18,7 @@ import javax.inject.Singleton;
     this.mContext = mContext;
   }
 
-  @Provides @Singleton  Context provideContext() {
+  @Provides @Singleton @ForApplication Context provideContext() {
     return mContext;
   }
 }

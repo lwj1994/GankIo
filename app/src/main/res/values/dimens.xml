@@ -14,4 +14,6 @@
   <dimen name="gank_tab_height">40dp</dimen>
   <dimen name="gank_tab_width">54dp</dimen>
   <dimen name="today_title_paddingbottom">8dp</dimen>
+  <dimen name="meizhi_card_corner">3dp</dimen>
+  <dimen name="meizhi_padding">5dp</dimen>
 </resources>

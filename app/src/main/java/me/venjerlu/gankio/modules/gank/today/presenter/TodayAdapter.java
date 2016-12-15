@@ -75,7 +75,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       if (!AndroidUtil.isEmptyList(gank.getImages())) {
         imgUrl = gank.getImages().get(0);
       }
-      ImgLoader.getInstance().load(mContext, imgUrl, mImg);
+      ImgLoader.getInstance().normal(mContext, imgUrl, mImg);
       mTitle.setText(gank.getDesc());
       if (!TextUtils.isEmpty(gank.getWho())) {
         mContent.append(gank.getWho());
@@ -111,7 +111,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     }
 
     @Override protected void bind(Gank gank) {
-      ImgLoader.getInstance().load(mContext, gank.getUrl(), mImg);
+      ImgLoader.getInstance().normal(mContext, gank.getUrl(), mImg);
     }
   }
 

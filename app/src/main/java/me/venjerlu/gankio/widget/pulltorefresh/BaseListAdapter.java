@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.utils.AndroidUtil;
 
 public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHolder> {
   private static final String TAG = "BaseListAdapter";
@@ -198,8 +199,8 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   }
 
   public void clearData() {
-    mList.clear();
     int count = (isEmpty() ? 1 : 0) + mList.size();
+    mList.clear();
     notifyItemRangeRemoved(0, count);
   }
 
@@ -225,6 +226,21 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   public boolean isSectionHeader(int position) {
     return false;
+  }
+
+  public void insertData(S s) {
+    if (s != null) {
+      mList.add(s);
+      notifyItemInserted(mList.size() - 1);
+    }
+  }
+
+  public void insertData(List<S> list) {
+    if (!AndroidUtil.isEmptyList(list)) {
+      int startIndex = mList.size();
+      mList.addAll(list);
+      notifyItemRangeChanged(startIndex, list.size());
+    }
   }
 
   public interface OnItemClickListener {

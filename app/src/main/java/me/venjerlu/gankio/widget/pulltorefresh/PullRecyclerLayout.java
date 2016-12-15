@@ -55,10 +55,11 @@ public class PullRecyclerLayout extends FrameLayout
     mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
+        if (mScrolledListener != null) {
+          mScrolledListener.onScrolled(newState);
+        }
         if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-          if (mScrolledListener != null) {
-            mScrolledListener.onScrolled();
-          }
+
         }
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
           // TODO: 2016/12/11 恢复加载图片
@@ -198,6 +199,6 @@ public class PullRecyclerLayout extends FrameLayout
   }
 
   public interface OnScrolledListener {
-    void onScrolled();
+    void onScrolled(int newState);
   }
 }

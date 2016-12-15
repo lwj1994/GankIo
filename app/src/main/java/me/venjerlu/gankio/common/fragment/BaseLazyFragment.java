@@ -13,7 +13,7 @@ import me.venjerlu.gankio.utils.ToastUtil;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
- * lazy load
+ * lazy normal
  * Created by lwj on 7/15/2016.
  */
 public abstract class BaseLazyFragment extends SupportFragment {
