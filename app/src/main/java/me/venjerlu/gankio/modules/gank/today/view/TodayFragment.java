@@ -32,8 +32,8 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   @Override protected void initData() {
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
-    //mRecyclerView.setVerticalScrollBarEnabled(false);
-    //mAdapter.addFooter(R.layout.item_today_meizhi);
+    mRecyclerView.setVerticalScrollBarEnabled(false);
+    mPresenter.setOnClickTechContentBus(_mActivity);
   }
 
   @Override public void showError(String msg) {

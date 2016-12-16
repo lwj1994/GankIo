@@ -6,8 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.utils.glide.ImgLoader;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
 
 public class PullRecyclerLayout extends FrameLayout
@@ -62,17 +65,29 @@ public class PullRecyclerLayout extends FrameLayout
 
         }
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-          // TODO: 2016/12/11 恢复加载图片
-          //ImageLoader.getInstance().resume(App.mContext);
+          ImgLoader.getInstance().resume(mRecyclerView.getContext());
         } else {
-          // TODO: 2016/12/11 暂停加载图片
-          //ImageLoader.getInstance().pause(App.mContext);
+          ImgLoader.getInstance().pause(mRecyclerView.getContext());
         }
       }
 
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
-        //                mSwipeRefreshLayout.setEnabled(mLayoutManager.findFirstCompletelyVisibleItemPosition() == 0);
+        //mSwipeRefreshLayout.setEnabled(mLayoutManager.findFirstCompletelyVisibleItemPosition() == 0);
+        //switch (mCurrentState){
+        //  case ACTION_PULL_TO_REFRESH:
+        //    enablePullToRefresh(true);
+        //    enableLoadMore(false);
+        //    break;
+        //  case ACTION_LOAD_MORE_REFRESH:
+        //    enablePullToRefresh(false);
+        //    enableLoadMore(true);
+        //    break;
+        //  case ACTION_IDLE:
+        //    enablePullToRefresh(true);
+        //    enableLoadMore(true);
+        //    break;
+        //}
         if (mCurrentState == ACTION_IDLE && isLoadMoreEnabled && checkIfLoadMore()) {
           mCurrentState = ACTION_LOAD_MORE_REFRESH;
           mRecyclerView.post(new Runnable() {
@@ -85,6 +100,12 @@ public class PullRecyclerLayout extends FrameLayout
         }
         mScrollTotal += dy;
         isTop = mScrollTotal <= 0;
+      }
+    });
+
+    mRecyclerView.setOnTouchListener(new OnTouchListener() {
+      @Override public boolean onTouch(View view, MotionEvent motionEvent) {
+        return mCurrentState == ACTION_PULL_TO_REFRESH || mCurrentState == ACTION_LOAD_MORE_REFRESH;
       }
     });
   }

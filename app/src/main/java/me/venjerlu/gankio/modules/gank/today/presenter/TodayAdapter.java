@@ -8,6 +8,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.common.RxBus;
+import me.venjerlu.gankio.modules.gank.meizhi.bus.OnclickTechContentBus;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.utils.AndroidUtil;
 import me.venjerlu.gankio.utils.glide.ImgLoader;
@@ -64,12 +66,14 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     @BindView(R.id.today_tech_content) TextView mContent;
     @BindView(R.id.today_tech_time) TextView mTime;
     @BindView(R.id.today_tech_img) ImageView mImg;
+    private View.OnClickListener mOnClickListener;
 
     ContentViewHolder(View itemView) {
       super(itemView);
+      mTime.setVisibility(View.GONE);
     }
 
-    @Override protected void bind(Gank gank) {
+    @Override protected void bind(final Gank gank) {
       reset();
       String imgUrl = null;
       if (!AndroidUtil.isEmptyList(gank.getImages())) {
@@ -83,6 +87,14 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       if (!TextUtils.isEmpty(gank.getSource())) {
         mContent.append("\n" + gank.getSource());
       }
+      if (mOnClickListener == null) {
+        mOnClickListener = new View.OnClickListener() {
+          @Override public void onClick(View view) {
+            RxBus.getDefault().post(new OnclickTechContentBus(gank.getUrl()));
+          }
+        };
+      }
+      itemView.setOnClickListener(mOnClickListener);
     }
 
     private void reset() {

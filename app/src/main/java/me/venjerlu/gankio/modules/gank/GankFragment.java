@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import java.util.Arrays;
 import me.venjerlu.gankio.common.fragment.BaseTabFragment;
 import me.venjerlu.gankio.modules.gank.meizhi.view.MeizhiFragment;
+import me.venjerlu.gankio.modules.gank.tech.view.TechFragment;
 import me.venjerlu.gankio.modules.gank.today.view.TodayFragment;
 
 /**
@@ -23,7 +24,7 @@ public class GankFragment extends BaseTabFragment {
 
   @Override protected void setTitles() {
     String[] strings = {
-        "今日干货", "妹纸", "Android", "iOS", "前端", "拓展资源", "休息视频"
+        "今日干货", "妹纸", "Android", "iOS", "前端", "拓展资源", "休息视频", "App", "瞎推荐"
     };
     mTitles.addAll(Arrays.asList(strings));
   }
@@ -31,13 +32,15 @@ public class GankFragment extends BaseTabFragment {
   @Override protected Fragment initFragments(int position) {
     if (position == 0) {
       return TodayFragment.newInstance();
-    } else {
+    } else if (position == 1) {
       return MeizhiFragment.newInstance();
+    } else {
+      return TechFragment.newInstance(mTitles.get(position));
     }
   }
 
   @Override protected void initData() {
     super.initData();
-    viewPager.setOffscreenPageLimit(5);
+    //viewPager.setOffscreenPageLimit(5);
   }
 }

@@ -36,6 +36,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_svg_time"
+        android:gravity="center"
+        android:textColor="@color/gankImgBg"
+        android:textSize="12sp"
         />
   </RelativeLayout>
 </LinearLayout>

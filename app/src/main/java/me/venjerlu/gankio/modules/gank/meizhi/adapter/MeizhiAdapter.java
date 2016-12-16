@@ -71,4 +71,10 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
               });
     }
   }
+
+  @Override public void clearData() {
+    int count = (isEmpty() ? 1 : 0) + mList.size();
+    super.clearData();
+    notifyItemRangeRemoved(0,count);
+  }
 }

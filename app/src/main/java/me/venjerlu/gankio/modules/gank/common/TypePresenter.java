@@ -1,13 +1,20 @@
 package me.venjerlu.gankio.modules.gank.common;
 
+import android.app.Activity;
+import com.elvishew.xlog.XLog;
+import com.thefinestartist.finestwebview.FinestWebView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import java.util.List;
 import javax.inject.Inject;
+import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
 import me.venjerlu.gankio.modules.gank.common.view.IGankTypeView;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
+import me.venjerlu.gankio.modules.gank.tech.bus.OnclickTechBus;
 import me.venjerlu.gankio.utils.RxUtil;
 
 /**
@@ -16,7 +23,7 @@ import me.venjerlu.gankio.utils.RxUtil;
  * Description:
  */
 public class TypePresenter<T extends IGankTypeView> extends RxPresenter<T> {
-
+  private static final String TAG = "TypePresenter";
   @Inject TypePresenter(GankApi gankApi) {
     mGankApi = gankApi;
   }
@@ -31,6 +38,19 @@ public class TypePresenter<T extends IGankTypeView> extends RxPresenter<T> {
 
           @Override public void onCompleted() {
             mView.onRefreshCompleted();
+          }
+        }));
+  }
+
+  public void setOnClickItemBus(final Activity activity) {
+    addDisposable(RxBus.getDefault()
+        .toObservable(OnclickTechBus.class)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<OnclickTechBus>() {
+          @Override public void accept(OnclickTechBus onclickTechContentBus)
+              throws Exception {
+            XLog.tag(TAG).d(mView);
+            new FinestWebView.Builder(activity).show(onclickTechContentBus.getUrl());
           }
         }));
   }

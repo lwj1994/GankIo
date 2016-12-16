@@ -80,6 +80,14 @@ public class ImgLoader {
         diskCacheStrategy(DiskCacheStrategy.RESULT).crossFade().into(imageView);
   }
 
+  public void resume(Context context) {
+    Glide.with(context).resumeRequests();
+  }
+
+  public void pause(Context context) {
+    Glide.with(context).pauseRequests();
+  }
+
   private static class SingleLoader {
     private static final ImgLoader INSTANCE = new ImgLoader();
   }

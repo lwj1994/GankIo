@@ -20,12 +20,8 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   private static final int VIEW_TYPE_EMPTY = 103;
   protected List<S> mList = new ArrayList<>();
   private boolean isLoadMoreFooterShown;
-  private OnItemClickListener mOnItemClickListener;
   private @LayoutRes int mLayoutHeader, mLayoutFooter, mLayoutEmpty;
 
-  public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-    mOnItemClickListener = onItemClickListener;
-  }
 
   @Override public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == VIEW_TYPE_LOAD_MORE_FOOTER) {
@@ -62,35 +58,8 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
       }
     }
 
-    holder.itemView.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
-        if (mOnItemClickListener != null) {
-          mOnItemClickListener.onClick(holder.getAdapterPosition(), holder);
-        }
-      }
-    });
     if (getDataCount() > 0) {
       bindData(holder, position);
-      //if (hasHeader()) {
-      //  if (hasFooter()) {
-      //    if (position > 0 && position < getItemCount() - 1) {
-      //      XLog.tag(TAG).d("position = " + position);
-      //      bindData(holder, position - 1);
-      //    }
-      //  } else {
-      //    if (position > 0) {
-      //      bindData(holder, position - 1);
-      //    }
-      //  }
-      //} else {
-      //  if (hasFooter()) {
-      //    if (position < getItemCount() - 1) {
-      //      bindData(holder, position);
-      //    }
-      //  } else {
-      //    bindData(holder, position);
-      //  }
-      //}
     } else {
       if (mLayoutEmpty != 0) {
         if (holder.itemView.getLayoutParams() instanceof GridLayoutManager.LayoutParams) {
@@ -199,9 +168,9 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   }
 
   public void clearData() {
-    int count = (isEmpty() ? 1 : 0) + mList.size();
+    //int count = (isEmpty() ? 1 : 0) + mList.size();
     mList.clear();
-    notifyItemRangeRemoved(0, count);
+    //notifyItemRangeRemoved(0, count);
   }
 
   protected View getInflate(ViewGroup parent, @LayoutRes int layoutRes) {
@@ -241,10 +210,6 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
       mList.addAll(list);
       notifyItemRangeChanged(startIndex, list.size());
     }
-  }
-
-  public interface OnItemClickListener {
-    void onClick(int position, BaseViewHolder viewHolder);
   }
 
   private class LoadMoreFooterViewHolder extends BaseViewHolder {
