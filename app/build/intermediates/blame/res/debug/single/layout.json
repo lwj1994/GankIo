@@ -28,12 +28,12 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/view_tab_viewpager.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/layout/view_tab_viewpager.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/view_tab_viewpager.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/layout/view_tab_viewpager.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/md_dialog_input_check.xml",
@@ -124,12 +124,12 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
@@ -164,12 +164,12 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_layout_tab_text.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_bottom_sheet_dialog.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_bottom_sheet_dialog.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",

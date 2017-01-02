@@ -1,4 +1,4 @@
-#Fri Dec 16 13:30:36 CST 2016
+#Mon Jan 02 16:22:20 CST 2017
 base.0=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_00b741a6a15376f4e6f21bcec585dda857dd8f49
 renamed.1=classes2.dex
 renamed.0=classes.dex

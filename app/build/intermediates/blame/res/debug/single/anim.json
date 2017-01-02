@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/fade_in.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/utils/0.9.0/res/anim/fade_in.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_fab_in.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/fade_in.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/utils/0.9.0/res/anim/fade_in.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/none.xml",

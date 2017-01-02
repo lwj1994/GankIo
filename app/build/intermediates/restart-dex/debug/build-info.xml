@@ -5,29 +5,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="323459677489045"
+    timestamp="155740234549331"
     token="1969964360560191992"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="3970" />
+        duration="3306" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="164" />
+        duration="572" />
     <task
         name="verifier"
-        duration="17" />
+        duration="89" />
 
     <artifact
         location="/Users/venjerLu/Desktop/GankIo/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="323459677489045"
+        timestamp="155740234549331"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/venjerLu/Desktop/GankIo/app/build/outputs/apk/app-debug.apk"

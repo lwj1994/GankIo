@@ -8,12 +8,12 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable/back_vector.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/leak_canary_toast_background.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4-beta2/res/drawable/leak_canary_toast_background.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/leak_canary_toast_background.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4-beta2/res/drawable/leak_canary_toast_background.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
@@ -40,24 +40,24 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_btn_borderless_material.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/side_nav_bar.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/side_nav_bar.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/side_nav_bar.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/side_nav_bar.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ratingbar_small_material.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/progress_drawable.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable/progress_drawable.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_ic_ab_back_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/progress_drawable.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable/progress_drawable.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",
