@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jan 02 16:22:21 CST 2017
+#Mon Jan 02 16:57:56 CST 2017
 20.base=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/resources-debug.ap_
 143.base=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_417f72187f5e6f2950bb3c4bf2413978a6809199
 439.set=ANDROID_RESOURCE

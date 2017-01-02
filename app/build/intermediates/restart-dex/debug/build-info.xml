@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
+    abi="x86"
     api-level="23"
-    density="xxhdpi"
+    density="420dpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="155740234549331"
+    timestamp="157878576073393"
     token="1969964360560191992"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="3306" />
+        duration="3485" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="572" />
+        duration="1204" />
     <task
         name="verifier"
-        duration="89" />
+        duration="306" />
 
     <artifact
         location="/Users/venjerLu/Desktop/GankIo/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="155740234549331"
+        timestamp="157878576073393"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/venjerLu/Desktop/GankIo/app/build/outputs/apk/app-debug.apk"
