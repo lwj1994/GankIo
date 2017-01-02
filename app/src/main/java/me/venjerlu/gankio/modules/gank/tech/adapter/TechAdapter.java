@@ -49,7 +49,6 @@ public class TechAdapter extends BaseListAdapter<Gank> {
     @BindView(R.id.today_tech_content) TextView mContent;
     @BindView(R.id.today_tech_time) TextView mTime;
     @BindView(R.id.today_tech_img) ImageView mImg;
-    private View.OnClickListener mOnClickListener;
 
     TechViewHolder(View itemView) {
       super(itemView);
@@ -70,14 +69,11 @@ public class TechAdapter extends BaseListAdapter<Gank> {
         mContent.append("\n" + gank.getSource());
       }
       mTime.setText(gank.getPublishedAt().subSequence(0, 10));
-      if (mOnClickListener == null) {
-        mOnClickListener = new View.OnClickListener() {
-          @Override public void onClick(View view) {
-            RxBus.getDefault().post(new OnclickTechBus(gank.getUrl()));
-          }
-        };
-      }
-      itemView.setOnClickListener(mOnClickListener);
+      itemView.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View view) {
+          RxBus.getDefault().post(new OnclickTechBus(gank.getUrl()));
+        }
+      });
     }
 
     private void reset() {

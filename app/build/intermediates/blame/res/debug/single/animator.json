@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/animator/card_flip_left_out.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/utils/0.9.0/res/animator/card_flip_left_out.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/animator/card_flip_right_in.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/utils/0.9.0/res/animator/card_flip_right_in.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/animator/card_flip_right_out.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/utils/0.9.0/res/animator/card_flip_right_out.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/animator/card_flip_left_in.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/utils/0.9.0/res/animator/card_flip_left_in.xml"
+    }
+]

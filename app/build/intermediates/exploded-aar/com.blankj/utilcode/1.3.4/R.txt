@@ -1,0 +1,5 @@
+int drawable snackbar_action_bg 0x7f020000
+int drawable snackbar_action_bg_focused 0x7f020001
+int id snackbar_action 0x7f040001
+int id snackbar_text 0x7f040000
+int layout design_layout_snackbar_include 0x7f030000

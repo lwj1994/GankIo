@@ -1,0 +1,7 @@
+#Fri Dec 16 13:30:36 CST 2016
+base.0=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_00b741a6a15376f4e6f21bcec585dda857dd8f49
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_84c9e1fec43b0fab07688cb8adcb2ae691576d38/classes.dex
+base.1=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_84c9e1fec43b0fab07688cb8adcb2ae691576d38
+file.0=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_00b741a6a15376f4e6f21bcec585dda857dd8f49/classes.dex

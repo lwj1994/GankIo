@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/gankItem"
+    >
+  <ImageView
+      android:id="@+id/today_tech_img"
+      android:background="@color/gankImgBg"
+      style="@style/gankImg"
+      />
+  <RelativeLayout
+      android:layout_width="0dp"
+      android:layout_height="@dimen/gank_item_content_height"
+      android:layout_weight="1"
+      android:orientation="vertical"
+      >
+    <TextView
+        android:id="@+id/today_tech_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        style="@style/gankTitle"
+        />
+    <TextView
+        android:id="@+id/today_tech_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="@style/GankContent"
+        />
+    <TextView
+        android:id="@+id/today_tech_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_svg_time"
+        android:gravity="center"
+        android:textColor="@color/gankImgBg"
+        android:textSize="12sp"
+        />
+  </RelativeLayout>
+</LinearLayout>

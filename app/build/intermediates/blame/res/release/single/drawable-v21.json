@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/selector_dark_theme_holo.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable-v21/selector_dark_theme_holo.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/selector_light_theme.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable-v21/selector_light_theme.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/ic_menu_slideshow.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable-v21/ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/ic_menu_send.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable-v21/ic_menu_send.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/notification_action_background.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/selector_light_theme_holo.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable-v21/selector_light_theme_holo.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable-v21/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/md_btn_selector_ripple.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/drawable-v21/md_btn_selector_ripple.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/md_btn_shape.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/drawable-v21/md_btn_shape.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/selector_dark_theme.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.thefinestartist/finestwebview/1.2.7/res/drawable-v21/selector_dark_theme.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/ic_menu_share.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable-v21/ic_menu_share.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/ic_menu_manage.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable-v21/ic_menu_manage.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/md_btn_selector_ripple_dark.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/drawable-v21/md_btn_selector_ripple_dark.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/ic_menu_camera.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable-v21/ic_menu_camera.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/release/drawable-v21/ic_menu_gallery.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable-v21/ic_menu_gallery.xml"
+    }
+]

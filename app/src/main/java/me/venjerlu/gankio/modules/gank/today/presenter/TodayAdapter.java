@@ -66,7 +66,6 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     @BindView(R.id.today_tech_content) TextView mContent;
     @BindView(R.id.today_tech_time) TextView mTime;
     @BindView(R.id.today_tech_img) ImageView mImg;
-    private View.OnClickListener mOnClickListener;
 
     ContentViewHolder(View itemView) {
       super(itemView);
@@ -87,14 +86,11 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       if (!TextUtils.isEmpty(gank.getSource())) {
         mContent.append("\n" + gank.getSource());
       }
-      if (mOnClickListener == null) {
-        mOnClickListener = new View.OnClickListener() {
-          @Override public void onClick(View view) {
-            RxBus.getDefault().post(new OnclickTechContentBus(gank.getUrl()));
-          }
-        };
-      }
-      itemView.setOnClickListener(mOnClickListener);
+      itemView.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View view) {
+          RxBus.getDefault().post(new OnclickTechContentBus(gank.getUrl()));
+        }
+      });
     }
 
     private void reset() {

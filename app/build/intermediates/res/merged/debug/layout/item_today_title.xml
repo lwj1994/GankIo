@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/today_title_paddingbottom"
+    android:paddingEnd="@dimen/dividor_padding_right"
+    android:paddingStart="@dimen/dividor_padding_left"
+    android:paddingTop="@dimen/today_title_paddingtop"
+    >
+  <View
+      style="@style/todayTitleBar"/>
+  <TextView
+      android:id="@+id/today_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/todayTitle"
+      />
+</LinearLayout>
