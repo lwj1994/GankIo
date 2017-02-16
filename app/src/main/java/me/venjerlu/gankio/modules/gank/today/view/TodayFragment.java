@@ -33,7 +33,6 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
     mRecyclerView.setVerticalScrollBarEnabled(false);
-    mPresenter.setOnClickTechContentBus(_mActivity);
   }
 
   @Override public void showError(String msg) {

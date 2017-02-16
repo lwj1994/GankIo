@@ -11,17 +11,17 @@ import javax.inject.Provider;
 import me.venjerlu.gankio.common.di.module.FragmentModule;
 import me.venjerlu.gankio.common.di.module.FragmentModule_ProvideActivityFactory;
 import me.venjerlu.gankio.common.http.GankApi;
-import me.venjerlu.gankio.modules.gank.common.TypePresenter;
-import me.venjerlu.gankio.modules.gank.common.TypePresenter_Factory;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter_Factory;
 import me.venjerlu.gankio.modules.gank.meizhi.view.MeizhiFragment;
 import me.venjerlu.gankio.modules.gank.meizhi.view.MeizhiFragment_MembersInjector;
-import me.venjerlu.gankio.modules.gank.tech.adapter.TechAdapter;
-import me.venjerlu.gankio.modules.gank.tech.adapter.TechAdapter_Factory;
-import me.venjerlu.gankio.modules.gank.tech.view.ITechView;
-import me.venjerlu.gankio.modules.gank.tech.view.TechFragment;
-import me.venjerlu.gankio.modules.gank.tech.view.TechFragment_MembersInjector;
+import me.venjerlu.gankio.modules.gank.normal.adapter.NormalAdapter;
+import me.venjerlu.gankio.modules.gank.normal.adapter.NormalAdapter_Factory;
+import me.venjerlu.gankio.modules.gank.normal.view.INormalView;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalFragment;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalFragment_MembersInjector;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalPresenter;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalPresenter_Factory;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayAdapter;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayAdapter_Factory;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
@@ -41,17 +41,17 @@ public final class DaggerFragmentComponent implements FragmentComponent {
   private MembersInjector<TodayFragment> todayFragmentMembersInjector;
 
   @SuppressWarnings("rawtypes")
-  private Provider typePresenterProvider;
+  private Provider normalPresenterProvider;
 
   private Provider<MeizhiAdapter> meizhiAdapterProvider;
 
   private MembersInjector<MeizhiFragment> meizhiFragmentMembersInjector;
 
-  private Provider<TypePresenter<ITechView>> typePresenterProvider2;
+  private Provider<NormalPresenter<INormalView>> normalPresenterProvider2;
 
-  private Provider<TechAdapter> techAdapterProvider;
+  private Provider<NormalAdapter> normalAdapterProvider;
 
-  private MembersInjector<TechFragment> techFragmentMembersInjector;
+  private MembersInjector<NormalFragment> normalFragmentMembersInjector;
 
   private DaggerFragmentComponent(Builder builder) {
     assert builder != null;
@@ -88,24 +88,25 @@ public final class DaggerFragmentComponent implements FragmentComponent {
     this.todayFragmentMembersInjector =
         TodayFragment_MembersInjector.create(todayPresenterProvider, todayAdapterProvider);
 
-    this.typePresenterProvider =
-        TypePresenter_Factory.create(
+    this.normalPresenterProvider =
+        NormalPresenter_Factory.create(
             ((MembersInjector) MembersInjectors.noOp()), getGankApiProvider);
 
     this.meizhiAdapterProvider =
         MeizhiAdapter_Factory.create(MembersInjectors.<MeizhiAdapter>noOp());
 
     this.meizhiFragmentMembersInjector =
-        MeizhiFragment_MembersInjector.create(typePresenterProvider, meizhiAdapterProvider);
+        MeizhiFragment_MembersInjector.create(normalPresenterProvider, meizhiAdapterProvider);
 
-    this.typePresenterProvider2 =
-        TypePresenter_Factory.create(
-            MembersInjectors.<TypePresenter<ITechView>>noOp(), getGankApiProvider);
+    this.normalPresenterProvider2 =
+        NormalPresenter_Factory.create(
+            MembersInjectors.<NormalPresenter<INormalView>>noOp(), getGankApiProvider);
 
-    this.techAdapterProvider = TechAdapter_Factory.create(MembersInjectors.<TechAdapter>noOp());
+    this.normalAdapterProvider =
+        NormalAdapter_Factory.create(MembersInjectors.<NormalAdapter>noOp());
 
-    this.techFragmentMembersInjector =
-        TechFragment_MembersInjector.create(typePresenterProvider2, techAdapterProvider);
+    this.normalFragmentMembersInjector =
+        NormalFragment_MembersInjector.create(normalPresenterProvider2, normalAdapterProvider);
   }
 
   @Override
@@ -124,8 +125,8 @@ public final class DaggerFragmentComponent implements FragmentComponent {
   }
 
   @Override
-  public void inject(TechFragment techFragment) {
-    techFragmentMembersInjector.injectMembers(techFragment);
+  public void inject(NormalFragment normalFragment) {
+    normalFragmentMembersInjector.injectMembers(normalFragment);
   }
 
   public static final class Builder {

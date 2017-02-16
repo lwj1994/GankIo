@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.common.di.component.AppComponent;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -20,6 +22,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 public abstract class BaseSimpleFragment extends SupportFragment {
   protected Unbinder mUnbinder;
   protected boolean isInited;
+  private CompositeDisposable mCompositeDisposable;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -64,6 +67,19 @@ public abstract class BaseSimpleFragment extends SupportFragment {
       isInited = true;
       initData();
     }
+  }
+
+  private void clearDisposable() {
+    if (mCompositeDisposable != null) {
+      mCompositeDisposable.clear();
+    }
+  }
+
+  protected void addDisposable(Disposable disposable) {
+    if (mCompositeDisposable == null) {
+      mCompositeDisposable = new CompositeDisposable();
+    }
+    mCompositeDisposable.add(disposable);
   }
 
   protected abstract int getLayout();

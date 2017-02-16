@@ -6,5 +6,9 @@
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/menu/main.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/menu/activity_web_main.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/menu/activity_web_main.xml"
     }
 ]

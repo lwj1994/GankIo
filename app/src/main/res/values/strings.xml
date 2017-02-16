@@ -8,4 +8,11 @@
   <string name="press_again_exit">再按一次退出程序</string>
   <string name="loading">正在加载中…</string>
   <string name="empty">什么都没有</string>
+
+  <!--WebAcitivity-->
+  <string name="webview_action_copy_url">复制链接</string>
+  <string name="webview_action_open_url">打开链接</string>
+  <string name="tip_open_fail">打开失败，没有找到可以打开该链接的其它应用 :(</string>
+  <string name="tip_copy_done">复制成功</string>
+
 </resources>

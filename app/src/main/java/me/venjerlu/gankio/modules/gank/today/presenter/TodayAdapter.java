@@ -9,7 +9,7 @@ import butterknife.BindView;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.RxBus;
-import me.venjerlu.gankio.modules.gank.meizhi.bus.OnclickTechContentBus;
+import me.venjerlu.gankio.modules.gank.OnIntentToWebViewActBus;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.utils.AndroidUtil;
 import me.venjerlu.gankio.utils.glide.ImgLoader;
@@ -56,7 +56,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       HeaderViewHolder viewHolder = (HeaderViewHolder) holder;
       viewHolder.bind(item.t);
     } else if (holder instanceof FooterViewHolder) {
-      HeaderViewHolder viewHolder = (HeaderViewHolder) holder;
+      FooterViewHolder viewHolder = (FooterViewHolder) holder;
       viewHolder.bind(item.t);
     }
   }
@@ -88,7 +88,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       }
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View view) {
-          RxBus.getDefault().post(new OnclickTechContentBus(gank.getUrl()));
+          RxBus.getDefault().post(new OnIntentToWebViewActBus(gank.getUrl(), gank.getDesc()));
         }
       });
     }
@@ -123,7 +123,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
     }
   }
 
-  static class FooterViewHolder extends BaseViewHolder<Gank> {
+  private static class FooterViewHolder extends BaseViewHolder<Gank> {
     FooterViewHolder(View view) {
       super(view);
     }

@@ -8,20 +8,21 @@ package me.yokeyword.fragmentation;
 
 public final class R {
 	public static final class anim {
-		public static final int h_fragment_enter = 0x7f050028;
-		public static final int h_fragment_exit = 0x7f050029;
-		public static final int h_fragment_pop_enter = 0x7f05002a;
-		public static final int h_fragment_pop_exit = 0x7f05002b;
-		public static final int no_anim = 0x7f050031;
-		public static final int pop_exit_no_anim = 0x7f050033;
-		public static final int v_fragment_enter = 0x7f05003d;
-		public static final int v_fragment_exit = 0x7f05003e;
-		public static final int v_fragment_pop_enter = 0x7f05003f;
-		public static final int v_fragment_pop_exit = 0x7f050040;
+		public static final int h_fragment_enter = 0x7f050011;
+		public static final int h_fragment_exit = 0x7f050012;
+		public static final int h_fragment_pop_enter = 0x7f050013;
+		public static final int h_fragment_pop_exit = 0x7f050014;
+		public static final int no_anim = 0x7f050015;
+		public static final int pop_exit_no_anim = 0x7f050016;
+		public static final int v_fragment_enter = 0x7f050019;
+		public static final int v_fragment_exit = 0x7f05001a;
+		public static final int v_fragment_pop_enter = 0x7f05001b;
+		public static final int v_fragment_pop_exit = 0x7f05001c;
 	}
 	public static final class drawable {
-		public static final int ic_expandable = 0x7f02005f;
-		public static final int ic_right = 0x7f020067;
+		public static final int fragmentation_ic_expandable = 0x7f02005d;
+		public static final int fragmentation_ic_right = 0x7f02005e;
+		public static final int fragmentation_ic_stack = 0x7f02005f;
 	}
 	public static final class id {
 		public static final int hierarchy = 0x7f0d0004;

@@ -27,19 +27,14 @@
         <activity
             android:name="me.venjerlu.gankio.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleTask"
-            android:screenOrientation="sensor"
-            android:theme="@style/FinestWebViewTheme.Light" />
+        <activity android:name="me.venjerlu.gankio.WebActivity" />
 
         <meta-data
             android:name="me.venjerlu.gankio.utils.glide.GlideDiskCacheModule"

@@ -6,9 +6,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import java.util.List;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.common.http.GankApi;
-import me.venjerlu.gankio.modules.gank.common.TypePresenter;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter;
 import me.venjerlu.gankio.modules.gank.model.Gank;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalPresenter;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.BaseStaggeredGridLayoutManager;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
 
@@ -17,7 +17,7 @@ import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class MeizhiFragment extends BaseListFragment<TypePresenter<IMeizhiView>, MeizhiAdapter>
+public class MeizhiFragment extends BaseListFragment<NormalPresenter<IMeizhiView>, MeizhiAdapter>
     implements IMeizhiView {
   private static final int sSize = 10;
   private int mPage;

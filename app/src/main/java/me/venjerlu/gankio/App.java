@@ -12,6 +12,7 @@ import me.venjerlu.gankio.common.di.component.DaggerAppComponent;
 import me.venjerlu.gankio.common.di.module.AppModule;
 import me.venjerlu.gankio.common.http.RetrofitModule;
 import me.venjerlu.gankio.widget.AppBlockCanaryContext;
+import me.yokeyword.fragmentation.Fragmentation;
 
 /**
  * Author/Date: venjerLu / 2016/12/6 21:27
@@ -38,7 +39,10 @@ public class App extends Application {
     CrashUtils.getInstance().init(this);
     XLog.init(BuildConfig.DEBUG ? LogLevel.ALL : LogLevel.NONE);
 
-
+    if (BuildConfig.DEBUG) {
+      Fragmentation.builder()
+          // 显示悬浮球 ; 其他Mode:SHAKE: 摇一摇唤出   NONE：隐藏
+          .stackViewMode(Fragmentation.BUBBLE).install();
+    }
   }
-
 }

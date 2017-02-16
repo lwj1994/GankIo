@@ -1,10 +1,6 @@
 package me.venjerlu.gankio;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,29 +12,36 @@ import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
 import me.venjerlu.gankio.common.fragment.BaseLazyFragment;
 import me.venjerlu.gankio.modules.gank.GankLazyFragment;
+import me.venjerlu.gankio.modules.gank.OnIntentToWebViewActBus;
+import me.venjerlu.gankio.modules.gank.bus.BackToFirstFragmentBus;
 import me.venjerlu.gankio.modules.gank.bus.TitleBus;
-import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends BaseSimpleActivity
-    implements NavigationView.OnNavigationItemSelectedListener,
-    BaseLazyFragment.OnBackToFirstListener {
+    implements BaseLazyFragment.OnBackToFirstListener {
 
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.content_main) FrameLayout contentMain;
-  @BindView(R.id.nav_view) NavigationView navView;
-  @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
 
   @Override public int getLayout() {
     return R.layout.activity_main;
   }
 
   @Override protected void initData(Bundle savedInstanceState) {
-    setToolbar(toolbar, " 干货集中营");
-    setDrawerLayout();
+    setToolbar(toolbar, "干货集中营");
+    //setDrawerLayout();
     if (savedInstanceState == null) {
       loadRootFragment(R.id.content_main, GankLazyFragment.newInstance());
     }
+    setLatestDate();
+    onIntentToWebActivity();
+  }
+
+  /**
+   * 设置最新的日期
+   */
+  private void setLatestDate() {
     addDisposable(RxBus.getDefault()
         .toObservable(TitleBus.class)
         .observeOn(AndroidSchedulers.mainThread())
@@ -49,25 +52,18 @@ public class MainActivity extends BaseSimpleActivity
         }));
   }
 
-  private void setDrawerLayout() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-    ActionBarDrawerToggle toggle =
-        new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close);
-    drawer.addDrawerListener(toggle);
-    toggle.syncState();
-
-    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-    navigationView.setNavigationItemSelectedListener(this);
-  }
-
-  @Override public void onBackPressedSupport() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-    if (drawer.isDrawerOpen(GravityCompat.START)) {
-      drawer.closeDrawer(GravityCompat.START);
-    } else {
-      super.onBackPressedSupport();
-    }
+  /**
+   * 跳转至WebActivity
+   */
+  public void onIntentToWebActivity() {
+    addDisposable(RxBus.getDefault()
+        .toObservable(OnIntentToWebViewActBus.class)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<OnIntentToWebViewActBus>() {
+          @Override public void accept(OnIntentToWebViewActBus bus) throws Exception {
+            WebActivity.startMe(MainActivity.this, bus.url, bus.title);
+          }
+        }));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,9 +73,6 @@ public class MainActivity extends BaseSimpleActivity
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
 
     //noinspection SimplifiableIfStatement
@@ -90,35 +83,14 @@ public class MainActivity extends BaseSimpleActivity
     return super.onOptionsItemSelected(item);
   }
 
-  @SuppressWarnings("StatementWithEmptyBody") @Override
-  public boolean onNavigationItemSelected(MenuItem item) {
-    // Handle navigation view item clicks here.
-    int id = item.getItemId();
-
-    if (id == R.id.nav_camera) {
-      // Handle the camera action
-    } else if (id == R.id.nav_gallery) {
-
-    } else if (id == R.id.nav_slideshow) {
-
-    } else if (id == R.id.nav_manage) {
-
-    } else if (id == R.id.nav_share) {
-
-    } else if (id == R.id.nav_send) {
-
-    }
-
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-    drawer.closeDrawer(GravityCompat.START);
-    return true;
-  }
-
   @Override public void onBackToFirstFragment() {
-
+    RxBus.getDefault().post(new BackToFirstFragmentBus());
   }
 
+  /**
+   * 设置Fragment跳转动画
+   */
   @Override protected FragmentAnimator onCreateFragmentAnimator() {
-    return new DefaultHorizontalAnimator();
+    return new DefaultNoAnimator();
   }
 }

@@ -35,10 +35,6 @@ public class PullRecyclerLayout extends FrameLayout
     setUpView();
   }
 
-  public RecyclerView getRecyclerView() {
-    return mRecyclerView;
-  }
-
   public PullRecyclerLayout(Context context, AttributeSet attrs) {
     super(context, attrs);
     setUpView();
@@ -49,8 +45,12 @@ public class PullRecyclerLayout extends FrameLayout
     setUpView();
   }
 
+  public RecyclerView getRecyclerView() {
+    return mRecyclerView;
+  }
+
   private void setUpView() {
-    LayoutInflater.from(getContext()).inflate(R.layout.widget_pull_to_refresh, this, true);
+    LayoutInflater.from(getContext()).inflate(R.layout.include_pull_to_refresh, this, true);
     mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
     mSwipeRefreshLayout.setOnRefreshListener(this);
     mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);

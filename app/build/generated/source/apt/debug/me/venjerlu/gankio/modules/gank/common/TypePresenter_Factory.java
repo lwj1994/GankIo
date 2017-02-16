@@ -6,16 +6,17 @@ import dagger.internal.Factory;
 import dagger.internal.MembersInjectors;
 import javax.inject.Provider;
 import me.venjerlu.gankio.common.http.GankApi;
-import me.venjerlu.gankio.modules.gank.common.view.IGankTypeView;
+import me.venjerlu.gankio.modules.gank.normal.view.INormalView;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalPresenter;
 
-public final class TypePresenter_Factory<T extends IGankTypeView>
-    implements Factory<TypePresenter<T>> {
-  private final MembersInjector<TypePresenter<T>> typePresenterMembersInjector;
+public final class TypePresenter_Factory<T extends INormalView>
+    implements Factory<NormalPresenter<T>> {
+  private final MembersInjector<NormalPresenter<T>> typePresenterMembersInjector;
 
   private final Provider<GankApi> gankApiProvider;
 
   public TypePresenter_Factory(
-      MembersInjector<TypePresenter<T>> typePresenterMembersInjector,
+      MembersInjector<NormalPresenter<T>> typePresenterMembersInjector,
       Provider<GankApi> gankApiProvider) {
     assert typePresenterMembersInjector != null;
     this.typePresenterMembersInjector = typePresenterMembersInjector;
@@ -24,13 +25,13 @@ public final class TypePresenter_Factory<T extends IGankTypeView>
   }
 
   @Override
-  public TypePresenter<T> get() {
+  public NormalPresenter<T> get() {
     return MembersInjectors.injectMembers(
-        typePresenterMembersInjector, new TypePresenter<T>(gankApiProvider.get()));
+        typePresenterMembersInjector, new NormalPresenter<T>(gankApiProvider.get()));
   }
 
-  public static <T extends IGankTypeView> Factory<TypePresenter<T>> create(
-      MembersInjector<TypePresenter<T>> typePresenterMembersInjector,
+  public static <T extends INormalView> Factory<NormalPresenter<T>> create(
+      MembersInjector<NormalPresenter<T>> typePresenterMembersInjector,
       Provider<GankApi> gankApiProvider) {
     return new TypePresenter_Factory<T>(typePresenterMembersInjector, gankApiProvider);
   }

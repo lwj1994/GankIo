@@ -5,7 +5,7 @@ import dagger.Component;
 import me.venjerlu.gankio.common.di.module.FragmentModule;
 import me.venjerlu.gankio.common.di.scope.PreFragment;
 import me.venjerlu.gankio.modules.gank.meizhi.view.MeizhiFragment;
-import me.venjerlu.gankio.modules.gank.tech.view.TechFragment;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalFragment;
 import me.venjerlu.gankio.modules.gank.today.view.TodayFragment;
 
 /**
@@ -21,5 +21,5 @@ public interface FragmentComponent {
 
   void inject(MeizhiFragment fragment);
 
-  void inject(TechFragment techFragment);
+  void inject(NormalFragment normalFragment);
 }

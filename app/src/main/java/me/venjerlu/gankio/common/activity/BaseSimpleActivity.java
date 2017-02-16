@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.Menu;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
@@ -12,7 +12,6 @@ import io.reactivex.disposables.Disposable;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.common.di.component.AppComponent;
 import me.venjerlu.gankio.utils.AndroidUtil;
-import me.venjerlu.gankio.utils.BugUtil;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -35,7 +34,11 @@ public abstract class BaseSimpleActivity extends SupportActivity {
 
     AndroidUtil.addActivity(this);
     initData(savedInstanceState);
-    BugUtil.fixFocusedViewLeak(getApplication());
+  }
+
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    if (getMenuLayout() != 0) getMenuInflater().inflate(getMenuLayout(), menu);
+    return true;
   }
 
   @Override protected void onDestroy() {
@@ -48,14 +51,6 @@ public abstract class BaseSimpleActivity extends SupportActivity {
   protected void setToolbar(Toolbar toolbar, String title) {
     toolbar.setTitle(title);
     setSupportActionBar(toolbar);
-    assert getSupportActionBar() != null;
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setDisplayShowHomeEnabled(true);
-    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
-        onBackPressedSupport();
-      }
-    });
   }
 
   private void clearDisposable() {
@@ -78,4 +73,8 @@ public abstract class BaseSimpleActivity extends SupportActivity {
   public abstract int getLayout();
 
   protected abstract void initData(Bundle savedInstanceState);
+
+  protected int getMenuLayout() {
+    return 0;
+  }
 }

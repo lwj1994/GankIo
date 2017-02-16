@@ -69,8 +69,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
         return response;
       }
     };
-    return builder
-        .cache(cache)
+    return builder.cache(cache)
         .addNetworkInterceptor(cacheInterceptor)
         .addInterceptor(cacheInterceptor)
         .connectTimeout(10, TimeUnit.SECONDS)

@@ -1,7 +1,7 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -17,7 +17,8 @@
 
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-  <style name="tab_appearance">
+  <!-- TabLayout 标题样式 -->
+  <style name="TabLayoutAppearance">
     <item name="android:textSize">14sp</item>
   </style>
 
@@ -75,6 +76,7 @@
     <item name="android:textColor">#B7BFDA</item>
     <item name="android:textSize">12sp</item>
   </style>
+
   <!-- toolbar 标题样式 -->
   <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
     <item name="android:textSize">16sp</item>

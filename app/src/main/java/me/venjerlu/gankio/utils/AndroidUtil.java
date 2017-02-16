@@ -1,6 +1,8 @@
 package me.venjerlu.gankio.utils;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import com.blankj.utilcode.utils.SizeUtils;
 import java.io.File;
@@ -47,5 +49,20 @@ public class AndroidUtil {
 
   public static boolean isEmptyList(List list) {
     return list == null || list.size() == 0;
+  }
+
+  /**
+   * 复制到剪贴板
+   *
+   * @param context 上下文
+   * @param text 文本
+   * @param success 成功的提示文字
+   */
+  public static void copyToClipBoard(Context context, String text, String success) {
+    ClipData clipData = ClipData.newPlainText("Venjer_copy", text);
+    ClipboardManager manager =
+        (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    manager.setPrimaryClip(clipData);
+    ToastUtil.shortMsg(success);
   }
 }

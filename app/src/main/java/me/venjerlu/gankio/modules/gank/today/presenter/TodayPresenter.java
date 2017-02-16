@@ -1,10 +1,6 @@
 package me.venjerlu.gankio.modules.gank.today.presenter;
 
-import android.app.Activity;
-import com.elvishew.xlog.XLog;
-import com.thefinestartist.finestwebview.FinestWebView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
@@ -14,7 +10,6 @@ import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
 import me.venjerlu.gankio.modules.gank.bus.TitleBus;
-import me.venjerlu.gankio.modules.gank.meizhi.bus.OnclickTechContentBus;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
 import me.venjerlu.gankio.modules.gank.today.view.ITodayView;
@@ -31,19 +26,6 @@ public class TodayPresenter extends RxPresenter<ITodayView> {
 
   @Inject TodayPresenter(GankApi api) {
     mGankApi = api;
-  }
-
-  public void setOnClickTechContentBus(final Activity activity) {
-    addDisposable(RxBus.getDefault()
-        .toObservable(OnclickTechContentBus.class)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<OnclickTechContentBus>() {
-          @Override public void accept(OnclickTechContentBus onclickTechContentBus)
-              throws Exception {
-            XLog.tag(TAG).d(mView);
-            new FinestWebView.Builder(activity).show(onclickTechContentBus.getUrl());
-          }
-        }));
   }
 
   /**

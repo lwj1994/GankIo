@@ -3,16 +3,16 @@ package me.venjerlu.gankio.modules.gank.meizhi.view;
 
 import dagger.MembersInjector;
 import javax.inject.Provider;
-import me.venjerlu.gankio.modules.gank.common.TypePresenter;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter;
+import me.venjerlu.gankio.modules.gank.normal.view.NormalPresenter;
 
 public final class MeizhiFragment_MembersInjector implements MembersInjector<MeizhiFragment> {
-  private final Provider<TypePresenter<IMeizhiView>> mPresenterProvider;
+  private final Provider<NormalPresenter<IMeizhiView>> mPresenterProvider;
 
   private final Provider<MeizhiAdapter> mAdapterProvider;
 
   public MeizhiFragment_MembersInjector(
-      Provider<TypePresenter<IMeizhiView>> mPresenterProvider,
+      Provider<NormalPresenter<IMeizhiView>> mPresenterProvider,
       Provider<MeizhiAdapter> mAdapterProvider) {
     assert mPresenterProvider != null;
     this.mPresenterProvider = mPresenterProvider;
@@ -21,7 +21,7 @@ public final class MeizhiFragment_MembersInjector implements MembersInjector<Mei
   }
 
   public static MembersInjector<MeizhiFragment> create(
-      Provider<TypePresenter<IMeizhiView>> mPresenterProvider,
+      Provider<NormalPresenter<IMeizhiView>> mPresenterProvider,
       Provider<MeizhiAdapter> mAdapterProvider) {
     return new MeizhiFragment_MembersInjector(mPresenterProvider, mAdapterProvider);
   }

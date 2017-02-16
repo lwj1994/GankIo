@@ -4,5 +4,5 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-  <include layout="@layout/widget_pull_to_refresh"/>
+  <include layout="@layout/include_pull_to_refresh"/>
 </LinearLayout>

@@ -16,7 +16,6 @@ import me.venjerlu.gankio.common.di.module.ActivityModule;
 import me.venjerlu.gankio.common.mvp.IBasePresenter;
 import me.venjerlu.gankio.common.mvp.IBaseView;
 import me.venjerlu.gankio.utils.AndroidUtil;
-import me.venjerlu.gankio.utils.BugUtil;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -42,7 +41,6 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
       mPresenter.attachView(this);
     }
     AndroidUtil.addActivity(this);
-    BugUtil.fixFocusedViewLeak(getApplication());
     initData(savedInstanceState);
   }
 

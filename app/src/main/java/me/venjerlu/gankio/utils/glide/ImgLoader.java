@@ -35,8 +35,7 @@ public class ImgLoader {
   public void normal(Context context, String url, ImageView imageView) {
     Glide.with(context)
         .load(url)
-        .centerCrop()
-        .placeholder(R.drawable.ic_github)
+        .centerCrop().placeholder(R.drawable.ic_placeholder)
         .crossFade()
         .into(imageView);
   }
@@ -63,14 +62,13 @@ public class ImgLoader {
     Glide.with(context)
         .load(url)
         .centerCrop()
-        .crossFade()
-        .placeholder(R.drawable.ic_github)
+        .crossFade().placeholder(R.drawable.ic_placeholder)
         .into(imageView)
         .getSize(sizeReadyCallback);
   }
 
   public void bitmap(Context context, String url, SimpleTarget<Bitmap> target) {
-    Glide.with(context).load(url).asBitmap().placeholder(R.drawable.ic_github).into(target);
+    Glide.with(context).load(url).asBitmap().placeholder(R.drawable.ic_placeholder).into(target);
   }
 
   //加载网络图片并设置大小

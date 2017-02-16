@@ -146,7 +146,7 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
 
   protected BaseViewHolder onCreateLoadMoreFooterViewHolder(ViewGroup parent) {
     View view = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.widget_pull_to_refresh_footer, parent, false);
+        .inflate(R.layout.item_pull_to_refresh_footer, parent, false);
     return new LoadMoreFooterViewHolder(view);
   }
 
