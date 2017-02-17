@@ -7,9 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.elvishew.xlog.XLog;
-import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.modules.gank.GankLazyFragment;
-import me.venjerlu.gankio.utils.ToastUtil;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
@@ -55,16 +52,16 @@ public abstract class BaseLazyFragment extends SupportFragment {
     if (getChildFragmentManager().getBackStackEntryCount() > 1) {
       popChild();
     } else {
-      if (this instanceof GankLazyFragment) {
-        if (System.currentTimeMillis() - TOUCH_TIME < WAIT_TIME) {
-          _mActivity.finish();
-        } else {
-          TOUCH_TIME = System.currentTimeMillis();
-          ToastUtil.shortMsg(getString(R.string.press_again_exit));
-        }
-      } else {
-        _mBackToFirstListener.onBackToFirstFragment();
-      }
+      //if (this instanceof GankLazyFragment) {
+      //  if (System.currentTimeMillis() - TOUCH_TIME < WAIT_TIME) {
+      //    _mActivity.finish();
+      //  } else {
+      //    TOUCH_TIME = System.currentTimeMillis();
+      //    ToastUtil.shortMsg(getString(R.string.press_again_exit));
+      //  }
+      //} else {
+      //  _mBackToFirstListener.onBackToFirstFragment();
+      //}
     }
     return true;
   }

@@ -9,7 +9,7 @@ import butterknife.BindView;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.RxBus;
-import me.venjerlu.gankio.modules.gank.OnIntentToWebViewActBus;
+import me.venjerlu.gankio.modules.gank.bus.OnStartWebActivityBus;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.utils.AndroidUtil;
 import me.venjerlu.gankio.utils.glide.ImgLoader;
@@ -60,7 +60,11 @@ public class NormalAdapter extends BaseListAdapter<Gank> {
       if (!AndroidUtil.isEmptyList(gank.getImages())) {
         imgUrl = gank.getImages().get(0);
       }
-      ImgLoader.getInstance().normal(mContext, imgUrl, mImg);
+      if (TextUtils.isEmpty(imgUrl)) {
+        mImg.setImageResource(R.drawable.ic_placeholder_black_24dp);
+      } else {
+        ImgLoader.getInstance().normal(mContext, imgUrl, mImg);
+      }
       mTitle.setText(gank.getDesc());
       if (!TextUtils.isEmpty(gank.getWho())) {
         mContent.append(gank.getWho());
@@ -71,7 +75,7 @@ public class NormalAdapter extends BaseListAdapter<Gank> {
       mTime.setText(gank.getPublishedAt().subSequence(0, 10));
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View view) {
-          RxBus.getDefault().post(new OnIntentToWebViewActBus(gank.getUrl(), gank.getDesc()));
+          RxBus.getDefault().post(new OnStartWebActivityBus(gank.getUrl(), gank.getDesc()));
         }
       });
     }

@@ -3,6 +3,8 @@ package me.venjerlu.gankio.common.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
@@ -32,14 +34,26 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setHasOptionsMenu(getMenuRes() != 0);
   }
 
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    mView = inflater.inflate(getLayout(), null);
+    mView = inflater.inflate(getLayoutRes(), null);
     initInject();
     return mView;
+  }
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    if (getMenuRes() != 0) {
+      inflater.inflate(getMenuRes(), menu);
+    }
+  }
+
+  protected int getMenuRes() {
+    return 0;
   }
 
   @SuppressWarnings("unchecked") @Override
@@ -86,7 +100,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
         .build();
   }
 
-  protected abstract int getLayout();
+  protected abstract int getLayoutRes();
 
   protected abstract void initInject();
 

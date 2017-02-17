@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="me.venjerlu.gankio.MainActivity"
+            android:name="me.venjerlu.gankio.modules.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -34,7 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="me.venjerlu.gankio.WebActivity" />
+        <activity android:name="me.venjerlu.gankio.common.activity.WebActivity" />
+        <activity android:name="me.venjerlu.gankio.modules.about.AboutActivity" />
+        <activity android:name="me.venjerlu.gankio.modules.gallery.GalleryActivity" />
 
         <meta-data
             android:name="me.venjerlu.gankio.utils.glide.GlideDiskCacheModule"

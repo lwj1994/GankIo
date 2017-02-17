@@ -6,7 +6,7 @@ import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.Gank;
-import me.venjerlu.gankio.modules.gank.today.presenter.TodayAdapter;
+import me.venjerlu.gankio.modules.gank.today.adapter.TodayAdapter;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
 import me.venjerlu.gankio.widget.pulltorefresh.section.SectionData;
 
@@ -33,6 +33,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     super.initData();
     mPullToRefreshLayout.enableLoadMore(false);
     mRecyclerView.setVerticalScrollBarEnabled(false);
+    //mPresenter.setOnClickMeizhi(this);
   }
 
   @Override public void showError(String msg) {

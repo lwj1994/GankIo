@@ -5,6 +5,7 @@ import java.util.List;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.normal.adapter.NormalAdapter;
+import me.venjerlu.gankio.modules.gank.normal.presenter.NormalPresenter;
 
 /**
  * Author/Date: venjerLu / 2016/12/16 10:59

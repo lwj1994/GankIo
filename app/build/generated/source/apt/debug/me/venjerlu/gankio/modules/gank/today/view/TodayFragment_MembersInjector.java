@@ -3,7 +3,7 @@ package me.venjerlu.gankio.modules.gank.today.view;
 
 import dagger.MembersInjector;
 import javax.inject.Provider;
-import me.venjerlu.gankio.modules.gank.today.presenter.TodayAdapter;
+import me.venjerlu.gankio.modules.gank.today.adapter.TodayAdapter;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
 
 public final class TodayFragment_MembersInjector implements MembersInjector<TodayFragment> {

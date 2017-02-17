@@ -37,7 +37,7 @@ public abstract class BaseSimpleActivity extends SupportActivity {
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
-    if (getMenuLayout() != 0) getMenuInflater().inflate(getMenuLayout(), menu);
+    if (getMenuRes() != 0) getMenuInflater().inflate(getMenuRes(), menu);
     return true;
   }
 
@@ -48,7 +48,7 @@ public abstract class BaseSimpleActivity extends SupportActivity {
     clearDisposable();
   }
 
-  protected void setToolbar(Toolbar toolbar, String title) {
+  protected void initToolbar(Toolbar toolbar, String title) {
     toolbar.setTitle(title);
     setSupportActionBar(toolbar);
   }
@@ -74,7 +74,7 @@ public abstract class BaseSimpleActivity extends SupportActivity {
 
   protected abstract void initData(Bundle savedInstanceState);
 
-  protected int getMenuLayout() {
+  protected int getMenuRes() {
     return 0;
   }
 }

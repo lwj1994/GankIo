@@ -12,6 +12,9 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.common.RxBus;
+import me.venjerlu.gankio.modules.gallery.GalleryActivity;
+import me.venjerlu.gankio.modules.gank.bus.OnStartGalleryFragmentBus;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.utils.glide.ImgLoader;
 import me.venjerlu.gankio.widget.pulltorefresh.BaseListAdapter;
@@ -39,6 +42,12 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
     }
   }
 
+  @Override public void clearData() {
+    int count = (isEmpty() ? 1 : 0) + mList.size();
+    super.clearData();
+    notifyItemRangeRemoved(0, count);
+  }
+
   class MeizhiViewHolder extends BaseViewHolder<Gank> {
     @BindView(R.id.meizhi_img) ImageView mImageView;
 
@@ -46,7 +55,7 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
       super(inflate);
     }
 
-    @Override protected void bind(Gank gank) {
+    @Override protected void bind(final Gank gank) {
       itemView.setTag(gank.getUrl());
       ImgLoader.getInstance()
           .bitmap(mContext, gank.getUrl(),
@@ -69,12 +78,13 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
                   }
                 }
               });
+      itemView.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          RxBus.getDefault()
+              .post(new OnStartGalleryFragmentBus(GalleryActivity.TYPE_URL, 0, gank.getUrl(),
+                  gank.getPublishedAt()));
+        }
+      });
     }
-  }
-
-  @Override public void clearData() {
-    int count = (isEmpty() ? 1 : 0) + mList.size();
-    super.clearData();
-    notifyItemRangeRemoved(0,count);
   }
 }

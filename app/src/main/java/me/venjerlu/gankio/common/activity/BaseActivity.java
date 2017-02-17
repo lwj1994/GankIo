@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,7 +34,7 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
   @SuppressWarnings("unchecked") @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(getLayout());
+    setContentView(getLayoutRes());
     mContext = this;
     mUnbinder = ButterKnife.bind(this);
     initInject();
@@ -51,7 +52,12 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
     AndroidUtil.removeActivity(this);
   }
 
-  protected void setToolbar(Toolbar toolbar, String title) {
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    if (getMenuRes() != 0) getMenuInflater().inflate(getMenuRes(), menu);
+    return true;
+  }
+
+  protected void initToolbar(Toolbar toolbar, String title) {
     toolbar.setTitle(title);
     setSupportActionBar(toolbar);
     assert getSupportActionBar() != null;
@@ -75,7 +81,11 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
     return App.getAppComponent();
   }
 
-  public abstract int getLayout();
+  protected abstract int getLayoutRes();
+
+  protected int getMenuRes() {
+    return 0;
+  }
 
   protected abstract void initInject();
 

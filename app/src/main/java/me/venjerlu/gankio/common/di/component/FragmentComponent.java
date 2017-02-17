@@ -1,9 +1,9 @@
 package me.venjerlu.gankio.common.di.component;
 
-import android.app.Activity;
 import dagger.Component;
 import me.venjerlu.gankio.common.di.module.FragmentModule;
 import me.venjerlu.gankio.common.di.scope.PreFragment;
+import me.venjerlu.gankio.modules.gallery.GalleryActivity;
 import me.venjerlu.gankio.modules.gank.meizhi.view.MeizhiFragment;
 import me.venjerlu.gankio.modules.gank.normal.view.NormalFragment;
 import me.venjerlu.gankio.modules.gank.today.view.TodayFragment;
@@ -15,11 +15,12 @@ import me.venjerlu.gankio.modules.gank.today.view.TodayFragment;
  */
 @PreFragment @Component(dependencies = AppComponent.class, modules = FragmentModule.class)
 public interface FragmentComponent {
-  Activity getActivty();
 
   void inject(TodayFragment fragment);
 
   void inject(MeizhiFragment fragment);
 
-  void inject(NormalFragment normalFragment);
+  void inject(NormalFragment fragment);
+
+  void inject(GalleryActivity fragment);
 }

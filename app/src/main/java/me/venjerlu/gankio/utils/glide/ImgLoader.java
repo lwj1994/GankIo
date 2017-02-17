@@ -3,11 +3,17 @@ package me.venjerlu.gankio.utils.glide;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import java.util.concurrent.ExecutionException;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import me.venjerlu.gankio.R;
@@ -33,11 +39,9 @@ public class ImgLoader {
   }
 
   public void normal(Context context, String url, ImageView imageView) {
-    Glide.with(context)
-        .load(url)
-        .centerCrop().placeholder(R.drawable.ic_placeholder)
-        .crossFade()
-        .into(imageView);
+    Glide.with(context).load(url).centerCrop()
+        // .placeholder(R.drawable.ic_placeholder_black_24dp)
+        .crossFade().into(imageView);
   }
 
   public void circle(Context context, String url, ImageView imageView) {
@@ -61,14 +65,29 @@ public class ImgLoader {
       SizeReadyCallback sizeReadyCallback) {
     Glide.with(context)
         .load(url)
-        .centerCrop()
-        .crossFade().placeholder(R.drawable.ic_placeholder)
+        .centerCrop().crossFade().placeholder(R.drawable.ic_placeholder_black_24dp)
         .into(imageView)
         .getSize(sizeReadyCallback);
   }
 
   public void bitmap(Context context, String url, SimpleTarget<Bitmap> target) {
-    Glide.with(context).load(url).asBitmap().placeholder(R.drawable.ic_placeholder).into(target);
+    Glide.with(context)
+        .load(url)
+        .asBitmap()
+        .placeholder(R.drawable.ic_placeholder_black_24dp)
+        .into(target);
+  }
+
+  /**
+   * 得到图片的bitmap
+   */
+  public Bitmap getBitmap(Context context, String url)
+      throws ExecutionException, InterruptedException {
+    return Glide.with(context)
+        .load(url)
+        .asBitmap()
+        .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+        .get();
   }
 
   //加载网络图片并设置大小
@@ -84,6 +103,20 @@ public class ImgLoader {
 
   public void pause(Context context) {
     Glide.with(context).pauseRequests();
+  }
+
+  /**
+   * 利用SubsamplingScaleImage加载图片
+   */
+  public void loadSubsamplingScaleImage(Context mContext, String url,
+      final SubsamplingScaleImageView imageView, final ContentLoadingProgressBar progressBar) {
+    Glide.with(mContext).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
+      @Override
+      public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+        progressBar.hide();
+        imageView.setImage(ImageSource.bitmap(resource));
+      }
+    });
   }
 
   private static class SingleLoader {

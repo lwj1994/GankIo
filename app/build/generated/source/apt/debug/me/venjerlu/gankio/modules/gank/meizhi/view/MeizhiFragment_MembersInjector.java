@@ -4,7 +4,7 @@ package me.venjerlu.gankio.modules.gank.meizhi.view;
 import dagger.MembersInjector;
 import javax.inject.Provider;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter;
-import me.venjerlu.gankio.modules.gank.normal.view.NormalPresenter;
+import me.venjerlu.gankio.modules.gank.normal.presenter.NormalPresenter;
 
 public final class MeizhiFragment_MembersInjector implements MembersInjector<MeizhiFragment> {
   private final Provider<NormalPresenter<IMeizhiView>> mPresenterProvider;

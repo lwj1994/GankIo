@@ -1,6 +1,8 @@
 package me.venjerlu.gankio.modules.gank.today.presenter;
 
+import com.elvishew.xlog.XLog;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
@@ -9,11 +11,14 @@ import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
-import me.venjerlu.gankio.modules.gank.bus.TitleBus;
+import me.venjerlu.gankio.modules.gallery.GalleryActivity;
+import me.venjerlu.gankio.modules.gank.bus.OnStartGalleryFragmentBus;
+import me.venjerlu.gankio.modules.gank.bus.OnUpdateTitleBus;
 import me.venjerlu.gankio.modules.gank.model.DateModel;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
 import me.venjerlu.gankio.modules.gank.today.view.ITodayView;
 import me.venjerlu.gankio.utils.RxUtil;
+import me.yokeyword.fragmentation.SupportFragment;
 import org.reactivestreams.Publisher;
 
 /**
@@ -56,7 +61,7 @@ public class TodayPresenter extends RxPresenter<ITodayView> {
           @Override
           public Publisher<GankModel<DateModel>> apply(GankModel<List<String>> listGankModel)
               throws Exception {
-            RxBus.getDefault().post(new TitleBus(listGankModel.getResults().get(0)));
+            RxBus.getDefault().post(new OnUpdateTitleBus(listGankModel.getResults().get(0)));
             String[] split = listGankModel.getResults().get(0).split("-");
             return mGankApi.getDataOnSomeday(split[0], split[1], split[2]);
           }
@@ -69,6 +74,23 @@ public class TodayPresenter extends RxPresenter<ITodayView> {
 
           @Override public void onCompleted() {
             mView.onRefreshCompleted();
+          }
+        }));
+  }
+
+  /**
+   * 设置妹纸图片的点击事件
+   */
+  public void setOnClickMeizhi(final SupportFragment fragment) {
+    addDisposable(RxBus.getDefault()
+        .toObservable(OnStartGalleryFragmentBus.class)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<OnStartGalleryFragmentBus>() {
+          @Override public void accept(OnStartGalleryFragmentBus bus) throws Exception {
+            XLog.tag(TAG).d("isVisible" + fragment.isSupportVisible());
+            if (fragment.isSupportVisible()) {
+              GalleryActivity.startMe(fragment.getActivity(), bus.type, bus.url);
+            }
           }
         }));
   }

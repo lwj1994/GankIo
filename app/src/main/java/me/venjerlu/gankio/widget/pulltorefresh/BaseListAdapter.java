@@ -21,7 +21,7 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   protected List<S> mList = new ArrayList<>();
   private boolean isLoadMoreFooterShown;
   private @LayoutRes int mLayoutHeader, mLayoutFooter, mLayoutEmpty;
-
+  private OnClickItemListener<S> mOnClickItemListener;
 
   @Override public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == VIEW_TYPE_LOAD_MORE_FOOTER) {
@@ -69,6 +69,14 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
         }
       }
     }
+    //holder.itemView.setOnClickListener(new View.OnClickListener() {
+    //  @Override public void onClick(View v) {
+    //    if (mOnClickItemListener != null) {
+    //      mOnClickItemListener.onClick(holder.getAdapterPosition(),
+    //          mList.get(holder.getAdapterPosition()));
+    //    }
+    //  }
+    //});
   }
 
   @Override public int getItemCount() {
@@ -210,6 +218,14 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
       mList.addAll(list);
       notifyItemRangeChanged(startIndex, list.size());
     }
+  }
+
+  public void setOnClickItemListener(OnClickItemListener<S> onClickItemListener) {
+    mOnClickItemListener = onClickItemListener;
+  }
+
+  public interface OnClickItemListener<S> {
+    void onClick(int position, S s);
   }
 
   private class LoadMoreFooterViewHolder extends BaseViewHolder {

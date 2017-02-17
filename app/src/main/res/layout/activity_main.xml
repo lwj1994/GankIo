@@ -5,19 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="me.venjerlu.gankio.MainActivity"
+    tools:context="me.venjerlu.gankio.modules.main.MainActivity"
     >
 
   <include layout="@layout/include_toolbar"/>
+  <include layout="@layout/include_tab_viewpager"/>
 
-  <FrameLayout
-      xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:tools="http://schemas.android.com/tools"
-      android:id="@+id/content_main"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      />
 
 </android.support.design.widget.CoordinatorLayout>

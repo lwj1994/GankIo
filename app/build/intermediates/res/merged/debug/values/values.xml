@@ -62,6 +62,17 @@
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
+    <color name="about_page_background">#f1f1f1</color>
+    <color name="about_page_card_background">#ffffff</color>
+    <color name="about_page_card_shadow">#10000000</color>
+    <color name="about_page_card_text_color">#424242</color>
+    <color name="about_page_category_text_color">#757575</color>
+    <color name="about_page_desc_color">#757575</color>
+    <color name="about_page_hint">#757575</color>
+    <color name="about_page_license_content">#424242</color>
+    <color name="about_page_line">#9e9e9e</color>
+    <color name="about_page_name_color">#424242</color>
+    <color name="about_page_selected">#44000000</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
     <color name="background_floating_material_dark">@color/material_grey_800</color>
@@ -529,6 +540,9 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <dimen name="about_page_avatar_size">38dp</dimen>
+    <dimen name="about_page_header_height">230dp</dimen>
+    <dimen name="about_page_license_text_size">13sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
@@ -646,12 +660,6 @@
     <dimen name="notification_top_pad_large_text">5dp</dimen>
     <dimen name="today_title_paddingbottom">8dp</dimen>
     <dimen name="today_title_paddingtop">10dp</dimen>
-    <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
-    <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
-    <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
-    <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
-    <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
-    <item name="ic_menu_slideshow" type="drawable">@android:drawable/ic_menu_slideshow</item>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
     <item name="action_bar_activity_content" type="id"/>
@@ -714,7 +722,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">关于</string>
     <string name="app_name">GankIo</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="block_canary_block_list_title">Blocks in %s</string>
@@ -726,9 +734,12 @@
     <string name="block_canary_share_stack_dump">Share stack dump</string>
     <string name="block_canary_share_with">Share with…</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="card_content">gank.io的非官方Android客户端。</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="display_activity_label">Blocks</string>
     <string name="empty">什么都没有</string>
+    <string name="gallery_save">保存到本地</string>
+    <string name="gallery_share">分享</string>
     <string name="leak_canary_analysis_failed">Leak analysis failed</string>
     <string name="leak_canary_class_has_leaked">%1$s leaked %2$s</string>
     <string name="leak_canary_could_not_save_text">LeakCanary was unable to save the analysis result.</string>
@@ -765,6 +776,108 @@
     <string name="tip_open_fail">打开失败，没有找到可以打开该链接的其它应用 :(</string>
     <string name="webview_action_copy_url">复制链接</string>
     <string name="webview_action_open_url">打开链接</string>
+    <style name="AboutPage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="AboutPage.CardContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:autoLink">web</item>
+        <item name="android:textColorLink">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/about_page_card_text_color</item>
+    </style>
+    <style name="AboutPage.ContributorAvatar">
+        <item name="android:layout_width">@dimen/about_page_avatar_size</item>
+        <item name="android:layout_height">@dimen/about_page_avatar_size</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+    <style name="AboutPage.ContributorDesc">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/about_page_desc_color</item>
+    </style>
+    <style name="AboutPage.ContributorName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/about_page_name_color</item>
+    </style>
+    <style name="AboutPage.FrameButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@drawable/about_page_button_dark</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AboutPage.FrameButton.Light">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@drawable/about_page_button_light</item>
+    </style>
+    <style name="AboutPage.Header"/>
+    <style name="AboutPage.Header.Icon">
+        <item name="android:layout_width">96dp</item>
+        <item name="android:layout_height">96dp</item>
+    </style>
+    <style name="AboutPage.Header.Slogan">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AboutPage.Header.ToolbarTitleExpanded" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00000000</item>
+    </style>
+    <style name="AboutPage.Header.Version">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AboutPage.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+    <style name="AboutPage.Item.Card">
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:background">@drawable/about_page_card</item>
+    </style>
+    <style name="AboutPage.Item.Category">
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">1dp</item>
+        <item name="android:paddingRight">1dp</item>
+        <item name="android:textColor">@color/about_page_category_text_color</item>
+    </style>
+    <style name="AboutPage.Item.Line">
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/about_page_line</item>
+    </style>
+    <style name="AboutPage.LicenseContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/about_page_license_content</item>
+    </style>
+    <style name="AboutPage.LicenseHint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/about_page_license_text_size</item>
+        <item name="android:textColor">@color/about_page_hint</item>
+    </style>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -2424,6 +2537,7 @@
     <item name="android:layout_height">@dimen/gank_item_content_height</item>
     <item name="android:layout_marginRight">5dp</item>
     <item name="android:layout_marginEnd">5dp</item>
+    <item name="android:background">@drawable/ripple_normal_selecor</item>
   </style>
     <style name="gankItem">
     <item name="android:paddingStart">19dp</item>
@@ -2432,6 +2546,7 @@
     <item name="android:paddingRight">16dp</item>
     <item name="android:paddingTop">8dp</item>
     <item name="android:paddingBottom">8dp</item>
+    <item name="android:background">@drawable/ripple_normal_selecor</item>
   </style>
     <style name="gankTitle">
     <item name="android:textColor">#151515</item>

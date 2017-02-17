@@ -122,11 +122,11 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
         }
       }
     });
+    mPullToRefreshLayout.setRefreshing();
   }
 
   @Override protected void onEnterAnimationEnd(Bundle savedInstanceState) {
     super.onEnterAnimationEnd(savedInstanceState);
-    mPullToRefreshLayout.setRefreshing();
   }
 
   protected ILayoutManager getLayoutManager() {

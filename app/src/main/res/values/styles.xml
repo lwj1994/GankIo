@@ -36,6 +36,7 @@
     <item name="android:layout_height">@dimen/gank_item_content_height</item>
     <item name="android:layout_marginRight">5dp</item>
     <item name="android:layout_marginEnd">5dp</item>
+    <item name="android:background">@drawable/ripple_normal_selecor</item>
   </style>
 
   <style name="gankItem">
@@ -45,6 +46,7 @@
     <item name="android:paddingRight">16dp</item>
     <item name="android:paddingTop">8dp</item>
     <item name="android:paddingBottom">8dp</item>
+    <item name="android:background">@drawable/ripple_normal_selecor</item>
   </style>
 
   <style name="gankTitle">

@@ -8,26 +8,26 @@ package com.github.moduth.blockcanary;
 
 public final class R {
 	public static final class drawable {
-		public static final int block_canary_icon = 0x7f020055;
-		public static final int block_canary_notification = 0x7f020056;
+		public static final int block_canary_icon = 0x7f020058;
+		public static final int block_canary_notification = 0x7f020059;
 	}
 	public static final class id {
-		public static final int __leak_canary_action = 0x7f0d007e;
-		public static final int __leak_canary_display_leak_failure = 0x7f0d007d;
-		public static final int __leak_canary_display_leak_list = 0x7f0d007c;
-		public static final int __leak_canary_row_connector = 0x7f0d007f;
-		public static final int __leak_canary_row_more = 0x7f0d0080;
-		public static final int __leak_canary_row_text = 0x7f0d007a;
-		public static final int __leak_canary_row_time = 0x7f0d007b;
+		public static final int __leak_canary_action = 0x7f0d008b;
+		public static final int __leak_canary_display_leak_failure = 0x7f0d008a;
+		public static final int __leak_canary_display_leak_list = 0x7f0d0089;
+		public static final int __leak_canary_row_connector = 0x7f0d008c;
+		public static final int __leak_canary_row_more = 0x7f0d008d;
+		public static final int __leak_canary_row_text = 0x7f0d0087;
+		public static final int __leak_canary_row_time = 0x7f0d0088;
 	}
 	public static final class integer {
 		public static final int block_canary_max_stored_count = 0x7f0b0004;
 	}
 	public static final class layout {
-		public static final int block_canary_block_row = 0x7f04001d;
-		public static final int block_canary_display_leak = 0x7f04001e;
-		public static final int block_canary_ref_row = 0x7f04001f;
-		public static final int block_canary_ref_top_row = 0x7f040020;
+		public static final int block_canary_block_row = 0x7f040024;
+		public static final int block_canary_display_leak = 0x7f040025;
+		public static final int block_canary_ref_row = 0x7f040026;
+		public static final int block_canary_ref_top_row = 0x7f040027;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f070037;
@@ -39,7 +39,7 @@ public final class R {
 		public static final int block_canary_share_leak = 0x7f07003e;
 		public static final int block_canary_share_stack_dump = 0x7f07003f;
 		public static final int block_canary_share_with = 0x7f070040;
-		public static final int display_activity_label = 0x7f070043;
+		public static final int display_activity_label = 0x7f070044;
 	}
 	public static final class style {
 		public static final int block_canary_BlockCanary_Base = 0x7f090036;
