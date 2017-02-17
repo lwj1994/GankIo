@@ -113,6 +113,7 @@ public class GalleryActivity extends BaseActivity<GalleryPresenter> implements I
         mPresenter.save(this, mUrl, mTitle);
         break;
       case R.id.gallery_action_share:
+        mPresenter.share(this, mUrl, mTitle);
         break;
     }
     return super.onOptionsItemSelected(item);

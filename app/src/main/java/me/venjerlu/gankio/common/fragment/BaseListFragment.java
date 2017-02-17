@@ -118,7 +118,7 @@ public abstract class BaseListFragment<T extends IBasePresenter, D extends BaseL
       @Override public void onScrolled(int newState) {
         if (mILayoutManager instanceof BaseStaggeredGridLayoutManager) {
           //防止第一行到顶部有空白区域
-          //((BaseStaggeredGridLayoutManager) mILayoutManager).invalidateSpanAssignments();
+          ((BaseStaggeredGridLayoutManager) mILayoutManager).invalidateSpanAssignments();
         }
       }
     });

@@ -3,7 +3,7 @@
     package="me.venjerlu.gankio.test" >
 
     <uses-sdk
-        android:minSdkVersion="21"
+        android:minSdkVersion="16"
         android:targetSdkVersion="25" />
 
     <instrumentation

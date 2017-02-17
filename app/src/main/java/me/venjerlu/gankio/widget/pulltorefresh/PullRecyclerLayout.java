@@ -65,9 +65,9 @@ public class PullRecyclerLayout extends FrameLayout
 
         }
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-          ImgLoader.getInstance().resume(mRecyclerView.getContext());
+          ImgLoader.getInstance().resume(getContext().getApplicationContext());
         } else {
-          ImgLoader.getInstance().pause(mRecyclerView.getContext());
+          ImgLoader.getInstance().pause(getContext().getApplicationContext());
         }
       }
 
@@ -105,7 +105,7 @@ public class PullRecyclerLayout extends FrameLayout
 
     mRecyclerView.setOnTouchListener(new OnTouchListener() {
       @Override public boolean onTouch(View view, MotionEvent motionEvent) {
-        return mCurrentState == ACTION_PULL_TO_REFRESH || mCurrentState == ACTION_LOAD_MORE_REFRESH;
+        return mCurrentState == ACTION_PULL_TO_REFRESH;
       }
     });
   }

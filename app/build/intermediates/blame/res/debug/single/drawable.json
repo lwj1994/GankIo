@@ -4,14 +4,6 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ic_back_white_20dp.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ic_back_white_20dp.xml"
-    },
-    {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ic_placeholder_black_24dp.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ic_placeholder_black_24dp.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_ic_search_api_material.xml"
     },
@@ -44,6 +36,10 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_spinner_textfield_background_material.xml"
     },
     {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_edit_text_material.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_edit_text_material.xml"
+    },
+    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_ratingbar_small_material.xml"
     },
@@ -72,16 +68,8 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/drawable/design_snackbar_background.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ic_svg_time_12dp.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ic_svg_time_12dp.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ripple_normal_selecor.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ripple_normal_selecor.xml"
-    },
-    {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ic_file_download_white_24dp.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ic_file_download_white_24dp.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/md_selector_dark.xml",
@@ -110,6 +98,10 @@
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/design_password_eye.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/drawable/design_password_eye.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
@@ -152,10 +144,6 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/drawable/md_transparent.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ic_close_white_20dp.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ic_close_white_20dp.xml"
-    },
-    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_switch_thumb_material.xml"
     },
@@ -170,6 +158,10 @@
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/design_bottom_navigation_item_background.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/drawable/design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
@@ -228,12 +220,12 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/me.drakeet.support/about/1.0.2/res/drawable/about_page_button_dark.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/md_btn_selected.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/drawable/md_btn_selected.xml"
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/abc_btn_colored_material.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/drawable/abc_btn_colored_material.xml"
     },
     {
-        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/ic_share_white_24dp.xml",
-        "source": "/Users/venjerLu/Desktop/GankIo/app/src/main/res/drawable/ic_share_white_24dp.xml"
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/md_btn_selected.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/drawable/md_btn_selected.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",

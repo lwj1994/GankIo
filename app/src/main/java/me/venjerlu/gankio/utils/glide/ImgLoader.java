@@ -119,6 +119,10 @@ public class ImgLoader {
     });
   }
 
+  public void onDestroy(Context context) {
+    Glide.with(context).onDestroy();
+  }
+
   private static class SingleLoader {
     private static final ImgLoader INSTANCE = new ImgLoader();
   }

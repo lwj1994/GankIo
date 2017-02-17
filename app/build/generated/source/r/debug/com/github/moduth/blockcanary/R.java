@@ -30,16 +30,16 @@ public final class R {
 		public static final int block_canary_ref_top_row = 0x7f040027;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f070037;
-		public static final int block_canary_block_list_title = 0x7f070039;
-		public static final int block_canary_class_has_blocked = 0x7f07003a;
-		public static final int block_canary_delete = 0x7f07003b;
-		public static final int block_canary_delete_all = 0x7f07003c;
-		public static final int block_canary_notification_message = 0x7f07003d;
-		public static final int block_canary_share_leak = 0x7f07003e;
-		public static final int block_canary_share_stack_dump = 0x7f07003f;
-		public static final int block_canary_share_with = 0x7f070040;
-		public static final int display_activity_label = 0x7f070044;
+		public static final int app_name = 0x7f070038;
+		public static final int block_canary_block_list_title = 0x7f07003a;
+		public static final int block_canary_class_has_blocked = 0x7f07003b;
+		public static final int block_canary_delete = 0x7f07003c;
+		public static final int block_canary_delete_all = 0x7f07003d;
+		public static final int block_canary_notification_message = 0x7f07003e;
+		public static final int block_canary_share_leak = 0x7f07003f;
+		public static final int block_canary_share_stack_dump = 0x7f070040;
+		public static final int block_canary_share_with = 0x7f070041;
+		public static final int display_activity_label = 0x7f070045;
 	}
 	public static final class style {
 		public static final int block_canary_BlockCanary_Base = 0x7f090036;

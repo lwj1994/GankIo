@@ -30,7 +30,6 @@ import static me.venjerlu.gankio.R.id.viewPager;
 
 public class MainActivity extends BaseSimpleActivity
     implements BaseLazyFragment.OnBackToFirstListener {
-
   protected List<String> mTitles = new ArrayList<>();
   @BindView(tab) TabLayout mTabLayout;
   @BindView(viewPager) ViewPager mViewPager;
@@ -60,7 +59,7 @@ public class MainActivity extends BaseSimpleActivity
       tabLayout.addTab(tabLayout.newTab().setText(title));
     }
     tabLayout.setTabMode(MODE_SCROLLABLE);
-    viewPager.setOffscreenPageLimit(4);
+    viewPager.setOffscreenPageLimit(2);
     viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), mTitles));
     tabLayout.post(new Runnable() {
       @Override public void run() {
@@ -124,6 +123,7 @@ public class MainActivity extends BaseSimpleActivity
   }
 
   @Override public void onBackToFirstFragment() {
+    mViewPager.setCurrentItem(0);
   }
 
   /**

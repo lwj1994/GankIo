@@ -17,5 +17,8 @@
   <string name="card_content">gank.io的非官方Android客户端。</string>
   <string name="gallery_save">保存到本地</string>
   <string name="gallery_share">分享</string>
+  <string name="action_share">分享</string>
+  <string name="share_meizhi_to">分享妹纸到...</string>
+  <string name="webview_action_share">分享</string>
 
 </resources>

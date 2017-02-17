@@ -196,6 +196,10 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/layout/md_dialog_progress_indeterminate_horizontal.xml"
     },
     {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_action_tombstone.xml"
+    },
+    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/select_dialog_item_material.xml"
     },
@@ -364,6 +368,10 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.9.0.1/res/layout/md_stub_titleframe.xml"
     },
     {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_template_icon_group.xml"
+    },
+    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_alert_dialog_material.xml"
     },
@@ -398,5 +406,9 @@
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/layout/notification_action.xml"
     }
 ]

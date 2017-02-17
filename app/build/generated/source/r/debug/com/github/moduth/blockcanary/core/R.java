@@ -11,6 +11,6 @@ public final class R {
 		public static final int block_canary_max_stored_count = 0x7f0b0004;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f070037;
+		public static final int app_name = 0x7f070038;
 	}
 }

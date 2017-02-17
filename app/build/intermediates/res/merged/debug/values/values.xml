@@ -723,6 +723,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_settings">关于</string>
+    <string name="action_share">分享</string>
     <string name="app_name">GankIo</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="block_canary_block_list_title">Blocks in %s</string>
@@ -771,11 +772,13 @@
     <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
     <string name="press_again_exit">再按一次退出程序</string>
     <string name="search_menu_title">Search</string>
+    <string name="share_meizhi_to">分享妹纸到...</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="tip_copy_done">复制成功</string>
     <string name="tip_open_fail">打开失败，没有找到可以打开该链接的其它应用 :(</string>
     <string name="webview_action_copy_url">复制链接</string>
     <string name="webview_action_open_url">打开链接</string>
+    <string name="webview_action_share">分享</string>
     <style name="AboutPage">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>

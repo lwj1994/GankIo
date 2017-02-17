@@ -196,6 +196,9 @@ public class WebActivity extends BaseSimpleActivity {
           ToastUtil.longMsg(R.string.tip_open_fail);
         }
         return true;
+      case R.id.webview_action_share:
+        AndroidUtil.share(this, mUrl);
+        return true;
     }
     return super.onOptionsItemSelected(item);
   }

@@ -1,6 +1,7 @@
 package me.venjerlu.gankio.modules.gank.meizhi.adapter;
 
 import android.graphics.Bitmap;
+import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -27,8 +28,10 @@ import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
  */
 
 public class MeizhiAdapter extends BaseListAdapter<Gank> {
+  private static SparseIntArray mHeightSparseArray;
 
   @Inject MeizhiAdapter() {
+    mHeightSparseArray = new SparseIntArray();
   }
 
   @Override protected BaseViewHolder onCreateNormalViewHolder(ViewGroup parent, int viewType) {
@@ -56,25 +59,29 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
     }
 
     @Override protected void bind(final Gank gank) {
-      itemView.setTag(gank.getUrl());
+
       ImgLoader.getInstance()
           .bitmap(mContext, gank.getUrl(),
               new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
                 @Override public void onResourceReady(Bitmap bitmap,
                     GlideAnimation<? super Bitmap> glideAnimation) {
                   if (bitmap != null) {
-                    int originHeight = bitmap.getHeight();
-                    int originWidth = bitmap.getWidth();
-                    if (originHeight > 0 && originWidth > 0) {
-                      float scale = (float) originHeight / originWidth;
-                      int width = ScreenUtils.getScreenWidth(mContext) / 2;
-                      FrameLayout.LayoutParams layoutParams =
-                          (FrameLayout.LayoutParams) mImageView.getLayoutParams();
-                      layoutParams.width = width;
-                      layoutParams.height = (int) (layoutParams.width * scale);
-                      mImageView.setImageBitmap(bitmap);
-                      mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    FrameLayout.LayoutParams layoutParams =
+                        (FrameLayout.LayoutParams) mImageView.getLayoutParams();
+                    if (mHeightSparseArray.get(getAdapterPosition()) > 0) {
+                      layoutParams.height = mHeightSparseArray.get(getAdapterPosition());
+                    } else {
+                      int originHeight = bitmap.getHeight();
+                      int originWidth = bitmap.getWidth();
+                      if (originHeight > 0 && originWidth > 0) {
+                        float scale = (float) originHeight / originWidth;
+                        layoutParams.width = ScreenUtils.getScreenWidth(mContext) / 2;
+                        layoutParams.height = (int) (layoutParams.width * scale);
+                        mHeightSparseArray.put(getAdapterPosition(), layoutParams.height);
+                      }
                     }
+                    mImageView.setImageBitmap(bitmap);
+                    mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                   }
                 }
               });

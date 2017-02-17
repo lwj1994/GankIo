@@ -16,6 +16,10 @@
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/me.yokeyword/fragmentation/0.10.1/res/anim/v_fragment_pop_enter.xml"
     },
     {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/anim/design_bottom_sheet_slide_in.xml"
+    },
+    {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/anim/design_fab_out.xml"
     },
@@ -30,6 +34,10 @@
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
         "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/merged/debug/anim/v_fragment_exit.xml",
