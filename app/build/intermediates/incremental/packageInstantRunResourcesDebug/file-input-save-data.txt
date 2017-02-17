@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Feb 18 00:33:27 CST 2017
+#Sat Feb 18 01:55:31 CST 2017
 20.base=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/resources-debug.ap_
 143.base=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/resources-debug.ap_
 340.file=/Users/venjerLu/Desktop/GankIo/app/build/intermediates/res/resources-debug.ap_/res/layout/leak_canary_heap_dump_toast.xml

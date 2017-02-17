@@ -5,13 +5,13 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="137053171671198"
+    timestamp="137675967409153"
     token="1969964360560191992"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1735" />
+        duration="1537" />
     <task
         name="instant-run-dex"
         duration="0" />
@@ -23,7 +23,7 @@
         duration="1" />
 
     <artifact
-        location="/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex"
+        location="/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
         type="DEX" />
 
     <build
@@ -41,17 +41,24 @@
             type="DEX" />
     </build>
     <build
-        timestamp="136942085776626"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
-            type="DEX" />
-    </build>
-    <build
         timestamp="137053171671198"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="137629764433180"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="137675967409153"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/venjerLu/Desktop/GankIo/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
             type="DEX" />
     </build>
 
