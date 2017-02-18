@@ -16,4 +16,9 @@
   <dimen name="today_title_paddingbottom">8dp</dimen>
   <dimen name="meizhi_card_corner">3dp</dimen>
   <dimen name="meizhi_padding">5dp</dimen>
+
+  <dimen name="about_header_height">200dp</dimen>
+  <dimen name="about_card_margin">8dp</dimen>
+  <dimen name="avatar_size">58dp</dimen>
+
 </resources>

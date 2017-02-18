@@ -7,8 +7,8 @@ import java.util.List;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter;
+import me.venjerlu.gankio.modules.gank.meizhi.presenter.MeizhiPresenter;
 import me.venjerlu.gankio.modules.gank.model.Gank;
-import me.venjerlu.gankio.modules.gank.normal.presenter.NormalPresenter;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.BaseStaggeredGridLayoutManager;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
 
@@ -17,7 +17,7 @@ import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class MeizhiFragment extends BaseListFragment<NormalPresenter<IMeizhiView>, MeizhiAdapter>
+public class MeizhiFragment extends BaseListFragment<MeizhiPresenter, MeizhiAdapter>
     implements IMeizhiView {
   private static final int sSize = 10;
   private int mPage;
@@ -58,6 +58,7 @@ public class MeizhiFragment extends BaseListFragment<NormalPresenter<IMeizhiView
   }
 
   @Override public void onRefresh() {
+    //mPresenter.setOnNotifyData();
     mPage = 1;
     mPresenter.getData(GankApi.福利, sSize, mPage);
     mPullToRefreshLayout.enableLoadMore(true);
@@ -66,5 +67,9 @@ public class MeizhiFragment extends BaseListFragment<NormalPresenter<IMeizhiView
   @Override protected void onLoadMore() {
     mPage++;
     mPresenter.getData(GankApi.福利, sSize, mPage);
+  }
+
+  @Override public void onNotifyData(List<Gank> datas) {
+    mAdapter.insertData(datas);
   }
 }

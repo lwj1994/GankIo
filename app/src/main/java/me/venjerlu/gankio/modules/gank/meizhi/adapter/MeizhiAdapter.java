@@ -1,16 +1,11 @@
 package me.venjerlu.gankio.modules.gank.meizhi.adapter;
 
-import android.graphics.Bitmap;
-import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import butterknife.BindView;
 import com.blankj.utilcode.utils.ScreenUtils;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.RxBus;
@@ -28,10 +23,8 @@ import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
  */
 
 public class MeizhiAdapter extends BaseListAdapter<Gank> {
-  private static SparseIntArray mHeightSparseArray;
 
   @Inject MeizhiAdapter() {
-    mHeightSparseArray = new SparseIntArray();
   }
 
   @Override protected BaseViewHolder onCreateNormalViewHolder(ViewGroup parent, int viewType) {
@@ -59,32 +52,18 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
     }
 
     @Override protected void bind(final Gank gank) {
+      FrameLayout.LayoutParams layoutParams =
+          (FrameLayout.LayoutParams) mImageView.getLayoutParams();
+      int originHeight = gank.getHeight();
+      int originWidth = gank.getWidth();
+      if (originHeight > 0 && originWidth > 0) {
+        float scale = (float) originHeight / originWidth;
+        layoutParams.width = ScreenUtils.getScreenWidth(mContext) / 2;
+        layoutParams.height = (int) (layoutParams.width * scale);
+      }
+      mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      ImgLoader.getInstance().normal(mContext, gank.getUrl(), mImageView);
 
-      ImgLoader.getInstance()
-          .bitmap(mContext, gank.getUrl(),
-              new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
-                @Override public void onResourceReady(Bitmap bitmap,
-                    GlideAnimation<? super Bitmap> glideAnimation) {
-                  if (bitmap != null) {
-                    FrameLayout.LayoutParams layoutParams =
-                        (FrameLayout.LayoutParams) mImageView.getLayoutParams();
-                    if (mHeightSparseArray.get(getAdapterPosition()) > 0) {
-                      layoutParams.height = mHeightSparseArray.get(getAdapterPosition());
-                    } else {
-                      int originHeight = bitmap.getHeight();
-                      int originWidth = bitmap.getWidth();
-                      if (originHeight > 0 && originWidth > 0) {
-                        float scale = (float) originHeight / originWidth;
-                        layoutParams.width = ScreenUtils.getScreenWidth(mContext) / 2;
-                        layoutParams.height = (int) (layoutParams.width * scale);
-                        mHeightSparseArray.put(getAdapterPosition(), layoutParams.height);
-                      }
-                    }
-                    mImageView.setImageBitmap(bitmap);
-                    mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                  }
-                }
-              });
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
           RxBus.getDefault()

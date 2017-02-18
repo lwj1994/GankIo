@@ -35,18 +35,13 @@
     <item name="android:layout_width">68dp</item>
     <item name="android:layout_height">@dimen/gank_item_content_height</item>
     <item name="android:layout_marginRight">5dp</item>
-    <item name="android:layout_marginEnd">5dp</item>
-    <item name="android:background">@drawable/ripple_normal_selecor</item>
   </style>
 
   <style name="gankItem">
-    <item name="android:paddingStart">19dp</item>
     <item name="android:paddingLeft">19dp</item>
-    <item name="android:paddingEnd">16dp</item>
     <item name="android:paddingRight">16dp</item>
     <item name="android:paddingTop">8dp</item>
     <item name="android:paddingBottom">8dp</item>
-    <item name="android:background">@drawable/ripple_normal_selecor</item>
   </style>
 
   <style name="gankTitle">
@@ -83,4 +78,10 @@
   <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
     <item name="android:textSize">16sp</item>
   </style>
+
+  <style name="CollapsingToolbarTitleStyle"
+      parent="@android:style/TextAppearance">
+    <item name="android:textColor">@android:color/white</item>
+  </style>
+
 </resources>

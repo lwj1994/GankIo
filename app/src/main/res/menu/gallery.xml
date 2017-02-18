@@ -13,6 +13,6 @@
       android:id="@+id/gallery_action_share"
       android:icon="@drawable/ic_share_white_24dp"
       android:orderInCategory="99"
-      android:title="@string/gallery_share"
+      android:title="@string/share"
       app:showAsAction="ifRoom"/>
 </menu>

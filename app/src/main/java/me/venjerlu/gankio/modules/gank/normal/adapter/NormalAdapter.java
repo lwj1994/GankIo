@@ -1,5 +1,6 @@
 package me.venjerlu.gankio.modules.gank.normal.adapter;
 
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,7 @@ public class NormalAdapter extends BaseListAdapter<Gank> {
       if (TextUtils.isEmpty(imgUrl)) {
         mImg.setImageResource(R.drawable.ic_placeholder_black_24dp);
       } else {
-        ImgLoader.getInstance().normal(mContext, imgUrl, mImg);
+        ImgLoader.getInstance().normal(mContext, imgUrl + "?imageView2/0/w/200", mImg);
       }
       mTitle.setText(gank.getDesc());
       if (!TextUtils.isEmpty(gank.getWho())) {
@@ -78,6 +79,9 @@ public class NormalAdapter extends BaseListAdapter<Gank> {
           RxBus.getDefault().post(new OnStartWebActivityBus(gank.getUrl(), gank.getDesc()));
         }
       });
+      if (Build.VERSION.SDK_INT >= 21) {
+        itemView.setBackgroundResource(R.drawable.ripple_normal_selecor);
+      }
     }
 
     private void reset() {

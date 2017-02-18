@@ -27,10 +27,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Description:
  */
 @Module public class RetrofitModule {
+  private static RetrofitModule instance;
   private Context mContext;
-
   public RetrofitModule(Context mContext) {
     this.mContext = mContext;
+  }
+
+  public static RetrofitModule getInstance(Context c) {
+    if (instance == null) {
+      instance = new RetrofitModule(c);
+    }
+    return instance;
   }
 
   @Provides @Singleton OkHttpClient provideOkHttpClient() {
@@ -86,5 +93,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(GankApi.class);
+  }
+
+  public <T> T provideGankApi(String baseurl, Class<T> tClass) {
+    return new Retrofit.Builder().baseUrl(baseurl)
+        .client(provideOkHttpClient())
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+        .create(tClass);
   }
 }

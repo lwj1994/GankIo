@@ -15,7 +15,7 @@ import me.venjerlu.gankio.utils.RxUtil;
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class NormalPresenter<T extends INormalView> extends RxPresenter<T> {
+public class NormalPresenter extends RxPresenter<INormalView> {
   private static final String TAG = "NormalPresenter";
 
   @Inject NormalPresenter(GankApi gankApi) {

@@ -1,5 +1,6 @@
 package me.venjerlu.gankio.modules.gank.today.adapter;
 
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +98,9 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
           RxBus.getDefault().post(new OnStartWebActivityBus(gank.getUrl(), gank.getDesc()));
         }
       });
+      if (Build.VERSION.SDK_INT >= 21) {
+        itemView.setBackgroundResource(R.drawable.ripple_normal_selecor);
+      }
     }
 
     private void reset() {

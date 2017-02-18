@@ -13,7 +13,7 @@ import me.venjerlu.gankio.modules.gank.normal.presenter.NormalPresenter;
  * Description:
  */
 
-public class NormalFragment extends BaseListFragment<NormalPresenter<INormalView>, NormalAdapter>
+public class NormalFragment extends BaseListFragment<NormalPresenter, NormalAdapter>
     implements INormalView {
   private static final String TAG = "NormalFragment";
   private static final String TYPE = TAG + "type";

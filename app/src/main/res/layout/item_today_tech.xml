@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/gankItem"
@@ -8,6 +9,7 @@
   <ImageView
       android:id="@+id/today_tech_img"
       android:background="@color/gankImgBg"
+      tools:ignore="ContentDescription"
       style="@style/gankImg"
       />
   <RelativeLayout
@@ -36,11 +38,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:drawableLeft="@drawable/ic_svg_time_12dp"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_svg_time_12dp"
         android:gravity="center"
         android:textColor="@color/gankImgBg"
         android:textSize="12sp"
+        tools:ignore="RelativeOverlap"
         />
   </RelativeLayout>
 </LinearLayout>

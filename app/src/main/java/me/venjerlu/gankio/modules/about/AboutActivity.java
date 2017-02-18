@@ -3,57 +3,64 @@ package me.venjerlu.gankio.modules.about;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
+import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import me.drakeet.multitype.Items;
-import me.drakeet.support.about.AbsAboutActivity;
-import me.drakeet.support.about.Card;
-import me.drakeet.support.about.Category;
-import me.drakeet.support.about.Contributor;
-import me.drakeet.support.about.License;
-import me.drakeet.support.about.Line;
+import butterknife.BindView;
 import me.venjerlu.gankio.BuildConfig;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
+import me.venjerlu.gankio.utils.AndroidUtil;
 
 /**
  * Author/Date: venjerLu / 2017/2/16 19:10
  * Email:       alwjlola@gmail.com
  * Description: 关于
  */
-public class AboutActivity extends AbsAboutActivity {
+public class AboutActivity extends BaseSimpleActivity {
   private static final String TAG = "AboutActivity";
+  @BindView(R.id.about_version) TextView mVersion;
+  @BindView(R.id.about_toolbar) Toolbar mToolbar;
+  @BindView(R.id.about_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
+  @BindView(R.id.about_appbar) AppBarLayout mAppbar;
+  @BindView(R.id.about_avatar_amaze) ImageView mAvatarAmaze;
+  @BindView(R.id.about_avatar_zishuai) ImageView mAvatarZishuai;
 
   public static void startMe(Activity activity) {
     activity.startActivity(new Intent(activity, AboutActivity.class));
   }
 
-  @SuppressLint("SetTextI18n") @Override
-  protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
-    setHeaderContentColor(ContextCompat.getColor(this, R.color.colorPrimary));
-    setNavigationIcon(R.drawable.ic_back_white_20dp);
-    icon.setImageResource(R.mipmap.ic_launcher);
-    slogan.setText("About Page By Amaze");
-    version.setText("v" + BuildConfig.VERSION_NAME);
+  @Override public int getLayout() {
+    return R.layout.activity_about;
   }
 
-  @Override protected void onItemsCreated(@NonNull Items items) {
-    items.add(new Category("介绍与帮助"));
-    items.add(new Card(getString(R.string.card_content), "分享"));
+  @Override protected int getMenuRes() {
+    return R.menu.about;
+  }
 
-    items.add(new Line());
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.about_action_share) {
+      AndroidUtil.share(this, "https://github.com/lwj1994/GankIo");
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
 
-    items.add(new Category("Developers"));
-    items.add(new Contributor(R.mipmap.ic_launcher, "Amaze", "Developer"));
-    items.add(new Contributor(R.mipmap.ic_launcher, "zishuai Liu", "UI设计"));
+  @SuppressLint("SetTextI18n") @Override protected void initData(Bundle savedInstanceState) {
+    initToolbar(mToolbar, "关于");
+    mToolbar.setNavigationIcon(R.drawable.ic_back_white_20dp);
+    mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        onBackPressedSupport();
+      }
+    });
 
-    items.add(new Line());
-
-    items.add(new Category("Open Source Licenses"));
-    items.add(new License("MultiType", "drakeet", License.APACHE_2,
-        "https://github.com/drakeet/MultiType"));
-    items.add(new License("about-page", "drakeet", License.APACHE_2,
-        "https://github.com/drakeet/about-page"));
+    mCollapsingToolbar.setTitle(getString(R.string.app_name));
+    mVersion.setText("Version " + BuildConfig.VERSION_NAME);
   }
 }

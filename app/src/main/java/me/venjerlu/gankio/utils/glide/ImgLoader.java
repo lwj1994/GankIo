@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.widget.ContentLoadingProgressBar;
+import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -40,8 +41,12 @@ public class ImgLoader {
 
   public void normal(Context context, String url, ImageView imageView) {
     Glide.with(context).load(url).centerCrop()
-        // .placeholder(R.drawable.ic_placeholder_black_24dp)
+        //.placeholder(R.drawable.ic_placeholder_black_24dp
         .crossFade().into(imageView);
+  }
+
+  public void centerCrop(Context context, String url, ImageView imageView) {
+    Glide.with(context).load(url).dontAnimate().centerCrop().into(imageView);
   }
 
   public void circle(Context context, String url, ImageView imageView) {
@@ -64,8 +69,7 @@ public class ImgLoader {
   public void size(Context context, String url, ImageView imageView,
       SizeReadyCallback sizeReadyCallback) {
     Glide.with(context)
-        .load(url)
-        .centerCrop().crossFade().placeholder(R.drawable.ic_placeholder_black_24dp)
+        .load(url).centerCrop().crossFade().placeholder(R.drawable.ic_placeholder_black_24dp)
         .into(imageView)
         .getSize(sizeReadyCallback);
   }
@@ -73,9 +77,13 @@ public class ImgLoader {
   public void bitmap(Context context, String url, SimpleTarget<Bitmap> target) {
     Glide.with(context)
         .load(url)
-        .asBitmap()
+        .asBitmap().thumbnail(0.3f)
         .placeholder(R.drawable.ic_placeholder_black_24dp)
         .into(target);
+  }
+
+  public void clear(View view) {
+    Glide.clear(view);
   }
 
   /**
@@ -117,6 +125,13 @@ public class ImgLoader {
         imageView.setImage(ImageSource.bitmap(resource));
       }
     });
+  }
+
+  /**
+   * 利用SubsamplingScaleImage加载图片
+   */
+  public void loadSubsamplingScaleImage(Context mContext, String url, SimpleTarget<Bitmap> target) {
+    Glide.with(mContext).load(url).asBitmap().centerCrop().into(target);
   }
 
   public void onDestroy(Context context) {

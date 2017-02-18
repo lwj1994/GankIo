@@ -113,7 +113,7 @@ public class PullRecyclerLayout extends FrameLayout
   private boolean checkIfLoadMore() {
     int lastVisibleItemPosition = mLayoutManager.findLastVisiblePosition();
     int totalCount = mLayoutManager.getLayoutManager().getItemCount();
-    return totalCount - lastVisibleItemPosition < 5;
+    return totalCount - lastVisibleItemPosition < 3;
   }
 
   public void enableLoadMore(boolean enable) {

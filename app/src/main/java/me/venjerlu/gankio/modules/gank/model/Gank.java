@@ -1,17 +1,28 @@
 package me.venjerlu.gankio.modules.gank.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import java.util.List;
+import me.venjerlu.gankio.common.http.QiniuApi;
 
 /**
  * Author/Date: venjerLu / 2016/12/10 15:46
  * Email:       alwjlola@gmail.com
  * Description:
  */
-public class Gank {
+public class Gank implements Parcelable {
   public static final int MEIZHI = 2;
   public static final int TECHNIQUE = 3;
   public static final int VEDIO = 4;
+  public static final Creator<Gank> CREATOR = new Creator<Gank>() {
+    @Override public Gank createFromParcel(Parcel in) {
+      return new Gank(in);
+    }
 
+    @Override public Gank[] newArray(int size) {
+      return new Gank[size];
+    }
+  };
   /**
    * _id : 584a0130421aa963f321b040
    * createdAt : 2016-12-09T08:56:16.913Z
@@ -33,6 +44,39 @@ public class Gank {
   private String url;
   private boolean used;
   private String who;
+  private int width;
+  private int height;
+
+  protected Gank(Parcel in) {
+    _id = in.readString();
+    createdAt = in.readString();
+    desc = in.readString();
+    images = in.createStringArrayList();
+    publishedAt = in.readString();
+    source = in.readString();
+    type = in.readString();
+    url = in.readString();
+    used = in.readByte() != 0;
+    who = in.readString();
+    width = in.readInt();
+    height = in.readInt();
+  }
+
+  public int getWidth() {
+    return width;
+  }
+
+  public void setWidth(int width) {
+    this.width = width;
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public void setHeight(int height) {
+    this.height = height;
+  }
 
   public List<String> getImages() {
     return images;
@@ -112,5 +156,28 @@ public class Gank {
 
   public void setWho(String who) {
     this.who = who;
+  }
+
+  @Override public int describeContents() {
+    return 0;
+  }
+
+  @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(_id);
+    dest.writeString(createdAt);
+    dest.writeString(desc);
+    dest.writeStringList(images);
+    dest.writeString(publishedAt);
+    dest.writeString(source);
+    dest.writeString(type);
+    dest.writeString(url);
+    dest.writeByte((byte) (used ? 1 : 0));
+    dest.writeString(who);
+    dest.writeInt(width);
+    dest.writeInt(height);
+  }
+
+  public String getPicName() {
+    return getUrl().substring(QiniuApi.QINIU_URL.length());
   }
 }
