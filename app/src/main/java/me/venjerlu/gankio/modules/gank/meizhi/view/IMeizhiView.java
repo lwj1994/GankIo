@@ -1,7 +1,5 @@
 package me.venjerlu.gankio.modules.gank.meizhi.view;
 
-import java.util.List;
-import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.normal.view.INormalView;
 
 /**
@@ -10,5 +8,4 @@ import me.venjerlu.gankio.modules.gank.normal.view.INormalView;
  * Description:
  */
 public interface IMeizhiView extends INormalView {
-  void onNotifyData(List<Gank> datas);
 }

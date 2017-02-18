@@ -3,7 +3,6 @@ package me.venjerlu.gankio.modules.gank.meizhi.presenter;
 import android.graphics.Bitmap;
 import com.elvishew.xlog.XLog;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.DisposableSubscriber;
@@ -11,10 +10,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import javax.inject.Inject;
 import me.venjerlu.gankio.App;
-import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
-import me.venjerlu.gankio.modules.gank.bus.OnNotifyDataBus;
 import me.venjerlu.gankio.modules.gank.meizhi.view.IMeizhiView;
 import me.venjerlu.gankio.modules.gank.model.Gank;
 import me.venjerlu.gankio.modules.gank.model.GankModel;
@@ -72,17 +69,6 @@ public class MeizhiPresenter extends RxPresenter<IMeizhiView> {
 
           @Override public void onComplete() {
             mView.onRefreshCompleted();
-          }
-        }));
-  }
-
-  public void setOnNotifyData() {
-    addDisposable(RxBus.getDefault()
-        .toObservable(OnNotifyDataBus.class)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<OnNotifyDataBus>() {
-          @Override public void accept(OnNotifyDataBus onNotifyDataBus) throws Exception {
-            mView.onNotifyData(onNotifyDataBus.datas);
           }
         }));
   }

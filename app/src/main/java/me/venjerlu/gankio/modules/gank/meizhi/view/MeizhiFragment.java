@@ -58,7 +58,6 @@ public class MeizhiFragment extends BaseListFragment<MeizhiPresenter, MeizhiAdap
   }
 
   @Override public void onRefresh() {
-    //mPresenter.setOnNotifyData();
     mPage = 1;
     mPresenter.getData(GankApi.福利, sSize, mPage);
     mPullToRefreshLayout.enableLoadMore(true);
@@ -67,9 +66,5 @@ public class MeizhiFragment extends BaseListFragment<MeizhiPresenter, MeizhiAdap
   @Override protected void onLoadMore() {
     mPage++;
     mPresenter.getData(GankApi.福利, sSize, mPage);
-  }
-
-  @Override public void onNotifyData(List<Gank> datas) {
-    mAdapter.insertData(datas);
   }
 }

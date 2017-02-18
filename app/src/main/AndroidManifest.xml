@@ -37,7 +37,6 @@
     <activity android:name=".modules.gallery.GalleryActivity"
         />
 
-    <service android:name=".modules.gank.MeizhiService"/>
     <meta-data
         android:name="me.venjerlu.gankio.utils.glide.GlideDiskCacheModule"
         android:value="GlideModule"/>
