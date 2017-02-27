@@ -4,7 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 import java.util.ArrayList;
 import java.util.List;
-import me.venjerlu.gankio.modules.gank.model.Gank;
+import me.venjerlu.gankio.model.Gank;
 
 /**
  * Author/Date: venjerLu / 2016/12/11 15:00

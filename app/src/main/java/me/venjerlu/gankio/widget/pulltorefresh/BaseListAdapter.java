@@ -69,14 +69,6 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
         }
       }
     }
-    //holder.itemView.setOnClickListener(new View.OnClickListener() {
-    //  @Override public void onClick(View v) {
-    //    if (mOnClickItemListener != null) {
-    //      mOnClickItemListener.onClick(holder.getAdapterPosition(),
-    //          mList.get(holder.getAdapterPosition()));
-    //    }
-    //  }
-    //});
   }
 
   @Override public int getItemCount() {

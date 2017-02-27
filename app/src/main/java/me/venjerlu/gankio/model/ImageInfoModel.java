@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.modules.gank.model;
+package me.venjerlu.gankio.model;
 
 /**
  * Author/Date: venjerLu / 2017/2/18 15:46

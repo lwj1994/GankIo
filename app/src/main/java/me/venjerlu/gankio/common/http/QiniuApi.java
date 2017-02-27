@@ -1,7 +1,7 @@
 package me.venjerlu.gankio.common.http;
 
 import io.reactivex.Flowable;
-import me.venjerlu.gankio.modules.gank.model.ImageInfoModel;
+import me.venjerlu.gankio.model.ImageInfoModel;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 

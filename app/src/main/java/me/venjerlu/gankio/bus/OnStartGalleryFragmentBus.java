@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.modules.gank.bus;
+package me.venjerlu.gankio.bus;
 
 import android.support.annotation.DrawableRes;
 

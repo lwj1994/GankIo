@@ -3,7 +3,7 @@ package me.venjerlu.gankio.modules.gank.normal.view;
 import android.os.Bundle;
 import java.util.List;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
-import me.venjerlu.gankio.modules.gank.model.Gank;
+import me.venjerlu.gankio.model.Gank;
 import me.venjerlu.gankio.modules.gank.normal.adapter.NormalAdapter;
 import me.venjerlu.gankio.modules.gank.normal.presenter.NormalPresenter;
 

@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.modules.gank.bus;
+package me.venjerlu.gankio.bus;
 
 /**
  * Author/Date: venjerLu / 2016/12/13 23:01

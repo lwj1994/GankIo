@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.modules.gank.model;
+package me.venjerlu.gankio.model;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;

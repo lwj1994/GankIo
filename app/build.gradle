@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+  return new Date().format("yyyy.MM.dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
   compileSdkVersion 25
   buildToolsVersion "25.0.2"
+
   defaultConfig {
     applicationId "me.venjerlu.gankio"
     minSdkVersion 16
@@ -11,12 +16,25 @@ android {
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
+
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled true
+      zipAlignEnabled true
+      shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+          def outputFile = output.outputFile
+          if (outputFile != null && outputFile.name.endsWith('.apk')) {
+            def fileName = "app-${defaultConfig.versionName}-${releaseTime()}.apk"
+            output.outputFile = new File(outputFile.parent, fileName)
+          }
+        }
+      }
     }
   }
+
   tasks.withType(JavaCompile) {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -73,8 +91,8 @@ dependencies {
   //  compile 'me.drakeet.multitype:multitype:2.4.1'
 
   // Dependency Injection
-  compile 'com.google.dagger:dagger:2.8'
-  annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+  compile 'com.google.dagger:dagger:2.9'
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
   compile 'com.jakewharton:butterknife:8.4.0'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 

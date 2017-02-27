@@ -2,9 +2,9 @@ package me.venjerlu.gankio.common.http;
 
 import io.reactivex.Flowable;
 import java.util.List;
-import me.venjerlu.gankio.modules.gank.model.DateModel;
-import me.venjerlu.gankio.modules.gank.model.Gank;
-import me.venjerlu.gankio.modules.gank.model.GankModel;
+import me.venjerlu.gankio.model.DateModel;
+import me.venjerlu.gankio.model.Gank;
+import me.venjerlu.gankio.model.GankModel;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 

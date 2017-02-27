@@ -12,9 +12,9 @@ import javax.inject.Inject;
 import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
+import me.venjerlu.gankio.model.Gank;
+import me.venjerlu.gankio.model.GankModel;
 import me.venjerlu.gankio.modules.gank.meizhi.view.IMeizhiView;
-import me.venjerlu.gankio.modules.gank.model.Gank;
-import me.venjerlu.gankio.modules.gank.model.GankModel;
 import me.venjerlu.gankio.utils.glide.ImgLoader;
 
 /**

@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.modules.gank.model;
+package me.venjerlu.gankio.model;
 
 import java.util.List;
 
@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GankModel<T> {
   private List<String> category;
+  private boolean error;
+  private T results;
 
   public List<String> getCategory() {
     return category;
@@ -18,9 +20,6 @@ public class GankModel<T> {
   public void setCategory(List<String> category) {
     this.category = category;
   }
-
-  private boolean error;
-  private T results;
 
   public T getResults() {
     return results;

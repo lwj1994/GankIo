@@ -6,7 +6,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import io.reactivex.subscribers.DisposableSubscriber;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
-import me.venjerlu.gankio.modules.gank.model.GankModel;
+import me.venjerlu.gankio.model.GankModel;
 import me.venjerlu.gankio.utils.ToastUtil;
 
 /**

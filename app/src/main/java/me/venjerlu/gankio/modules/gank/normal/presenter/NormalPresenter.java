@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import me.venjerlu.gankio.common.http.GankApi;
 import me.venjerlu.gankio.common.http.GankSubscriber;
 import me.venjerlu.gankio.common.mvp.RxPresenter;
-import me.venjerlu.gankio.modules.gank.model.Gank;
-import me.venjerlu.gankio.modules.gank.model.GankModel;
+import me.venjerlu.gankio.model.Gank;
+import me.venjerlu.gankio.model.GankModel;
 import me.venjerlu.gankio.modules.gank.normal.view.INormalView;
 import me.venjerlu.gankio.utils.RxUtil;
 

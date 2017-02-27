@@ -1,7 +1,7 @@
 package me.venjerlu.gankio.modules.gank.today.view;
 
 import me.venjerlu.gankio.common.mvp.IBaseListView;
-import me.venjerlu.gankio.modules.gank.model.DateModel;
+import me.venjerlu.gankio.model.DateModel;
 
 /**
  * Author/Date: venjerLu / 2016/12/10 20:16

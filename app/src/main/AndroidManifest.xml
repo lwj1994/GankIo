@@ -20,6 +20,7 @@
 
     <activity
         android:name=".modules.main.MainActivity"
+        android:configChanges="orientation|screenSize"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
       <intent-filter>
@@ -29,12 +30,15 @@
     </activity>
 
     <activity android:name=".common.activity.WebActivity"
+        android:configChanges="orientation|screenSize"
         />
 
     <activity android:name=".modules.about.AboutActivity"
+        android:configChanges="orientation|screenSize"
         />
 
     <activity android:name=".modules.gallery.GalleryActivity"
+        android:configChanges="orientation|screenSize"
         />
 
     <meta-data

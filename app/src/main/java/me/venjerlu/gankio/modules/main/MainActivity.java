@@ -1,5 +1,6 @@
 package me.venjerlu.gankio.modules.main;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -12,15 +13,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.bus.OnStartGalleryFragmentBus;
+import me.venjerlu.gankio.bus.OnStartWebActivityBus;
+import me.venjerlu.gankio.bus.OnUpdateTitleBus;
 import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
 import me.venjerlu.gankio.common.activity.WebActivity;
 import me.venjerlu.gankio.common.fragment.BaseLazyFragment;
 import me.venjerlu.gankio.modules.about.AboutActivity;
 import me.venjerlu.gankio.modules.gallery.GalleryActivity;
-import me.venjerlu.gankio.modules.gank.bus.OnStartGalleryFragmentBus;
-import me.venjerlu.gankio.modules.gank.bus.OnStartWebActivityBus;
-import me.venjerlu.gankio.modules.gank.bus.OnUpdateTitleBus;
 import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
@@ -131,5 +132,14 @@ public class MainActivity extends BaseSimpleActivity
    */
   @Override protected FragmentAnimator onCreateFragmentAnimator() {
     return new DefaultNoAnimator();
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+
+    // Checks the orientation of the screen
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+    }
   }
 }
