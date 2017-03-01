@@ -24,9 +24,10 @@ public class OnStartGalleryBus {
     this.title = title;
   }
 
-  public OnStartGalleryBus(int type, List<String> urls, int position) {
+  public OnStartGalleryBus(int type, List<String> urls, int position, String title) {
     this.type = type;
     this.urls = urls;
     this.position = position;
+    this.title = title;
   }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import com.blankj.utilcode.utils.ScreenUtils;
 import io.reactivex.Flowable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.DisposableSubscriber;
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
  */
 
 public class MeizhiAdapter extends BaseListAdapter<Gank> {
+  private Disposable mDisposable;
+
   @Inject MeizhiAdapter() {
   }
 
@@ -44,6 +47,10 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
 
   @Override public void clearData() {
     super.clearData();
+  }
+
+  public void onDestroy() {
+    if (mDisposable != null) mDisposable.dispose();
   }
 
   class MeizhiViewHolder extends BaseViewHolder<Gank> {
@@ -69,10 +76,10 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
       final List<String> urls = new ArrayList<>();
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
-          Flowable.fromIterable(mList)
+
+          mDisposable = Flowable.fromIterable(mList)
               .subscribeOn(Schedulers.io())
-              .observeOn(Schedulers.io())
-              .subscribe(new DisposableSubscriber<Gank>() {
+              .observeOn(Schedulers.io()).subscribeWith(new DisposableSubscriber<Gank>() {
                 @Override public void onNext(Gank gank) {
                   urls.add(gank.getUrl());
                 }
@@ -84,7 +91,7 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
                 @Override public void onComplete() {
                   RxBus.getDefault()
                       .post(new OnStartGalleryBus(GalleryActivity.TYPE_URL, urls,
-                          getAdapterPosition()));
+                          getAdapterPosition(), gank.getPicName()));
                 }
               });
         }

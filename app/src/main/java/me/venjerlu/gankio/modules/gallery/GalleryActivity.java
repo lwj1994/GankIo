@@ -114,10 +114,10 @@ public class GalleryActivity extends BaseActivity<GalleryPresenter> implements I
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.gallery_action_save:
-        mPresenter.save(this, mUrl, mTitle);
+        mPresenter.save(this, mUrls.get(mPosition), mTitle);
         break;
       case R.id.gallery_action_share:
-        mPresenter.share(this, mUrl, mTitle);
+        mPresenter.share(this, mUrls.get(mPosition), mTitle);
         break;
     }
     return super.onOptionsItemSelected(item);

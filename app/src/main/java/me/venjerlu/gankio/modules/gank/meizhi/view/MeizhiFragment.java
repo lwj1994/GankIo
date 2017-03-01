@@ -67,4 +67,9 @@ public class MeizhiFragment extends BaseListFragment<MeizhiPresenter, MeizhiAdap
     mPage++;
     mPresenter.getData(GankApi.福利, sSize, mPage);
   }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    mAdapter.onDestroy();
+  }
 }

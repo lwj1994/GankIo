@@ -137,7 +137,8 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
         @Override public void onClick(View v) {
           List<String> urls = new ArrayList<>();
           urls.add(url);
-          RxBus.getDefault().post(new OnStartGalleryBus(GalleryActivity.TYPE_URL, urls, 0));
+          RxBus.getDefault()
+              .post(new OnStartGalleryBus(GalleryActivity.TYPE_URL, urls, 0, gank.getPicName()));
         }
       });
     }

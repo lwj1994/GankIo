@@ -110,6 +110,7 @@ public class MainActivity extends BaseSimpleActivity
             intent.putStringArrayListExtra(GalleryActivity.EXTRA_URLS,
                 (ArrayList<String>) bus.urls);
             intent.putExtra(GalleryActivity.EXTRA_POSITION, bus.position);
+            intent.putExtra(GalleryActivity.EXTRA_TITLE, bus.title);
             startActivity(intent);
           }
         }));
