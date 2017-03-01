@@ -1,14 +1,14 @@
 package me.venjerlu.gankio.common.http;
 
-import android.content.Context;
 import com.blankj.utilcode.utils.NetworkUtils;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import dagger.Module;
 import dagger.Provides;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
+import me.venjerlu.gankio.App;
 import me.venjerlu.gankio.BuildConfig;
 import me.venjerlu.gankio.utils.AndroidUtil;
 import okhttp3.Cache;
@@ -19,6 +19,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -28,14 +29,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module public class RetrofitModule {
   private static RetrofitModule instance;
-  private Context mContext;
-  public RetrofitModule(Context mContext) {
-    this.mContext = mContext;
-  }
 
-  public static RetrofitModule getInstance(Context c) {
+  public static RetrofitModule getInstance() {
     if (instance == null) {
-      instance = new RetrofitModule(c);
+      instance = new RetrofitModule();
     }
     return instance;
   }
@@ -46,19 +43,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
       HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
       loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
       builder.addInterceptor(loggingInterceptor);
+      builder.addNetworkInterceptor(new StethoInterceptor());
     }
 
     // set Cache
-    File cacheFile = new File(AndroidUtil.getNetCacheDir(mContext));
+    File cacheFile = new File(AndroidUtil.getNetCacheDir(App.getAppComponent().getContext()));
     Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
     Interceptor cacheInterceptor = new Interceptor() {
       @Override public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        if (!NetworkUtils.isConnected(mContext)) {
+        if (!NetworkUtils.isConnected(App.getAppComponent().getContext())) {
           request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
         }
         Response response = chain.proceed(request);
-        if (NetworkUtils.isConnected(mContext)) {
+        if (NetworkUtils.isConnected(App.getAppComponent().getContext())) {
           int maxAge = 0;
           // 有网络时, 不缓存, 最大保存时长为0
           response.newBuilder()

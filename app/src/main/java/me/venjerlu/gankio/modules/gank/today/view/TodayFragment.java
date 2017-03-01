@@ -1,6 +1,6 @@
 package me.venjerlu.gankio.modules.gank.today.view;
 
-import android.os.Bundle;
+import com.rohitarya.glide.facedetection.transformation.core.GlideFaceDetector;
 import java.util.List;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
@@ -19,10 +19,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     implements ITodayView {
 
   public static TodayFragment newInstance() {
-    Bundle args = new Bundle();
-    TodayFragment fragment = new TodayFragment();
-    fragment.setArguments(args);
-    return fragment;
+    return new TodayFragment();
   }
 
   @Override protected void initInject() {
@@ -31,9 +28,9 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
 
   @Override protected void initData() {
     super.initData();
+    GlideFaceDetector.initialize(_mActivity);
     mPullToRefreshLayout.enableLoadMore(false);
     mRecyclerView.setVerticalScrollBarEnabled(false);
-    //mPresenter.setOnClickMeizhi(this);
   }
 
   @Override public void showError(String msg) {
@@ -74,5 +71,10 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     mAdapter.addHeader(R.layout.item_today_meizhi, new SectionData<>(meizhi.get(0)));
     mAdapter.addSection(6, "休息视频");
     mAdapter.addFooter(R.layout.item_today_tech, new SectionData<>(vedio.get(0)));
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    GlideFaceDetector.releaseDetector();
   }
 }

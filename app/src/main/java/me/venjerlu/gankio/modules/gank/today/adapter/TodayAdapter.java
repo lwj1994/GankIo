@@ -130,7 +130,7 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
 
     @Override protected void bind(final Gank gank) {
       final String url = gank.getUrl();
-      ImgLoader.getInstance().normal(mContext, url, mImg);
+      ImgLoader.getInstance().faceCenter(mContext, url, mImg);
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
           RxBus.getDefault()

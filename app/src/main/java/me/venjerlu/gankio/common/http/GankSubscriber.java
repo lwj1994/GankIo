@@ -2,12 +2,12 @@ package me.venjerlu.gankio.common.http;
 
 import com.elvishew.xlog.XLog;
 import com.google.gson.Gson;
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import io.reactivex.subscribers.DisposableSubscriber;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import me.venjerlu.gankio.model.GankModel;
 import me.venjerlu.gankio.utils.ToastUtil;
+import retrofit2.HttpException;
 
 /**
  * Author/Date: venjerLu / 8/14/2016 17:41

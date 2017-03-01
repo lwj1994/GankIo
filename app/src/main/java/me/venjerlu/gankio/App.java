@@ -5,6 +5,7 @@ import com.blankj.utilcode.utils.CrashUtils;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;
+import com.facebook.stetho.Stetho;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.squareup.leakcanary.LeakCanary;
 import me.venjerlu.gankio.common.di.component.AppComponent;
@@ -30,8 +31,7 @@ public class App extends Application {
   @Override public void onCreate() {
     super.onCreate();
     mAppComponent = DaggerAppComponent.builder()
-        .appModule(new AppModule(this))
-        .retrofitModule(new RetrofitModule(this))
+        .appModule(new AppModule(this)).retrofitModule(new RetrofitModule())
         .build();
     ToastUtils.init(false);
     LeakCanary.install(this);
@@ -44,5 +44,6 @@ public class App extends Application {
           // 显示悬浮球 ; 其他Mode:SHAKE: 摇一摇唤出   NONE：隐藏
           .stackViewMode(Fragmentation.BUBBLE).install();
     }
+    Stetho.initializeWithDefaults(this);
   }
 }

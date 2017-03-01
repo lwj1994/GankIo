@@ -21,7 +21,7 @@ import me.venjerlu.gankio.R;
 
 public class AndroidUtil {
 
-  private static HashSet<Activity> mActivities;
+  private static HashSet<Activity> mActivities = null;
 
   static {
     mActivities = new HashSet<>();

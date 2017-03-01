@@ -14,6 +14,7 @@ import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import com.rohitarya.glide.facedetection.transformation.FaceCenterCrop;
 import java.util.concurrent.ExecutionException;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
@@ -69,15 +70,17 @@ public class ImgLoader {
   public void size(Context context, String url, ImageView imageView,
       SizeReadyCallback sizeReadyCallback) {
     Glide.with(context)
-        .load(url).centerCrop().crossFade().placeholder(R.drawable.ic_placeholder_black_24dp)
+        .load(url)
+        .centerCrop()
+        .crossFade()
+        .placeholder(R.drawable.ic_placeholder_black_24dp)
         .into(imageView)
         .getSize(sizeReadyCallback);
   }
 
   public void bitmap(Context context, String url, SimpleTarget<Bitmap> target) {
     Glide.with(context)
-        .load(url)
-        .asBitmap().thumbnail(0.3f)
+        .load(url).asBitmap().thumbnail(0.3f)
         .placeholder(R.drawable.ic_placeholder_black_24dp)
         .into(target);
   }
@@ -103,6 +106,13 @@ public class ImgLoader {
       int height) {
     Glide.with(context).load(url).centerCrop().override(width, height).
         diskCacheStrategy(DiskCacheStrategy.RESULT).crossFade().into(imageView);
+  }
+
+  /**
+   * 加载人像居中的照片
+   */
+  public void faceCenter(Context context, String url, ImageView imageView) {
+    Glide.with(context).load(url).transform(new FaceCenterCrop()).into(imageView);
   }
 
   public void resume(Context context) {

@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import com.elvishew.xlog.XLog;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.utils.glide.ImgLoader;
 import me.venjerlu.gankio.widget.pulltorefresh.layoutManager.ILayoutManager;
 
 public class PullRecyclerLayout extends FrameLayout
     implements SwipeRefreshLayout.OnRefreshListener {
+  public static final String TAG = "PullRecyclerLayout";
   public static final int ACTION_PULL_TO_REFRESH = 1;
   public static final int ACTION_LOAD_MORE_REFRESH = 2;
   public static final int ACTION_IDLE = 0;
@@ -73,21 +75,8 @@ public class PullRecyclerLayout extends FrameLayout
 
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
-        //mSwipeRefreshLayout.setEnabled(mLayoutManager.findFirstCompletelyVisibleItemPosition() == 0);
-        //switch (mCurrentState){
-        //  case ACTION_PULL_TO_REFRESH:
-        //    enablePullToRefresh(true);
-        //    enableLoadMore(false);
-        //    break;
-        //  case ACTION_LOAD_MORE_REFRESH:
-        //    enablePullToRefresh(false);
-        //    enableLoadMore(true);
-        //    break;
-        //  case ACTION_IDLE:
-        //    enablePullToRefresh(true);
-        //    enableLoadMore(true);
-        //    break;
-        //}
+        XLog.tag(TAG).d("mCurrentState=" + mCurrentState + "\n" +
+            "isLoadMoreEnabled=" + isLoadMoreEnabled + "\ncheckIfLoadMore=" + checkIfLoadMore());
         if (mCurrentState == ACTION_IDLE && isLoadMoreEnabled && checkIfLoadMore()) {
           mCurrentState = ACTION_LOAD_MORE_REFRESH;
           mRecyclerView.post(new Runnable() {
@@ -112,8 +101,10 @@ public class PullRecyclerLayout extends FrameLayout
 
   private boolean checkIfLoadMore() {
     int lastVisibleItemPosition = mLayoutManager.findLastVisiblePosition();
+    XLog.tag(TAG).d("lastVisibleItemPosition=" + lastVisibleItemPosition);
     int totalCount = mLayoutManager.getLayoutManager().getItemCount();
-    return totalCount - lastVisibleItemPosition < 3;
+    XLog.tag(TAG).d("totalCount=" + totalCount);
+    return totalCount - lastVisibleItemPosition <= 3;
   }
 
   public void enableLoadMore(boolean enable) {
