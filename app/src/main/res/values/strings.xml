@@ -22,7 +22,7 @@
   <string name="webview_action_share">分享</string>
   <string name="app_name_with_introduce">技术和妹纸我都要</string>
   <string name="introduce_and_help"><![CDATA[介绍&帮助]]></string>
-  <string name="introduce">http://gank.io 的非官方 Android 客户端。每个工作日一张妹子图和一些技术干货。感谢稳如泰山的 zizhuaiLiu 的 UI 设计。感谢 @代码家 提供的 Api。部分页面参考了 https://github.com/drakeet/Meizhi， 感谢 @drakeet。\n\n这是我的第一个完整的业余 App，从中感受到了创造的乐趣。用到的一些流行的框架：RxJava 2.x + Dagger2 + Retrofit + MVP + Glide
+  <string name="introduce">http://gank.io 的非官方 Android 客户端。每个工作日一张妹子图和一些技术干货。感谢稳如泰山的 zizhuai.liu 的 UI 设计。感谢 @代码家 提供的 Api。部分页面参考了 https://github.com/drakeet/Meizhi， 感谢 @drakeet。\n\n这是我的第一个完整的业余 App，从中感受到了创造的乐趣。用到的一些流行的框架：RxJava 2.x + Dagger2 + Retrofit + MVP + Glide
     。\n项目开源地址：https://github.com/lwj1994/GankIo</string>
   <string name="developers">开发者</string>
   <string name="developer">Android 开发</string>

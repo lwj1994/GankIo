@@ -43,7 +43,8 @@ public class ImgLoader {
   public void normal(Context context, String url, ImageView imageView) {
     Glide.with(context).load(url).centerCrop()
         //.placeholder(R.drawable.ic_placeholder_black_24dp
-        .crossFade().into(imageView);
+        .crossFade().
+        into(imageView);
   }
 
   public void centerCrop(Context context, String url, ImageView imageView) {
@@ -79,8 +80,7 @@ public class ImgLoader {
   }
 
   public void bitmap(Context context, String url, SimpleTarget<Bitmap> target) {
-    Glide.with(context)
-        .load(url).asBitmap().thumbnail(0.3f)
+    Glide.with(context).load(url).asBitmap().thumbnail(0.3f)
         .placeholder(R.drawable.ic_placeholder_black_24dp)
         .into(target);
   }

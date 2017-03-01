@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.bus.OnStartGalleryFragmentBus;
+import me.venjerlu.gankio.bus.OnStartGalleryBus;
 import me.venjerlu.gankio.bus.OnStartWebActivityBus;
 import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.model.Gank;
@@ -133,9 +135,9 @@ public class TodayAdapter extends BaseSectionListAdapter<Gank> {
       ImgLoader.getInstance().faceCenter(mContext, url, mImg);
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
-          RxBus.getDefault()
-              .post(new OnStartGalleryFragmentBus(GalleryActivity.TYPE_URL, 0, url,
-                  gank.getPublishedAt()));
+          List<String> urls = new ArrayList<>();
+          urls.add(url);
+          RxBus.getDefault().post(new OnStartGalleryBus(GalleryActivity.TYPE_URL, urls, 0));
         }
       });
     }

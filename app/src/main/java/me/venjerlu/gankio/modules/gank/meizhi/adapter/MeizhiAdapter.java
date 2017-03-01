@@ -6,9 +6,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import butterknife.BindView;
 import com.blankj.utilcode.utils.ScreenUtils;
+import io.reactivex.Flowable;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.DisposableSubscriber;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.bus.OnStartGalleryFragmentBus;
+import me.venjerlu.gankio.bus.OnStartGalleryBus;
 import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.model.Gank;
 import me.venjerlu.gankio.modules.gallery.GalleryActivity;
@@ -23,7 +28,6 @@ import me.venjerlu.gankio.widget.pulltorefresh.BaseViewHolder;
  */
 
 public class MeizhiAdapter extends BaseListAdapter<Gank> {
-
   @Inject MeizhiAdapter() {
   }
 
@@ -39,9 +43,7 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
   }
 
   @Override public void clearData() {
-    int count = (isEmpty() ? 1 : 0) + mList.size();
     super.clearData();
-    notifyItemRangeRemoved(0, count);
   }
 
   class MeizhiViewHolder extends BaseViewHolder<Gank> {
@@ -52,6 +54,7 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
     }
 
     @Override protected void bind(final Gank gank) {
+      mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       FrameLayout.LayoutParams layoutParams =
           (FrameLayout.LayoutParams) mImageView.getLayoutParams();
       int originHeight = gank.getHeight();
@@ -61,14 +64,29 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
         layoutParams.width = ScreenUtils.getScreenWidth(mContext) / 2;
         layoutParams.height = (int) (layoutParams.width * scale);
       }
-      mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ImgLoader.getInstance().normal(mContext, gank.getUrl(), mImageView);
 
+      ImgLoader.getInstance().normal(mContext, gank.getUrl(), mImageView);
+      final List<String> urls = new ArrayList<>();
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
-          RxBus.getDefault()
-              .post(new OnStartGalleryFragmentBus(GalleryActivity.TYPE_URL, 0, gank.getUrl(),
-                  gank.getPublishedAt()));
+          Flowable.fromIterable(mList)
+              .subscribeOn(Schedulers.io())
+              .observeOn(Schedulers.io())
+              .subscribe(new DisposableSubscriber<Gank>() {
+                @Override public void onNext(Gank gank) {
+                  urls.add(gank.getUrl());
+                }
+
+                @Override public void onError(Throwable t) {
+
+                }
+
+                @Override public void onComplete() {
+                  RxBus.getDefault()
+                      .post(new OnStartGalleryBus(GalleryActivity.TYPE_URL, urls,
+                          getAdapterPosition()));
+                }
+              });
         }
       });
     }

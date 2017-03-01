@@ -205,10 +205,15 @@ public abstract class BaseListAdapter<S> extends RecyclerView.Adapter<BaseViewHo
   }
 
   public void insertData(List<S> list) {
-    if (!AndroidUtil.isEmptyList(list)) {
-      int startIndex = mList.size();
+    if (mList.size() == 0) {
       mList.addAll(list);
-      notifyItemRangeChanged(startIndex, list.size());
+      notifyDataSetChanged();
+    } else {
+      if (!AndroidUtil.isEmptyList(list)) {
+        int startIndex = mList.size();
+        mList.addAll(list);
+        notifyItemRangeChanged(startIndex, list.size());
+      }
     }
   }
 

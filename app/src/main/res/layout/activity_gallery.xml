@@ -6,19 +6,11 @@
     android:orientation="vertical"
     >
   <include layout="@layout/include_toolbar"/>
-  <FrameLayout
+
+  <android.support.v4.view.ViewPager
+      android:id="@+id/gallery_viewpager"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      >
-    <include layout="@layout/merge_loading_progressbar"/>
-
-    <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-        android:id="@+id/gallery_imageview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:scaleType="center"
-        />
-
-  </FrameLayout>
+      android:layout_gravity="center"
+      />
 </LinearLayout>

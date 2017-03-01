@@ -1,5 +1,6 @@
 package me.venjerlu.gankio.modules.main;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import me.venjerlu.gankio.R;
-import me.venjerlu.gankio.bus.OnStartGalleryFragmentBus;
+import me.venjerlu.gankio.bus.OnStartGalleryBus;
 import me.venjerlu.gankio.bus.OnStartWebActivityBus;
 import me.venjerlu.gankio.bus.OnUpdateTitleBus;
 import me.venjerlu.gankio.common.RxBus;
@@ -45,7 +46,7 @@ public class MainActivity extends BaseSimpleActivity
     initLatestDate();
     initTabAndViewPager(mTabLayout, mViewPager);
     setOnClickNormalItem();
-    setOnClickMeizhi();
+    setOnClickMeizhis();
   }
 
   /**
@@ -73,8 +74,10 @@ public class MainActivity extends BaseSimpleActivity
    * 设置最新的日期
    */
   private void initLatestDate() {
-    addDisposable(RxBus.getDefault().toObservable(OnUpdateTitleBus.class)
-        .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<OnUpdateTitleBus>() {
+    addDisposable(RxBus.getDefault()
+        .toObservable(OnUpdateTitleBus.class)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<OnUpdateTitleBus>() {
           @Override public void accept(OnUpdateTitleBus onUpdateTitleBus) throws Exception {
             mToolbar.setTitle(onUpdateTitleBus.getTitle());
           }
@@ -85,8 +88,10 @@ public class MainActivity extends BaseSimpleActivity
    * 跳转至WebActivity
    */
   public void setOnClickNormalItem() {
-    addDisposable(RxBus.getDefault().toObservable(OnStartWebActivityBus.class)
-        .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<OnStartWebActivityBus>() {
+    addDisposable(RxBus.getDefault()
+        .toObservable(OnStartWebActivityBus.class)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<OnStartWebActivityBus>() {
           @Override public void accept(OnStartWebActivityBus bus) throws Exception {
             WebActivity.startMe(MainActivity.this, bus.url, bus.title);
           }
@@ -94,15 +99,18 @@ public class MainActivity extends BaseSimpleActivity
   }
 
   /**
-   * 设置妹纸图片的点击事件
+   * 设置图片的点击事件
    */
-  public void setOnClickMeizhi() {
-    addDisposable(RxBus.getDefault()
-        .toObservable(OnStartGalleryFragmentBus.class)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<OnStartGalleryFragmentBus>() {
-          @Override public void accept(OnStartGalleryFragmentBus bus) throws Exception {
-            GalleryActivity.startMe(MainActivity.this, bus.type, bus.url, bus.title);
+  public void setOnClickMeizhis() {
+    addDisposable(RxBus.getDefault().toObservable(OnStartGalleryBus.class)
+        .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<OnStartGalleryBus>() {
+          @Override public void accept(OnStartGalleryBus bus) throws Exception {
+            Intent intent = new Intent(MainActivity.this, GalleryActivity.class);
+            intent.putExtra(GalleryActivity.EXTRA_TYPE, GalleryActivity.TYPE_URL);
+            intent.putStringArrayListExtra(GalleryActivity.EXTRA_URLS,
+                (ArrayList<String>) bus.urls);
+            intent.putExtra(GalleryActivity.EXTRA_POSITION, bus.position);
+            startActivity(intent);
           }
         }));
   }

@@ -6,16 +6,15 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
-import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import butterknife.BindView;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import java.util.List;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.activity.BaseActivity;
-import me.venjerlu.gankio.utils.glide.ImgLoader;
 
 /**
  * Author/Date: venjerLu / 2017/2/17 12:14
@@ -27,18 +26,21 @@ public class GalleryActivity extends BaseActivity<GalleryPresenter> implements I
   public static final int TYPE_RES = 1; //res 文件
   public static final int TYPE_PATH = 2; //本地sd卡路径
   private static final String TAG = "GalleryActivity";
-  private static final String EXTRA_URL = TAG + "url";
-  private static final String EXTRA_RES = TAG + "res";
-  private static final String EXTRA_TYPE = TAG + "type";
-  private static final String EXTRA_TITLE = TAG + "title";
+  public static final String EXTRA_URL = TAG + "url";
+  public static final String EXTRA_URLS = TAG + "urls";
+  public static final String EXTRA_RES = TAG + "res";
+  public static final String EXTRA_TYPE = TAG + "type";
+  public static final String EXTRA_TITLE = TAG + "title";
+  public static final String EXTRA_POSITION = TAG + "position";
   @BindView(R.id.toolbar) Toolbar mToolbar;
-  @BindView(R.id.content_loading_progressbar) ContentLoadingProgressBar mProgressBar;
-  @BindView(R.id.gallery_imageview) SubsamplingScaleImageView mImageView;
+  @BindView(R.id.gallery_viewpager) ViewPager mViewPager;
 
   private int mType;
   private String mUrl;
+  private List<String> mUrls;
   private String mTitle;
   private @DrawableRes int mRes;
+  private int mPosition;
 
   /**
    * 启动此Activity，打开本地Res资源图片
@@ -96,15 +98,17 @@ public class GalleryActivity extends BaseActivity<GalleryPresenter> implements I
   @Override protected void initData(Bundle savedInstanceState) {
     initBundle();
     initToolbar(mToolbar, "");
-    switch (mType) {
-      case TYPE_URL:
-        ImgLoader.getInstance().loadSubsamplingScaleImage(this, mUrl, mImageView, mProgressBar);
-        break;
-      case TYPE_PATH:
-        break;
-      case TYPE_RES:
-        break;
-    }
+    mViewPager.setAdapter(new GalleryPagerAdapter(mUrls));
+    mViewPager.setCurrentItem(mPosition);
+    //switch (mType) {
+    //  case TYPE_URL:
+    //    ImgLoader.getInstance().loadSubsamplingScaleImage(this, mUrl, mImageView, mProgressBar);
+    //    break;
+    //  case TYPE_PATH:
+    //    break;
+    //  case TYPE_RES:
+    //    break;
+    //}
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -136,6 +140,8 @@ public class GalleryActivity extends BaseActivity<GalleryPresenter> implements I
     mUrl = getIntent().getStringExtra(EXTRA_URL);
     mRes = getIntent().getIntExtra(EXTRA_RES, 0);
     mTitle = getIntent().getStringExtra(EXTRA_TITLE);
+    mUrls = getIntent().getStringArrayListExtra(EXTRA_URLS);
+    mPosition = getIntent().getIntExtra(EXTRA_POSITION, 0);
   }
 
   @Override public void showError(String msg) {

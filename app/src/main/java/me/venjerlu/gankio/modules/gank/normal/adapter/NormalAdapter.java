@@ -38,13 +38,6 @@ public class NormalAdapter extends BaseListAdapter<Gank> {
     }
   }
 
-  @Override public void clearData() {
-    int size = mList.size();
-    super.clearData();
-    notifyDataSetChanged();
-    //notifyItemRangeChanged(0, isEmpty() ? 1 : size);
-  }
-
   static class TechViewHolder extends BaseViewHolder<Gank> {
     @BindView(R.id.today_tech_title) TextView mTitle;
     @BindView(R.id.today_tech_content) TextView mContent;
