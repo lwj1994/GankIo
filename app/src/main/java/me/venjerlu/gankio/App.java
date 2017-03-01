@@ -8,6 +8,7 @@ import com.elvishew.xlog.XLog;
 import com.facebook.stetho.Stetho;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.bugly.crashreport.CrashReport;
 import me.venjerlu.gankio.common.di.component.AppComponent;
 import me.venjerlu.gankio.common.di.component.DaggerAppComponent;
 import me.venjerlu.gankio.common.di.module.AppModule;
@@ -45,5 +46,8 @@ public class App extends Application {
           .stackViewMode(Fragmentation.BUBBLE).install();
     }
     Stetho.initializeWithDefaults(this);
+
+    CrashReport.initCrashReport(getApplicationContext(), Constants.BUGLY_APP_ID, false);
+
   }
 }

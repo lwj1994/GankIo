@@ -8,4 +8,5 @@ package me.venjerlu.gankio;
 
 public class Constants {
   public static final String ROOT_DIR = "GankIoMeizhi";
+  public static final String BUGLY_APP_ID = "39ca126ae8";
 }
