@@ -6,6 +6,7 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+    <item name="sublimePickerStyle">@style/SPDefaultImpl</item>
   </style>
 
   <style name="AppTheme.NoActionBar">
@@ -82,6 +83,15 @@
   <style name="CollapsingToolbarTitleStyle"
       parent="@android:style/TextAppearance">
     <item name="android:textColor">@android:color/white</item>
+  </style>
+
+  <style name="SPDefaultImpl" parent="SublimePickerStyleLight">
+    <item name="colorAccent">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="android:textColorPrimary">#212121</item>
+    <item name="android:textColorSecondary">#727272</item>
+    <item name="android:textColorPrimaryInverse">#FFFFFF</item>
   </style>
 
 </resources>

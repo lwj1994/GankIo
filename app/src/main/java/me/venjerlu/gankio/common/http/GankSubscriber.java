@@ -1,5 +1,6 @@
 package me.venjerlu.gankio.common.http;
 
+import android.text.TextUtils;
 import com.elvishew.xlog.XLog;
 import com.google.gson.Gson;
 import io.reactivex.subscribers.DisposableSubscriber;
@@ -26,9 +27,14 @@ public abstract class GankSubscriber<T> extends DisposableSubscriber<GankModel<T
   @Override public void onNext(GankModel<T> tBaseModel) {
     XLog.tag(TAG).d("onNext");
     if (tBaseModel.isError()) {
-      onFail((String) tBaseModel.getResults());
+      onError(new GankException("当日没有干货"));
     } else {
-      onSuccess(tBaseModel.getResults());
+      if (tBaseModel.getResults() != null && !TextUtils.isEmpty(
+          tBaseModel.getResults().toString())) {
+        onSuccess(tBaseModel.getResults());
+      } else {
+        onError(new GankException("当日没有干货"));
+      }
     }
   }
 
@@ -64,6 +70,8 @@ public abstract class GankSubscriber<T> extends DisposableSubscriber<GankModel<T
           e1.printStackTrace();
         }
       }
+    } else if (e instanceof GankException) {
+      ToastUtil.shortMsg(e.getMessage());
     } else {
       XLog.e(e.toString());
       onDisconnect();

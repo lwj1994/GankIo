@@ -13,8 +13,8 @@ android {
     applicationId "me.venjerlu.gankio"
     minSdkVersion 16
     targetSdkVersion 25
-    versionCode 2
-    versionName "1.1"
+    versionCode 3
+    versionName "1.2"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     ndk {
       // 设置支持的SO库架构
@@ -115,6 +115,8 @@ dependencies {
 
   // UI
   compile 'me.yokeyword:fragmentation:0.10.1'
+  compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1' // 日历
+
   //  compile 'me.yokeyword:fragmentation-swipeback:0.7.9'
   //  compile 'com.afollestad.material-dialogs:core:0.9.0.1'
   //  compile 'me.drakeet.support:about:1.0.2'

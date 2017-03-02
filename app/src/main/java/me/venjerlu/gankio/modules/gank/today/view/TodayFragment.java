@@ -3,11 +3,14 @@ package me.venjerlu.gankio.modules.gank.today.view;
 import com.rohitarya.glide.facedetection.transformation.core.GlideFaceDetector;
 import java.util.List;
 import me.venjerlu.gankio.R;
+import me.venjerlu.gankio.bus.OnUpdateTitleBus;
+import me.venjerlu.gankio.common.RxBus;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
 import me.venjerlu.gankio.model.DateModel;
 import me.venjerlu.gankio.model.Gank;
 import me.venjerlu.gankio.modules.gank.today.adapter.TodayAdapter;
 import me.venjerlu.gankio.modules.gank.today.presenter.TodayPresenter;
+import me.venjerlu.gankio.utils.ToastUtil;
 import me.venjerlu.gankio.widget.pulltorefresh.section.SectionData;
 
 /**
@@ -31,6 +34,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     GlideFaceDetector.initialize(_mActivity);
     mPullToRefreshLayout.enableLoadMore(false);
     mRecyclerView.setVerticalScrollBarEnabled(false);
+    mPresenter.setOnUpdateToday();
   }
 
   @Override public void showError(String msg) {
@@ -38,7 +42,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
   }
 
   @Override public void setRefreshing(boolean refresh) {
-
+    mPullToRefreshLayout.setSwipeRefreshing(refresh);
   }
 
   @Override public void onRefresh() {
@@ -54,6 +58,11 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
 
   @Override public void onGetLatestData(DateModel results) {
     List<Gank> meizhi = results.getMeizhi();
+    if (meizhi == null) {
+      ToastUtil.shortMsg("当日没有干货");
+      RxBus.getDefault().post(new OnUpdateTitleBus(""));
+      return;
+    }
     List<Gank> vedio = results.getVedio();
     List<Gank> android = results.getAndroid();
     List<Gank> ios = results.getiOS();
@@ -61,6 +70,7 @@ public class TodayFragment extends BaseListFragment<TodayPresenter, TodayAdapter
     List<Gank> expand = results.getExpand();
     List<Gank> app = results.getApp();
     List<Gank> recommend = results.getRecommend();
+    mAdapter.clearData();
     addToList(0, "Android", android);
     addToList(1, "iOS", ios);
     addToList(2, "前端", front);
