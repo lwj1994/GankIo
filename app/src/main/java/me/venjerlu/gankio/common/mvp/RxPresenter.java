@@ -2,7 +2,7 @@ package me.venjerlu.gankio.common.mvp;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import me.venjerlu.gankio.common.http.GankApi;
+import me.venjerlu.gankio.http.GankApi;
 
 /**
  * Author/Date: venjerLu / 2016/12/7 10:03

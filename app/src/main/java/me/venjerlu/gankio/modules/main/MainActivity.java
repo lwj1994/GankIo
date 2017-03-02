@@ -33,6 +33,7 @@ import me.venjerlu.gankio.common.activity.WebActivity;
 import me.venjerlu.gankio.common.fragment.BaseLazyFragment;
 import me.venjerlu.gankio.modules.about.AboutActivity;
 import me.venjerlu.gankio.modules.gallery.GalleryActivity;
+import me.venjerlu.gankio.modules.search.SearchActivity;
 import me.venjerlu.gankio.widget.SublimePickerFragment;
 import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
@@ -198,6 +199,8 @@ public class MainActivity extends BaseSimpleActivity
       case R.id.action_post_gank:
         return true;
       case R.id.action_search:
+        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+        startActivity(intent);
         return true;
     }
 

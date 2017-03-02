@@ -3,7 +3,7 @@ package me.venjerlu.gankio.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.List;
-import me.venjerlu.gankio.common.http.QiniuApi;
+import me.venjerlu.gankio.http.QiniuApi;
 
 /**
  * Author/Date: venjerLu / 2016/12/10 15:46

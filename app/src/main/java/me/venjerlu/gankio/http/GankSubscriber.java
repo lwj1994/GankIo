@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.common.http;
+package me.venjerlu.gankio.http;
 
 import android.text.TextUtils;
 import com.elvishew.xlog.XLog;

@@ -41,6 +41,12 @@
         android:configChanges="orientation|screenSize"
         />
 
+    <activity
+        android:name=".modules.search.SearchActivity"
+        android:configChanges="orientation|screenSize"
+        android:windowSoftInputMode="stateAlwaysVisible"
+        />
+
     <meta-data
         android:name="me.venjerlu.gankio.utils.glide.GlideDiskCacheModule"
         android:value="GlideModule"/>

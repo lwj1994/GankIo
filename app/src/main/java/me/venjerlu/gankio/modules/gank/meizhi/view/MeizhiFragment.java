@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import java.util.List;
 import me.venjerlu.gankio.common.fragment.BaseListFragment;
-import me.venjerlu.gankio.common.http.GankApi;
+import me.venjerlu.gankio.http.GankApi;
 import me.venjerlu.gankio.model.Gank;
 import me.venjerlu.gankio.modules.gank.meizhi.adapter.MeizhiAdapter;
 import me.venjerlu.gankio.modules.gank.meizhi.presenter.MeizhiPresenter;

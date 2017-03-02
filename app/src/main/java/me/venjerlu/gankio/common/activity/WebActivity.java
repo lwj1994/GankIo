@@ -221,9 +221,21 @@ public class WebActivity extends BaseSimpleActivity {
 
   private class LoveClient extends WebViewClient {
     @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-      String url = request.getUrl().toString();
+      String url = null;
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+        url = request.getUrl().toString();
+      }
       if (!TextUtils.isEmpty(url)) {
         view.loadUrl(url);
+      }
+      return true;
+    }
+
+    @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
+      if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
+        if (!TextUtils.isEmpty(url)) {
+          view.loadUrl(url);
+        }
       }
       return true;
     }

@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.common.http;
+package me.venjerlu.gankio.http;
 
 import com.blankj.utilcode.utils.NetworkUtils;
 import com.facebook.stetho.okhttp3.StethoInterceptor;

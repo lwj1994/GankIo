@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.common.http;
+package me.venjerlu.gankio.http;
 
 /**
  * Created by lwj on 8/14/2016.

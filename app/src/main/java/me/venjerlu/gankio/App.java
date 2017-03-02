@@ -12,7 +12,7 @@ import com.tencent.bugly.crashreport.CrashReport;
 import me.venjerlu.gankio.common.di.component.AppComponent;
 import me.venjerlu.gankio.common.di.component.DaggerAppComponent;
 import me.venjerlu.gankio.common.di.module.AppModule;
-import me.venjerlu.gankio.common.http.RetrofitModule;
+import me.venjerlu.gankio.http.RetrofitModule;
 import me.venjerlu.gankio.widget.AppBlockCanaryContext;
 import me.yokeyword.fragmentation.Fragmentation;
 

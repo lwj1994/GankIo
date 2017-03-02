@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.common.http;
+package me.venjerlu.gankio.http;
 
 /**
  * Author/Date: venjerLu / 2017/3/2 14:59

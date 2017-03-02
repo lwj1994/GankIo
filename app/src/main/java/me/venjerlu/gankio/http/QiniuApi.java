@@ -1,4 +1,4 @@
-package me.venjerlu.gankio.common.http;
+package me.venjerlu.gankio.http;
 
 import io.reactivex.Flowable;
 import me.venjerlu.gankio.model.ImageInfoModel;
