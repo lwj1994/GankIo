@@ -196,8 +196,6 @@ public class MainActivity extends BaseSimpleActivity
       case R.id.action_date:
         mSublimePicker.show(getSupportFragmentManager(), SublimePickerFragment.TAG);
         return true;
-      case R.id.action_post_gank:
-        return true;
       case R.id.action_search:
         Intent intent = new Intent(MainActivity.this, SearchActivity.class);
         startActivity(intent);

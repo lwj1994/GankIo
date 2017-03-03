@@ -34,4 +34,10 @@
   <string name="action_search">搜索</string>
   <string name="action_post_gank">投稿</string>
 
+  <!--投稿-->
+  <string name="post_gank_url_titile">想要提交的网页地址</string>
+  <string name="post_gank_des_titile">对干活内容的描述</string>
+  <string name="post_gank_who_titile">提交者 ID（干货提交者的网络 ID）</string>
+  <string name="post_gank_type_title">干货类型</string>
+
 </resources>

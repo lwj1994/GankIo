@@ -10,7 +10,10 @@ import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import me.venjerlu.gankio.App;
+import me.venjerlu.gankio.common.di.component.ActivityComponent;
 import me.venjerlu.gankio.common.di.component.AppComponent;
+import me.venjerlu.gankio.common.di.component.DaggerActivityComponent;
+import me.venjerlu.gankio.common.di.module.ActivityModule;
 import me.venjerlu.gankio.utils.AndroidUtil;
 import me.yokeyword.fragmentation.SupportActivity;
 
@@ -31,9 +34,13 @@ public abstract class BaseSimpleActivity extends SupportActivity {
     setContentView(getLayout());
     mContext = this;
     mUnbinder = ButterKnife.bind(this);
-
     AndroidUtil.addActivity(this);
+    inject();
     initData(savedInstanceState);
+  }
+
+  protected void inject() {
+
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,6 +71,13 @@ public abstract class BaseSimpleActivity extends SupportActivity {
       mCompositeDisposable = new CompositeDisposable();
     }
     mCompositeDisposable.add(disposable);
+  }
+
+  protected ActivityComponent getActivityComponent() {
+    return DaggerActivityComponent.builder()
+        .appComponent(getAppComponent())
+        .activityModule(new ActivityModule(this))
+        .build();
   }
 
   protected AppComponent getAppComponent() {

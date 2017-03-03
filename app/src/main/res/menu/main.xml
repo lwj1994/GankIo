@@ -19,9 +19,4 @@
       android:orderInCategory="102"
       android:title="@string/action_search"
       app:showAsAction="ifRoom"/>
-  <item
-      android:id="@+id/action_post_gank"
-      android:orderInCategory="103"
-      android:title="@string/action_post_gank"
-      app:showAsAction="never"/>
 </menu>

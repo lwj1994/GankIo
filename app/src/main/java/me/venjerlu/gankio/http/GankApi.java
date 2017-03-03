@@ -5,7 +5,11 @@ import java.util.List;
 import me.venjerlu.gankio.model.DateModel;
 import me.venjerlu.gankio.model.Gank;
 import me.venjerlu.gankio.model.GankModel;
+import me.venjerlu.gankio.model.PostGankModel;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -45,4 +49,11 @@ public interface GankApi {
    */
   @GET("day/{year}/{month}/{day}") Flowable<GankModel<DateModel>> getDataOnSomeday(
       @Path("year") String year, @Path("month") String month, @Path("day") String day);
+
+  /**
+   * 投稿
+   */
+  @FormUrlEncoded @POST("add2gank") Flowable<PostGankModel> postGank(@Field("url") String url,
+      @Field("desc") String desc, @Field("who") String who, @Field("type") String type,
+      @Field("debug") boolean debug);
 }
