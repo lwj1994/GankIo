@@ -44,7 +44,6 @@
     <activity
         android:name=".modules.search.SearchActivity"
         android:configChanges="orientation|screenSize"
-        android:windowSoftInputMode="stateAlwaysVisible"
         />
 
     <meta-data

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -12,6 +13,7 @@ import android.webkit.WebViewClient;
 import butterknife.BindView;
 import com.elvishew.xlog.XLog;
 import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
 import me.venjerlu.gankio.R;
 import me.venjerlu.gankio.common.activity.BaseSimpleActivity;
 
@@ -26,19 +28,37 @@ public class SearchActivity extends BaseSimpleActivity
   @BindView(R.id.search_searchbar) MaterialSearchBar mSearchBar;
   @BindView(R.id.search_webview) WebView mWebView;
   @BindView(R.id.search_swipe) SwipeRefreshLayout mSwipeRefreshLayout;
+  //private boolean is100;
 
   @Override public int getLayout() {
     return R.layout.search;
   }
 
   @Override protected void initData(Bundle savedInstanceState) {
-    mSearchBar.setCardViewElevation(10);
-    mSearchBar.setOnSearchActionListener(this);
-    //mSwipeRefreshLayout.setEnabled(false);
+    initWebview();
+    initSearchBar();
+    mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override public void onRefresh() {
+        mWebView.reload();
+      }
+    });
   }
 
-  @Override protected void onResume() {
-    super.onResume();
+  private void initSearchBar() {
+
+    mSearchBar.setSuggstionsClickListener(new SuggestionsAdapter.OnItemViewClickListener() {
+      @Override public void OnItemClickListener(int position, View v) {
+        String s = mSearchBar.getLastSuggestions().get(position).toString();
+        mSearchBar.setText(s);
+        loadUrl(s);
+        mSearchBar.disableSearch();
+      }
+
+      @Override public void OnItemDeleteListener(int position, View v) {
+      }
+    });
+    mSearchBar.setCardViewElevation(10);
+    mSearchBar.setOnSearchActionListener(this);
     mSearchBar.enableSearch();
   }
 
@@ -48,6 +68,13 @@ public class SearchActivity extends BaseSimpleActivity
 
   @Override public void onSearchConfirmed(CharSequence text) {
     XLog.tag(TAG).d("text = " + text);
+    loadUrl(text);
+    setRefreshing(true);
+    mSearchBar.disableSearch();
+  }
+
+  private void loadUrl(CharSequence text) {
+    //is100 = false;
     mWebView.loadUrl("http://gank.io/search?q=" + text);
   }
 
@@ -63,7 +90,6 @@ public class SearchActivity extends BaseSimpleActivity
     settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
     settings.setSupportZoom(true);
     mWebView.setWebChromeClient(new ChromeClient());
-    mWebView.setWebViewClient(new LoveClient());
   }
 
   /**
@@ -90,9 +116,11 @@ public class SearchActivity extends BaseSimpleActivity
   private class ChromeClient extends WebChromeClient {
     @Override public void onProgressChanged(WebView view, int newProgress) {
       super.onProgressChanged(view, newProgress);
-
       setRefreshing(newProgress != 100);
-      //mSwipeRefreshLayout.setEnabled(newProgress != 100);
+      //if (newProgress == 100 && !is100) {
+      //  is100 = true;
+      //  mWebView.flingScroll(0, AndroidUtil.dp2px(1440));
+      //}
     }
 
     @Override public void onReceivedTitle(WebView view, String title) {
@@ -102,23 +130,24 @@ public class SearchActivity extends BaseSimpleActivity
 
   private class LoveClient extends WebViewClient {
     @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-      String url = null;
       if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-        url = request.getUrl().toString();
+        String url = request.getUrl().toString();
+        if (!TextUtils.isEmpty(url)) {
+          view.loadUrl(url);
+        }
+        return true;
       }
-      if (!TextUtils.isEmpty(url)) {
-        view.loadUrl(url);
-      }
-      return true;
+      return false;
     }
 
-    //@Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
-    //  if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
-    //    if (!TextUtils.isEmpty(url)) {
-    //      view.loadUrl(url);
-    //    }
-    //  }
-    //  return true;
-    //}
+    @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
+      if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
+        if (!TextUtils.isEmpty(url)) {
+          view.loadUrl(url);
+          return true;
+        }
+      }
+      return false;
+    }
   }
 }

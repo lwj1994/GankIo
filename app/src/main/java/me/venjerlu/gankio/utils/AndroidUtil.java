@@ -50,6 +50,9 @@ public class AndroidUtil {
     return SizeUtils.dp2px(App.getAppComponent().getContext(), dp);
   }
 
+  public static int px2dp(float px) {
+    return SizeUtils.px2dp(App.getAppComponent().getContext(), px);
+  }
   public static boolean isEmptyList(List list) {
     return list == null || list.size() == 0;
   }
