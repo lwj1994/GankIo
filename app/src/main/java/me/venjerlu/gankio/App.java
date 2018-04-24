@@ -37,7 +37,7 @@ public class App extends Application {
     ToastUtils.init(false);
     LeakCanary.install(this);
     BlockCanary.install(this, new AppBlockCanaryContext()).start();
-    CrashUtils.getInstance().init(this);
+    CrashUtils.getInstance().init();
     XLog.init(BuildConfig.DEBUG ? LogLevel.ALL : LogLevel.NONE);
 
     if (BuildConfig.DEBUG) {

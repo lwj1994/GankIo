@@ -79,7 +79,7 @@ public class MainActivity extends BaseSimpleActivity
         //mRecurrenceRule = recurrenceRule != null ? recurrenceRule : "n/a";
         XLog.tag(TAG).d("mSelectedDate=" + selectedDate.toString() +
             "\nstart=" + TimeUtils.date2String(selectedDate.getStartDate().getTime(),
-            new SimpleDateFormat("yyyyMMdd", Locale.getDefault())) +
+            new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).toPattern()) +
             "\nfirst=" + selectedDate.getFirstDate().toString() +
             "\nsecond=" + selectedDate.getSecondDate().toString() +
             "\nend=" + selectedDate.getEndDate().toString() +
@@ -87,7 +87,7 @@ public class MainActivity extends BaseSimpleActivity
             "\nmRecurrenceRule=" + recurrenceRule);
         mPreDate = mCurrentDate;
         mCurrentDate = TimeUtils.date2String(selectedDate.getStartDate().getTime(),
-            new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()));
+            new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).toPattern());
         mToolbar.setTitle(mCurrentDate);
         String[] split = mCurrentDate.split("-");
         mViewPager.setCurrentItem(0);

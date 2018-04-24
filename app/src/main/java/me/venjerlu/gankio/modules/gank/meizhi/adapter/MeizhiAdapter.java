@@ -68,7 +68,7 @@ public class MeizhiAdapter extends BaseListAdapter<Gank> {
       int originWidth = gank.getWidth();
       if (originHeight > 0 && originWidth > 0) {
         float scale = (float) originHeight / originWidth;
-        layoutParams.width = ScreenUtils.getScreenWidth(mContext) / 2;
+        layoutParams.width = ScreenUtils.getScreenWidth() / 2;
         layoutParams.height = (int) (layoutParams.width * scale);
       }
 

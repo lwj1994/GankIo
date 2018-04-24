@@ -52,11 +52,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
     Interceptor cacheInterceptor = new Interceptor() {
       @Override public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        if (!NetworkUtils.isConnected(App.getAppComponent().getContext())) {
+        if (!NetworkUtils.isConnected()) {
           request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
         }
         Response response = chain.proceed(request);
-        if (NetworkUtils.isConnected(App.getAppComponent().getContext())) {
+        if (NetworkUtils.isConnected()) {
           int maxAge = 0;
           // 有网络时, 不缓存, 最大保存时长为0
           response.newBuilder()

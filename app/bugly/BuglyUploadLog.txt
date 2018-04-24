@@ -1,12 +1,4 @@
 file=/Users/luwenjie/Documents/androidStudioProjects/GankIo/app/build/outputs/mapping/release/mapping.txt
-sha1=474310466a40bc103e702ba7aa2323ff8c7fac35
-appId=39ca126ae8
-
-file=/Users/luwenjie/Documents/androidStudioProjects/GankIo/app/build/outputs/mapping/release/mapping.txt
-sha1=474310466a40bc103e702ba7aa2323ff8c7fac35
-appId=39ca126ae8
-
-file=/Users/luwenjie/Documents/androidStudioProjects/GankIo/app/build/outputs/mapping/release/mapping.txt
-sha1=474310466a40bc103e702ba7aa2323ff8c7fac35
+sha1=f5af67b7fbe897a44087256fe2d070a5bc8da316
 appId=39ca126ae8
 

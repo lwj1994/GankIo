@@ -48,7 +48,9 @@ public abstract class BaseActivity<T extends IBasePresenter> extends SupportActi
   @Override protected void onDestroy() {
     super.onDestroy();
     mUnbinder.unbind();
-    if (mPresenter != null) mPresenter.detachView();
+    if (mPresenter != null) {
+      mPresenter.detachView();
+    }
     AndroidUtil.removeActivity(this);
   }
 
